@@ -1,0 +1,17 @@
+model = "gpt-5.6-sol"
+model_reasoning_effort = "high"
+personality = "pragmatic"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+[features]
+apps = true
+hooks = true
+multi_agent = true
+personality = true
+remote_plugin = true
+shell_snapshot = true
+shell_tool = true
+unified_exec = true
+

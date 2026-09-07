@@ -1,0 +1,4 @@
+interface:
+  display_name: "Instagram Carousel AI First"
+  short_description: "Build AI-first Instagram carousels with reproducible workflows"
+  default_prompt: "Create or update an AI-first Instagram carousel project with canonical structure, deterministic export, and status metadata."

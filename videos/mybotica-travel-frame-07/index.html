@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Golos";
+        src: url("assets/fonts/golos.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 100 900;
+      }
+
+      :root {
+        --green: #0f3a31;
+        --cream: #f7f0e4;
+        --blue: #176aa5;
+        --gold: #d6b45a;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        margin: 0;
+        overflow: hidden;
+        background: var(--green);
+        font-family: "Golos", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--green);
+      }
+
+      .brand-card {
+        background:
+          radial-gradient(circle at 18% 12%, rgba(247, 240, 228, 0.08), transparent 34%),
+          radial-gradient(circle at 88% 76%, rgba(23, 106, 165, 0.16), transparent 35%),
+          var(--green);
+        color: var(--cream);
+      }
+
+      .glow {
+        position: absolute;
+        width: 760px;
+        height: 760px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(23, 106, 165, 0.22) 0%, rgba(23, 106, 165, 0) 70%);
+        opacity: 0;
+        will-change: transform, opacity;
+      }
+
+      #glow-one { right: -330px; bottom: 240px; }
+
+      .final-inner {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 116px 88px 122px;
+      }
+
+      .final-logo {
+        display: block;
+        width: 850px;
+        height: auto;
+        margin-bottom: 92px;
+        transform-origin: 0 50%;
+        will-change: transform, opacity;
+      }
+
+      .final-kicker {
+        margin-bottom: 20px;
+        color: var(--gold);
+        font-size: 31px;
+        font-weight: 680;
+        letter-spacing: 0.08em;
+        line-height: 1.1;
+        text-transform: uppercase;
+        will-change: transform, opacity;
+      }
+
+      .final-title-line {
+        display: block;
+        color: var(--cream);
+        font-size: 97px;
+        font-weight: 880;
+        letter-spacing: -0.055em;
+        line-height: 0.98;
+        opacity: 0;
+        will-change: transform;
+      }
+
+      .final-copy {
+        max-width: 880px;
+        margin-top: 48px;
+        color: var(--cream);
+        font-size: 41px;
+        font-weight: 390;
+        letter-spacing: -0.02em;
+        line-height: 1.18;
+        will-change: transform, opacity;
+      }
+
+      .final-footnote {
+        position: absolute;
+        left: 88px;
+        bottom: 102px;
+        max-width: 880px;
+        color: var(--gold);
+        font-size: 38px;
+        font-weight: 620;
+        letter-spacing: -0.018em;
+        line-height: 1.12;
+        transform-origin: 0 50%;
+        will-change: transform, opacity;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-fny7" id="root" data-composition-id="mybotica-travel-frame-07" data-start="0" data-duration="4.5" data-width="1080" data-height="1920">
+      <section data-hf-id="hf-lgu6" id="final-card" class="clip brand-card" data-start="0" data-duration="4.5" data-track-index="0">
+        <div data-hf-id="hf-3bxd" class="glow" id="glow-one" data-layout-allow-overflow="" data-layout-ignore=""></div>
+        <div data-hf-id="hf-l2ob" class="final-inner">
+          <img data-hf-id="hf-qvoh" class="final-logo" id="final-logo" src="assets/source/mybotica-logo-transparent.png" alt="MyBotica">
+          <div data-hf-id="hf-nvvk" class="final-kicker" id="final-kicker">Помощник в путешествии</div>
+          <div data-hf-id="hf-brzy" class="final-title-line" id="final-line-1">Ты едешь.</div>
+          <div data-hf-id="hf-peya" class="final-title-line" id="final-line-2">MyBotica знает куда.</div>
+          <div data-hf-id="hf-cusn" class="final-copy" id="final-copy">Маршрут, брони, адреса, список вещей и ответы в пути — в одном чате.</div>
+          <div data-hf-id="hf-oguc" class="final-footnote" id="final-footnote">Паспорт всё-таки возьми сам.</div>
+        </div>
+      </section>
+
+      <audio data-hf-id="hf-1pyt" id="final-chime" src="assets/audio/rescue-chime.mp3" data-start="0.15" data-duration="2.5" data-track-index="10" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-5a37" id="passport-thud" src="assets/audio/door-thud.mp3" data-start="3.2" data-duration="1.08" data-track-index="11" data-volume="0.34"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#glow-one", { opacity: 0, scale: 0.82 }, { opacity: 0.28, scale: 1, duration: 1.1, ease: "power2.out" }, 0.08);
+      tl.fromTo("#final-logo", { opacity: 0, scale: 0.94, x: -16 }, { opacity: 1, scale: 1, x: 0, duration: 0.72, ease: "power3.out" }, 0.15);
+      tl.fromTo("#final-kicker", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.58, ease: "power3.out" }, 0.48);
+
+      tl.set("#final-line-1", { opacity: 1, y: 78 }, 0.86);
+      tl.to("#final-line-1", { y: 0, duration: 0.19, ease: "power4.out" }, 0.86);
+      tl.set("#final-line-2", { opacity: 1, y: 56 }, 1.12);
+      tl.to("#final-line-2", { y: 0, duration: 0.16, ease: "power4.out" }, 1.12);
+
+      tl.fromTo("#final-copy", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" }, 1.48);
+      tl.fromTo("#final-footnote", { opacity: 0, scale: 1.12, rotation: -1.8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.18, ease: "power4.out" }, 3.20);
+
+      window.__timelines["mybotica-travel-frame-07"] = tl;
+    </script>
+  </body>
+</html>

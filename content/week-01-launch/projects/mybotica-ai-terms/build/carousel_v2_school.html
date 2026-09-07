@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyBotica — первый класс ИИ</title>
+  <style>
+    @font-face{font-family:Golos;src:url('./assets/golos.ttf')}
+    @font-face{font-family:Unbounded;src:url('./assets/unbounded.ttf')}
+    :root{--green:#10362c;--green2:#194c3d;--cream:#f7f0e5;--paper:#fffdf7;--red:#9c2530;--pink:#f2c4c7;--blue:#9ec9df;--ink:#152d27;--line:#b9d6e4;--muted:#68736e;--yellow:#f0cf72}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#d9d4cb;padding:24px;display:flex;flex-direction:column;align-items:center;gap:24px;font-family:Golos,Arial,sans-serif;color:var(--ink)}
+    .slide{width:1080px;height:1350px;min-height:1350px;max-height:1350px;flex:none;position:relative;overflow:hidden;padding:62px 72px 78px;background-color:var(--cream);background-image:linear-gradient(rgba(128,181,205,.25) 2px,transparent 2px),linear-gradient(90deg,rgba(128,181,205,.25) 2px,transparent 2px);background-size:54px 54px}
+    .slide::before{content:"";position:absolute;left:94px;top:0;bottom:0;width:3px;background:rgba(156,37,48,.28)}
+    .dark{color:#fff;background-color:var(--green);background-image:linear-gradient(rgba(255,255,255,.055) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.055) 2px,transparent 2px)}
+    .dark::before{background:rgba(242,196,199,.45)}
+    .header{height:50px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:20}
+    .brand{width:198px}.brand img{display:block;width:198px;height:auto}.brand .on-dark{display:none}.dark .brand .on-light{display:none}.dark .brand .on-dark{display:block}
+    .page{font:600 17px/1 Unbounded,sans-serif;letter-spacing:.02em;color:var(--red);background:var(--paper);padding:14px 17px;border:2px solid var(--red);transform:rotate(2deg);box-shadow:4px 5px 0 rgba(156,37,48,.18)}
+    .dark .page{color:var(--green);border-color:var(--paper);box-shadow:4px 5px 0 rgba(255,255,255,.16)}
+    h1,h2,h3{font-family:Unbounded,Golos,sans-serif;font-weight:620;letter-spacing:-.045em;text-wrap:balance}
+    h1{font-size:74px;line-height:1.02}h2{font-size:58px;line-height:1.05}h3{font-size:33px;line-height:1.1}
+    p{font-size:29px;line-height:1.34}.red{color:var(--red)}.pink{color:var(--pink)}
+    .progress{position:absolute;left:72px;right:72px;bottom:38px;height:9px;display:grid;grid-template-columns:repeat(10,1fr);gap:7px;z-index:30}.progress i{background:rgba(16,54,44,.17)}.progress i.on{background:var(--red)}.dark .progress i{background:rgba(255,255,255,.18)}.dark .progress i.on{background:var(--pink)}
+    .scribble{font:700 25px/1.1 Golos,sans-serif;color:var(--red);transform:rotate(-4deg);display:inline-block}.dark .scribble{color:var(--pink)}
+    .stamp{display:inline-flex;align-items:center;justify-content:center;border:5px solid var(--red);color:var(--red);font:700 25px/1 Unbounded,sans-serif;padding:15px 22px;transform:rotate(-7deg);text-transform:uppercase}.dark .stamp{border-color:var(--pink);color:var(--pink)}
+    .tape{position:absolute;width:120px;height:32px;background:rgba(240,207,114,.72);transform:rotate(-5deg);z-index:4}
+
+    /* 01: literal first-grader scene */
+    .cover h1{margin-top:108px;width:755px;position:relative;z-index:5}.cover h1 .red{display:inline-block;transform:rotate(-2deg)}
+    .cover-sub{margin-top:30px;width:500px;font-size:34px;font-weight:760;position:relative;z-index:6}.cover-dragon{position:absolute;width:590px;height:715px;object-fit:contain;right:-38px;bottom:22px;z-index:4;filter:drop-shadow(0 22px 15px rgba(16,54,44,.16))}
+    .teacher-note{position:absolute;left:82px;bottom:196px;width:430px;padding:25px 30px;background:var(--paper);border:3px solid var(--red);font-size:27px;font-weight:780;line-height:1.23;transform:rotate(-3deg);z-index:8;box-shadow:10px 12px 0 rgba(156,37,48,.13)}.teacher-note::before{content:"✓";font:700 42px/1 Golos;color:var(--red);margin-right:14px}
+    .cover .doodle{position:absolute;right:67px;top:202px;font:700 92px/1 Golos;color:var(--red);transform:rotate(11deg)}
+
+    /* 02: blackboard lesson */
+    .lesson h2{margin-top:88px}.lesson-board{position:relative;margin-top:48px;background:var(--green);color:#fff;border:17px solid #a87345;box-shadow:0 17px 0 rgba(75,46,25,.18);padding:34px 42px 34px;min-height:630px}.lesson-board::after{content:"";position:absolute;left:65px;right:65px;bottom:-28px;height:20px;background:#a87345}
+    .rule{display:grid;grid-template-columns:126px 1fr;gap:22px;align-items:center;min-height:154px;border-bottom:2px dashed rgba(255,255,255,.35)}.rule:last-child{border:none}.rule b{font:700 54px/1 Unbounded;color:var(--pink);text-align:center}.rule strong{font:620 30px/1.15 Unbounded}.rule span{display:block;margin-top:9px;font-size:25px;color:rgba(255,255,255,.76)}
+    .lesson-note{position:absolute;right:85px;bottom:105px;padding:18px 24px;background:var(--pink);color:var(--red);font-size:23px;font-weight:800;transform:rotate(3deg);z-index:8}
+
+    /* 03: bot is the place */
+    .bot h2{margin-top:88px}.bot h2 em{font-style:normal;background:var(--red);color:#fff;padding:4px 14px;display:inline-block;transform:rotate(-2deg)}
+    .desk-chat{margin-top:54px;display:grid;grid-template-columns:620px 1fr;gap:28px;align-items:end}.chat-paper{position:relative;background:var(--paper);padding:35px 34px 36px;min-height:535px;border:3px solid var(--green);box-shadow:14px 16px 0 rgba(16,54,44,.12);transform:rotate(-1deg)}.chat-paper .tape{top:-18px;left:240px}.chat-title{font:620 25px/1.15 Unbounded;border-bottom:3px solid var(--green);padding-bottom:24px}.channels{display:flex;gap:18px;margin-top:28px}.channel{width:150px;height:96px;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;gap:10px;font-size:21px;font-weight:770}.channel img{width:38px;height:38px;object-fit:contain}.bubble{margin-top:29px;width:78%;padding:21px 24px;background:#e4eee9;border-radius:18px 18px 18px 3px;font-size:25px;line-height:1.25}.bubble.answer{margin-left:auto;background:var(--red);color:#fff;border-radius:18px 18px 3px 18px}.bot-side{padding-bottom:18px}.bot-side p{font-size:25px}.bot-side .arrow{font-size:73px;color:var(--red);transform:rotate(10deg);margin:18px 0 2px 24px}.bot-side strong{font:620 30px/1.16 Unbounded}
+
+    /* 04: helper as teacher's exercise */
+    .helper h2{margin-top:85px;max-width:900px}.assignment{margin-top:46px;display:grid;grid-template-columns:600px 1fr;gap:28px;align-items:end}.sheet{position:relative;background:var(--paper);min-height:600px;border-left:7px solid var(--red);padding:39px 42px;box-shadow:12px 15px 0 rgba(16,54,44,.12);transform:rotate(.6deg)}.sheet .tape{top:-18px;right:70px}.client-says{font:620 31px/1.22 Unbounded;padding-bottom:29px;border-bottom:3px solid var(--green)}.checks{margin-top:32px;display:flex;flex-direction:column;gap:24px}.check{display:grid;grid-template-columns:40px 1fr;gap:17px;font-size:27px;font-weight:740}.check b{color:var(--red);font-size:36px;line-height:.8}.helper-dragon{width:350px;height:510px;object-fit:contain;filter:drop-shadow(0 20px 16px rgba(16,54,44,.13))}.helper-side-note{position:absolute;right:54px;bottom:250px;font:800 24px/1.1 Golos;color:var(--red);transform:rotate(-7deg);text-align:center}
+
+    /* 05: homework hero */
+    .homework h2{margin-top:80px;max-width:900px}.homework-layout{margin-top:35px;display:grid;grid-template-columns:470px 1fr;gap:24px;align-items:center}.homework-dragon{width:470px;height:630px;object-fit:contain;filter:drop-shadow(0 20px 18px rgba(0,0,0,.22))}.steps-paper{background:var(--paper);color:var(--green);padding:39px 36px 42px;transform:rotate(1.5deg);box-shadow:12px 14px 0 rgba(0,0,0,.18)}.steps-paper h3{color:var(--red);padding-bottom:26px;border-bottom:3px solid var(--green)}.school-steps{margin-top:22px}.school-step{display:grid;grid-template-columns:58px 1fr;align-items:center;min-height:92px;border-bottom:2px dashed #a9bbb4;font-size:28px;font-weight:770}.school-step b{font:700 31px/1 Unbounded;color:var(--red)}.homework .stamp{position:absolute;right:94px;bottom:119px;z-index:8;background:var(--paper)}
+
+    /* 06: school corridor */
+    .integration h2{margin-top:82px;max-width:900px}.integration-lead{margin-top:24px;width:800px;color:rgba(255,255,255,.75)}.corridor{position:relative;margin-top:48px;height:620px;border-top:4px solid rgba(255,255,255,.35);border-bottom:4px solid rgba(255,255,255,.35);display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:center}.door{height:360px;border:6px solid var(--paper);border-bottom-width:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;position:relative}.door::after{content:"";position:absolute;right:17px;top:184px;width:18px;height:18px;background:var(--yellow);border-radius:50%}.door img{width:76px;height:76px;object-fit:contain;background:#fff;padding:8px}.door strong{text-align:center;font:620 22px/1.15 Unbounded}.hall-arrow{position:absolute;left:43px;right:43px;bottom:44px;height:8px;background:var(--pink)}.hall-arrow::after{content:"";position:absolute;right:-2px;top:-12px;border-left:30px solid var(--pink);border-top:16px solid transparent;border-bottom:16px solid transparent}.integration .scribble{position:absolute;right:72px;bottom:108px;transform:rotate(-5deg)}
+
+    /* 07: test */
+    .test h2{margin-top:78px}.test-layout{margin-top:43px;display:grid;grid-template-columns:620px 1fr;gap:28px;align-items:end}.test-paper{background:var(--paper);padding:36px 40px 34px;border:3px solid var(--green);box-shadow:13px 15px 0 rgba(16,54,44,.12);transform:rotate(-.7deg)}.question{font:620 29px/1.2 Unbounded;padding:24px 26px;background:var(--green);color:#fff}.answers{margin-top:23px;display:flex;flex-direction:column}.answer-line{min-height:84px;border-bottom:2px solid #ccd8d2;display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:center;font-size:26px;font-weight:740}.answer-line b{font-size:35px;color:var(--red)}.test-dragon{width:320px;height:490px;object-fit:contain;filter:drop-shadow(0 18px 15px rgba(16,54,44,.13))}.test .stamp{position:absolute;right:70px;bottom:138px;background:var(--cream);font-size:29px}
+
+    /* 08: one giant joke */
+    .hand h2{margin-top:80px;max-width:900px}.hand-layout{margin-top:50px;display:grid;grid-template-columns:530px 1fr;gap:30px;align-items:center}.hand-dragon{width:530px;height:650px;object-fit:contain;filter:drop-shadow(0 20px 18px rgba(0,0,0,.22))}.hand-answer{align-self:center}.hand-answer .no{font:700 170px/.88 Unbounded;color:var(--pink);letter-spacing:-.08em}.hand-answer p{margin-top:28px;font-size:28px}.excavator{margin-top:34px;padding:22px 25px;background:var(--paper);color:var(--green);font-size:24px;font-weight:780;transform:rotate(2deg)}
+
+    /* 09: cheat sheet */
+    .cheat h2{margin-top:72px}.cheat-sheet{position:relative;margin:44px auto 0;width:825px;min-height:720px;background:var(--paper);padding:50px 53px 42px;border-top:16px solid var(--red);box-shadow:16px 18px 0 rgba(16,54,44,.13);transform:rotate(-1deg)}.cheat-sheet::before{content:"";position:absolute;left:42px;right:42px;top:28px;border-top:3px dashed var(--red)}.cheat-row{min-height:145px;display:grid;grid-template-columns:1fr 50px 240px;gap:14px;align-items:center;border-bottom:3px solid var(--line)}.cheat-row:last-child{border:none}.cheat-row span{font-size:27px;font-weight:720}.cheat-row b{font:620 23px/1.12 Unbounded;color:var(--red)}.cheat-row .arr{font-size:39px;color:var(--red)}.pencil{position:absolute;right:45px;bottom:65px;width:35px;height:360px;background:var(--yellow);border:4px solid var(--green);transform:rotate(18deg);z-index:7}.pencil::before{content:"";position:absolute;left:-4px;top:-53px;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:53px solid #d4a77b}.pencil::after{content:"";position:absolute;left:-4px;bottom:-32px;width:35px;height:28px;background:var(--pink);border:4px solid var(--green)}
+
+    /* 10: graduation */
+    .graduate h2{margin-top:82px;width:740px;position:relative;z-index:5}.graduate-copy{margin-top:28px;width:550px;color:rgba(255,255,255,.75);position:relative;z-index:5}.graduate-cta{margin-top:35px;width:560px;background:var(--paper);color:var(--green);padding:27px 30px;font-size:26px;font-weight:780;line-height:1.28;transform:rotate(-1deg);position:relative;z-index:6}.graduate-dragon{position:absolute;right:-30px;bottom:33px;width:610px;height:730px;object-fit:contain;filter:drop-shadow(0 22px 18px rgba(0,0,0,.24));z-index:4}.graduate .stamp{position:absolute;left:88px;bottom:145px;background:var(--green);z-index:8}.confetti{position:absolute;inset:145px 35px auto 600px;height:350px}.confetti i{position:absolute;width:17px;height:55px;background:var(--pink);transform:rotate(var(--r))}.confetti i:nth-child(1){left:30px;top:100px;--r:22deg}.confetti i:nth-child(2){left:145px;top:10px;background:var(--yellow);--r:-17deg}.confetti i:nth-child(3){right:90px;top:80px;background:var(--red);--r:42deg}.confetti i:nth-child(4){right:10px;top:190px;--r:-35deg}.confetti i:nth-child(5){left:230px;top:205px;background:var(--yellow);--r:70deg}
+    /* final mobile-legibility pass */
+    .homework .stamp{border-color:var(--red);color:var(--red)}
+    .bot-side p{font-size:27px}.bot-side strong{font-size:32px}
+    .integration-lead{color:rgba(255,255,255,.82)}
+    .door strong{font-size:24px}
+    .hand-answer .no{font-size:156px}
+    .cheat-sheet{width:860px;padding-left:48px;padding-right:48px}
+    .cheat-row{grid-template-columns:1fr 46px 280px}
+    .cheat-row span{font-size:29px}.cheat-row b{font-size:25px}
+    .graduate-copy{color:rgba(255,255,255,.86)}
+  </style>
+</head>
+<body>
+  <section class="slide cover">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="page">ПЕРВЫЙ КЛАСС ИИ · 01/10</div></div>
+    <h1><span class="red">Бот?</span><br>Помощник?<br>Агент?</h1>
+    <p class="cover-sub">Я опять всё перепутала.</p>
+    <div class="doodle">???</div>
+    <img class="cover-dragon" src="./assets/dragon-school-confused-v1.png" alt="Дракоша-первоклашка запуталась в терминах">
+    <div class="teacher-note">Объясняем как в первом классе</div>
+    <div class="progress"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide lesson">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="page">УРОК №1 · 02/10</div></div>
+    <h2>Не паникуем.<br><span class="red">Тут всего три роли</span></h2>
+    <div class="lesson-board">
+      <div class="rule"><b>1</b><div><strong>БОТ</strong><span>куда писать</span></div></div>
+      <div class="rule"><b>2</b><div><strong>ИИ-ПОМОЩНИК</strong><span>кто понял задачу</span></div></div>
+      <div class="rule"><b>3</b><div><strong>ИИ-АГЕНТ</strong><span>кто ещё и сделал</span></div></div>
+    </div>
+    <div class="lesson-note">это не три разных робота!</div>
+    <div class="progress"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide bot">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="page">ТЕРМИН №1 · 03/10</div></div>
+    <h2><em>БОТ</em> = куда писать</h2>
+    <div class="desk-chat">
+      <div class="chat-paper"><i class="tape"></i><div class="chat-title">ОКНО ДЛЯ РАЗГОВОРА</div><div class="channels"><div class="channel"><img src="./assets/telegram.svg" alt="Telegram">TG</div><div class="channel"><img src="./assets/vk.svg" alt="VK">VK</div><div class="channel">САЙТ</div></div><div class="bubble">Можно записаться завтра?</div><div class="bubble answer">Да. На какую услугу?</div></div>
+      <div class="bot-side"><div class="arrow">↙</div><strong>Вот это — бот.</strong><p>А внутри него может быть сценарий или ИИ.</p></div>
+    </div>
+    <div class="progress"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide helper">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="page">ТЕРМИН №2 · 04/10</div></div>
+    <h2><span class="red">ИИ-помощник</span> = кто понял задание</h2>
+    <div class="assignment">
+      <div class="sheet"><i class="tape"></i><div class="client-says">«Мне бы завтра после работы»</div><div class="checks"><div class="check"><b>✓</b><span>понял, что речь о записи</span></div><div class="check"><b>✓</b><span>спросил, какая нужна услуга</span></div><div class="check"><b>✓</b><span>предложил следующий шаг</span></div></div></div>
+      <img class="helper-dragon" src="./assets/dragon-girl-thoughtful.png" alt="Дракоша думает над заданием">
+    </div>
+    <div class="helper-side-note">поняла смысл!<br>уже хорошо</div>
+    <div class="progress"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide dark homework">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="page">ТЕРМИН №3 · 05/10</div></div>
+    <h2><span class="pink">ИИ-агент</span> = кто ещё и сделал домашку</h2>
+    <div class="homework-layout"><img class="homework-dragon" src="./assets/dragon-school-homework-v1.png" alt="Дракоша гордо показывает выполненную домашнюю работу"><div class="steps-paper"><h3>САМ:</h3><div class="school-steps"><div class="school-step"><b>01</b><span>понял</span></div><div class="school-step"><b>02</b><span>проверил</span></div><div class="school-step"><b>03</b><span>записал</span></div><div class="school-step"><b>04</b><span>ответил</span></div></div></div></div>
+    <div class="stamp">не списывал!</div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide dark integration">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="page">ТЕРМИН №4 · 06/10</div></div>
+    <h2><span class="pink">Интеграция</span> = дверь из кабинета в кабинет</h2>
+    <p class="integration-lead">Чтобы не только болтать, а зайти в нужный сервис и сделать дело.</p>
+    <div class="corridor"><div class="door"><img src="./assets/telegram.svg" alt="Telegram"><strong>TELEGRAM</strong></div><div class="door"><img src="./assets/google-calendar.svg" alt="Google Calendar"><strong>КАЛЕНДАРЬ</strong></div><div class="door"><img src="./assets/google-sheets.svg" alt="Google Sheets"><strong>ТАБЛИЦА</strong></div><div class="door"><img src="./assets/vk.svg" alt="VK"><strong>VK</strong></div><div class="hall-arrow"></div></div>
+    <span class="scribble">ходит сам, без дневника</span>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide test">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="page">КОНТРОЛЬНАЯ · 07/10</div></div>
+    <h2>Собираем всё<br><span class="red">на одном примере</span></h2>
+    <div class="test-layout"><div class="test-paper"><div class="question">Клиент: «Можно завтра после 18:00?»</div><div class="answers"><div class="answer-line"><b>✓</b><span><strong class="red">ПОМОЩНИК:</strong> уточняет услугу</span></div><div class="answer-line"><b>✓</b><span><strong class="red">ИНТЕГРАЦИЯ:</strong> открывает календарь</span></div><div class="answer-line"><b>✓</b><span><strong class="red">АГЕНТ:</strong> создаёт запись</span></div><div class="answer-line"><b>✓</b><span><strong class="red">БОТ:</strong> подтверждает клиенту</span></div></div></div><img class="test-dragon" src="./assets/dragon-girl-wink.png" alt="Дракоша подмигивает после контрольной"></div>
+    <div class="stamp">зачёт</div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide dark hand">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="page">ВОПРОС С ПАРТЫ · 08/10</div></div>
+    <h2>А всегда нужен<br><span class="pink">ИИ-агент?</span></h2>
+    <div class="hand-layout"><img class="hand-dragon" src="./assets/dragon-school-confused-v1.png" alt="Дракоша тянет руку с вопросом"><div class="hand-answer"><div class="no">НЕТ.</div><p>Если надо просто ответить на вопрос — сложная цепочка не нужна.</p><div class="excavator">Не тащим экскаватор за карандашом.</div></div></div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide cheat">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="page">ШПАРГАЛКА · 09/10</div></div>
+    <h2>Можно подсмотреть.<br><span class="red">Я разрешила.</span></h2>
+    <div class="cheat-sheet"><div class="cheat-row"><span>Куда пишет человек?</span><b class="arr">→</b><b>БОТ</b></div><div class="cheat-row"><span>Понимает смысл?</span><b class="arr">→</b><b>ИИ-ПОМОЩНИК</b></div><div class="cheat-row"><span>Делает несколько шагов?</span><b class="arr">→</b><b>ИИ-АГЕНТ</b></div><div class="cheat-row"><span>Ходит в другие сервисы?</span><b class="arr">→</b><b>ИНТЕГРАЦИЯ</b></div></div><div class="pencil"></div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+  </section>
+
+  <section class="slide dark graduate">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="page">ВЫПУСКНОЙ · 10/10</div></div>
+    <h2>Не учите термины.<br><span class="pink">Вспомните свою работу.</span></h2>
+    <p class="graduate-copy">Что вы каждый день отвечаете, проверяете или записываете?</p>
+    <div class="graduate-cta">Напишите эту задачу — покажем, как передать её ИИ-помощнику MyBotica.</div>
+    <div class="confetti"><i></i><i></i><i></i><i></i><i></i></div>
+    <img class="graduate-dragon" src="./assets/dragon-school-graduate-v1.png" alt="Дракоша-выпускница с дипломом">
+    <div class="stamp">4 термина освоены</div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+  </section>
+</body>
+</html>

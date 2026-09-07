@@ -1,0 +1,15 @@
+{"id":"image_001","type":"image","path":"assets/frames/frame-01.jpg","source":"existing","description":"frame 01","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_002","type":"image","path":"assets/frames/frame-02.jpg","source":"existing","description":"frame 02","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_003","type":"image","path":"assets/frames/frame-03.jpg","source":"existing","description":"frame 03","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_004","type":"image","path":"assets/frames/frame-04.jpg","source":"existing","description":"frame 04","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_005","type":"image","path":"assets/frames/frame-05.jpg","source":"existing","description":"frame 05","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_006","type":"image","path":"assets/frames/frame-06.jpg","source":"existing","description":"frame 06","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_007","type":"image","path":"assets/frames/frame-07.jpg","source":"existing","description":"frame 07","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_008","type":"image","path":"assets/frames/frame-08.jpg","source":"existing","description":"frame 08","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_009","type":"image","path":"assets/frames/frame-09.jpg","source":"existing","description":"frame 09","width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_010","type":"image","path":"assets/source/girl-actions-v10.png","source":"existing","description":"girl actions v10","width":1536,"height":1024,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_011","type":"image","path":"assets/source/girl-emotions-v10.png","source":"existing","description":"girl emotions v10","width":1536,"height":1024,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_012","type":"image","path":"assets/source/mybotica-head-mark-reference.jpg","source":"existing","description":"mybotica head mark reference","width":261,"height":233,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_013","type":"image","path":"assets/source/mybotica-logo-transparent.png","source":"existing","description":"mybotica logo transparent","width":4400,"height":1024,"provenance":{"provider":"local","adopted":true}}
+{"id":"video_001","type":"video","path":"assets/source/original-chat-overload-v5.mp4","source":"existing","description":"original chat overload v5","duration":15.1,"width":1080,"height":1920,"provenance":{"provider":"local","adopted":true}}
+{"id":"video_002","type":"video","path":"assets/source/seedance-live-girl-v1.mp4","source":"existing","description":"seedance live girl v1","duration":15,"width":720,"height":1280,"provenance":{"provider":"local","adopted":true}}

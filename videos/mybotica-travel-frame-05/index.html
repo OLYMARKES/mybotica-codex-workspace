@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyBotica — кадр 5</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Golos";
+        src: url("assets/fonts/golos.ttf") format("truetype");
+        font-display: swap;
+      }
+
+      :root {
+        --paper: #e6d3bb;
+        --cream: #f7f0e4;
+        --ink: #103a31;
+        --green: #0f3a31;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 100%; min-height: 100%; background: var(--green); }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Golos", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+
+      #paper-texture {
+        position: absolute;
+        inset: 0;
+        opacity: 0.2;
+        background-image:
+          radial-gradient(circle at 20% 18%, rgba(255,255,255,0.72) 0 2px, transparent 3px),
+          radial-gradient(circle at 78% 64%, rgba(73,52,26,0.14) 0 1.5px, transparent 2.5px);
+        background-size: 74px 81px, 91px 87px;
+      }
+
+      #solution-panel {
+        position: absolute;
+        top: 138px;
+        left: 54px;
+        width: 610px;
+        min-height: 850px;
+        padding: 56px 52px 54px;
+        border-radius: 28px;
+        background: var(--green);
+        box-shadow: 0 24px 48px rgba(72, 50, 25, 0.2);
+        transform-origin: 0% 50%;
+      }
+
+      #panel-logo {
+        display: block;
+        width: 420px;
+        height: auto;
+        margin-bottom: 64px;
+      }
+
+      #checklist { display: flex; flex-direction: column; gap: 38px; }
+
+      .check-row {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        min-height: 76px;
+        color: var(--cream);
+        font-size: 44px;
+        font-weight: 500;
+        line-height: 1.08;
+        opacity: 0;
+      }
+
+      .check-box {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        flex: 0 0 54px;
+        border: 3px solid var(--cream);
+        border-radius: 7px;
+        color: var(--cream);
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      #dragon-wrap {
+        position: absolute;
+        right: -235px;
+        bottom: 78px;
+        width: 790px;
+        height: 1405px;
+        overflow: hidden;
+        transform-origin: 50% 100%;
+      }
+
+      #dragon {
+        display: block;
+        width: 790px;
+        height: 1405px;
+        object-fit: contain;
+        object-position: 50% 100%;
+      }
+
+      #speed-lines { position: absolute; right: 408px; bottom: 438px; width: 240px; height: 210px; }
+
+      .speed-line {
+        position: absolute;
+        right: 0;
+        display: block;
+        height: 5px;
+        border-radius: 5px;
+        background: var(--ink);
+        transform-origin: 100% 50%;
+      }
+
+      .speed-line:nth-child(1) { top: 22px; width: 150px; }
+      .speed-line:nth-child(2) { top: 82px; width: 220px; }
+      .speed-line:nth-child(3) { top: 144px; width: 178px; }
+
+      #papers { position: absolute; left: -30px; bottom: 28px; width: 520px; height: 350px; }
+
+      .paper-sheet {
+        position: absolute;
+        display: block;
+        width: 250px;
+        height: 145px;
+        padding: 24px;
+        border: 1px solid rgba(79, 58, 31, 0.16);
+        background: var(--cream);
+        box-shadow: 0 10px 18px rgba(75, 49, 21, 0.12);
+      }
+
+      .paper-sheet::before,
+      .paper-sheet::after {
+        content: "";
+        display: block;
+        height: 4px;
+        margin-bottom: 18px;
+        background: rgba(16, 58, 49, 0.22);
+      }
+
+      .paper-sheet::after { width: 66%; }
+      .paper-sheet:nth-child(1) { left: 12px; top: 134px; }
+      .paper-sheet:nth-child(2) { left: 174px; top: 92px; }
+      .paper-sheet:nth-child(3) { left: 80px; top: 232px; }
+
+      #bot-reply {
+        position: absolute;
+        right: 62px;
+        bottom: 116px;
+        display: grid;
+        grid-template-columns: 164px 1fr;
+        align-items: center;
+        gap: 24px;
+        width: 690px;
+        min-height: 224px;
+        padding: 34px 42px 36px;
+        border-radius: 26px;
+        background: var(--green);
+        box-shadow: 0 24px 38px rgba(50, 37, 20, 0.22);
+        transform-origin: 100% 100%;
+      }
+
+      #bot-reply::after {
+        content: "";
+        position: absolute;
+        right: 72px;
+        bottom: -38px;
+        width: 58px;
+        height: 58px;
+        background: var(--green);
+        clip-path: polygon(0 0, 100% 0, 100% 100%);
+      }
+
+      #reply-logo {
+        display: block;
+        width: 164px;
+        height: 72px;
+        background: url("assets/source/mybotica-logo-transparent.png") center / contain no-repeat;
+      }
+
+      #reply-text {
+        max-width: 420px;
+        color: var(--cream);
+        font-size: 46px;
+        font-weight: 500;
+        line-height: 1.13;
+        letter-spacing: -0.8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-frame05-root" id="root" data-composition-id="mybotica-travel-frame-05" data-start="0" data-duration="5.4" data-width="1080" data-height="1920">
+      <section data-hf-id="hf-frame05-scene" id="scene" class="clip" data-start="0" data-duration="5.4" data-track-index="0">
+        <div data-hf-id="hf-frame05-paper-texture" id="paper-texture" data-layout-ignore=""></div>
+
+        <div data-hf-id="hf-frame05-panel" id="solution-panel">
+          <img data-hf-id="hf-frame05-panel-logo" id="panel-logo" src="assets/source/mybotica-logo-transparent.png" alt="MyBotica">
+          <div data-hf-id="hf-frame05-checklist" id="checklist">
+            <div data-hf-id="hf-frame05-row-route" class="check-row"><span data-hf-id="hf-frame05-box-route" class="check-box">✓</span><span data-hf-id="hf-a9pe">Маршрут</span></div>
+            <div data-hf-id="hf-frame05-row-booking" class="check-row"><span data-hf-id="hf-frame05-box-booking" class="check-box">✓</span><span data-hf-id="hf-dpcj">Бронирования</span></div>
+            <div data-hf-id="hf-frame05-row-address" class="check-row"><span data-hf-id="hf-frame05-box-address" class="check-box">✓</span><span data-hf-id="hf-xu0n">Адреса</span></div>
+            <div data-hf-id="hf-frame05-row-list" class="check-row"><span data-hf-id="hf-frame05-box-list" class="check-box">✓</span><span data-hf-id="hf-su68">Список вещей</span></div>
+          </div>
+        </div>
+
+        <div data-hf-id="hf-frame05-speed-lines" id="speed-lines" data-layout-ignore="">
+          <span data-hf-id="hf-frame05-speed-line1" class="speed-line"></span>
+          <span data-hf-id="hf-frame05-speed-line2" class="speed-line"></span>
+          <span data-hf-id="hf-frame05-speed-line3" class="speed-line"></span>
+        </div>
+
+        <div data-hf-id="hf-frame05-dragon-wrap" id="dragon-wrap" data-layout-allow-overflow="">
+          <img data-hf-id="hf-frame05-dragon" id="dragon" src=".media/images/image_003.png" alt="Картонный дракон идёт дальше">
+        </div>
+
+        <div data-hf-id="hf-frame05-papers" id="papers" data-layout-ignore="">
+          <span data-hf-id="hf-frame05-paper1" class="paper-sheet"></span>
+          <span data-hf-id="hf-frame05-paper2" class="paper-sheet"></span>
+          <span data-hf-id="hf-frame05-paper3" class="paper-sheet"></span>
+        </div>
+
+        <div data-hf-id="hf-frame05-reply" id="bot-reply">
+          <div data-hf-id="hf-frame05-reply-logo" id="reply-logo" role="img" aria-label="MyBotica"></div>
+          <div data-hf-id="hf-frame05-reply-text" id="reply-text">Бронь действует. Адрес сохранён.</div>
+        </div>
+      </section>
+
+      <audio data-hf-id="hf-frame05-chime" id="rescue-chime" src="assets/audio/rescue-chime.mp3" data-start="2.14" data-duration="1.3" data-track-index="10" data-volume="0.72"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#solution-panel", { x: -520, opacity: 0 }, { x: 0, opacity: 1, duration: 0.58, ease: "power4.out" }, 0.08);
+      tl.fromTo("#dragon-wrap", { x: 180, y: 24, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.62, ease: "power3.out" }, 0.22);
+
+      gsap.utils.toArray(".check-row").forEach((row, index) => {
+        const start = 0.54 + index * 0.17;
+        tl.set(row, { opacity: 1, y: 54 }, start);
+        tl.to(row, { y: 0, duration: 0.18 - index * 0.01, ease: "power4.out" }, start);
+      });
+
+      tl.fromTo(".check-box", { scale: 0 }, { scale: 1, duration: 0.38, ease: "power3.out", stagger: 0.12 }, 0.64);
+      tl.fromTo(".speed-line", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 0.72, duration: 0.32, ease: "power3.out", stagger: 0.07 }, 0.42);
+
+      [9, -7, -2].forEach((rotation, index) => {
+        tl.set(gsap.utils.toArray(".paper-sheet")[index], { rotation }, 0);
+      });
+      tl.fromTo(".paper-sheet", { y: 96, opacity: 0 }, { y: 0, opacity: 1, duration: 0.42, ease: "power2.out", stagger: 0.08 }, 1.22);
+      tl.fromTo("#bot-reply", { scale: 0, opacity: 0, y: 24 }, { scale: 1, opacity: 1, y: 0, duration: 0.58, ease: "power3.out" }, 2.16);
+      tl.to("#dragon-wrap", { rotation: -0.35, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["mybotica-travel-frame-05"] = tl;
+    </script>
+  </body>
+</html>

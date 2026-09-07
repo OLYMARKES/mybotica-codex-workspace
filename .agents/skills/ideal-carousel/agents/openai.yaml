@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ideal Carousel"
+  short_description: "Blueprint for high-performing carousels"
+  default_prompt: "Use $ideal-carousel to draft a 10-slide Instagram carousel (RU) with hook, structure, checklist, and HTML build."

@@ -1,0 +1,7 @@
+{
+  "duration": 15.093,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#lashes", "bySec": 13.9 },
+    { "kind": "staysInFrame", "selector": "#lashes" }
+  ]
+}

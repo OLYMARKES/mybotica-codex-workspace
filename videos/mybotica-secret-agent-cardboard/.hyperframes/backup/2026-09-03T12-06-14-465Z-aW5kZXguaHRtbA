@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1080, height=1920"><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#10362c}#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#10362c}#root>div[data-composition-src]{position:absolute;inset:0;width:1080px;height:1920px}</style></head>
+<body><div data-hf-id="hf-kl88" id="root" data-composition-id="main" data-start="0" data-duration="18.6" data-width="1080" data-height="1920">
+  <div data-hf-id="hf-yzzb" id="el-promise" data-composition-id="01-promise" data-composition-src="compositions/01-promise.html" data-start="0" data-duration="2.4" data-track-index="1" data-width="1080" data-height="1920"></div>
+  <div data-hf-id="hf-fazq" id="el-agent" data-composition-id="02-agent-arrives" data-composition-src="compositions/02-agent-arrives.html" data-start="2.4" data-duration="5.8" data-track-index="1" data-width="1080" data-height="1920"></div>
+  <div data-hf-id="hf-fd9v" id="el-correction" data-composition-id="03-correction" data-composition-src="compositions/03-correction.html" data-start="8.2" data-duration="5.2" data-track-index="1" data-width="1080" data-height="1920"></div>
+  <div data-hf-id="hf-gbtm" id="el-final" data-composition-id="04-final" data-composition-src="compositions/04-final.html" data-start="13.4" data-duration="5.2" data-track-index="1" data-width="1080" data-height="1920"></div>
+  <audio data-hf-id="hf-hrvu" id="audio-opening-pop" src="assets/audio/corporate-pop.mp3" data-start="0.18" data-duration="0.72" data-track-index="10" data-volume="0.7"></audio>
+  <audio data-hf-id="hf-x2vi" id="audio-headset-click" src="assets/audio/corporate-pop.mp3" data-start="3.05" data-duration="0.72" data-track-index="11" data-volume="0.36"></audio>
+  <audio data-hf-id="hf-cup8" id="audio-agent-line" src="assets/audio/agent-line.wav" data-start="6.02" data-duration="1.162" data-track-index="12" data-volume="1"></audio>
+  <audio data-hf-id="hf-9c73" id="audio-error" src="assets/audio/error-thought.wav" data-start="8.28" data-duration="1.05" data-track-index="13" data-volume="0.68"></audio>
+  <audio data-hf-id="hf-b3f0" id="audio-final-pop" src="assets/audio/corporate-pop.mp3" data-start="13.55" data-duration="0.72" data-track-index="14" data-volume="0.55"></audio>
+</div><script>window.__timelines=window.__timelines||{};window.__timelines.main=gsap.timeline({paused:true});</script></body></html>

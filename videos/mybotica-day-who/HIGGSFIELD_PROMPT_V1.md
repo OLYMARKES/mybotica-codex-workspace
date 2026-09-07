@@ -1,0 +1,3 @@
+# Higgsfield Seedance 2.0 — motion plate
+
+15-second vertical handcrafted cardboard stop-motion comedy, following the supplied references chronologically. 0–0.8s blank digital-clock insert; 0.8–1.6s blank client bubble over dragon at laptop; 1.6–3s deadpan face; 3–3.4s clock insert; 3.4–5s closer face; 5–5.4s clock; 5.4–9.5s extreme face held; 9.5–10.5s second blank client bubble; 10.5–13.2s stiff puppet slowly tips sideways in two jerky increments; 13.2–15s lies flat and motionless. Locked camera within shots, hard cuts, visible paper fibres, warm night office. Preserve the exact left-facing character and unchanged two-dot face. Keep all clock displays and message bubbles blank. No generated text, logo, mouth, eyebrows, extra objects, smooth acting, or character drift.

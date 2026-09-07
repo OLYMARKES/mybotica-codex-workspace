@@ -1,0 +1,4 @@
+{"id":"bgm_001","type":"bgm","path":"assets/audio/rescue-chime.mp3","source":"existing","description":"rescue chime","duration":2.5,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_001","type":"image","path":"assets/source/cardboard-boy-blue-canonical.png","source":"existing","description":"cardboard boy blue canonical","width":1024,"height":1536,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_002","type":"image","path":"assets/source/mybotica-logo-transparent.png","source":"existing","description":"mybotica logo transparent","width":4400,"height":1024,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_003","type":"image","path":".media/images/image_003.png","source":"ingested","description":"cardboard-boy-blue-cutout.png","provenance":{"provider":"local","from":"assets/source/cardboard-boy-blue-cutout.png"}}

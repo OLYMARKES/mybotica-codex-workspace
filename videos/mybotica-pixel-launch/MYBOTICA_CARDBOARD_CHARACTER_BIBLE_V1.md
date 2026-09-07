@@ -1,0 +1,76 @@
+# MyBotica Cardboard Boy — character bible v2
+
+## Role
+
+Cardboard MyBotica is the social-media alter ego of the official MyBotica mascot: a tiny support bot that has read too many client messages and now responds to business chaos with exhausted competence. The official logo and clean illustrated dragon remain unchanged.
+
+This cardboard alter ego is always treated as a male character.
+
+## Visual invariants
+
+- Always faces left.
+- Exact speech-bubble head with the long diagonal lower edge.
+- Exactly two identical round dark-green eyes. No mouth.
+- White pear-shaped body.
+- Exactly three deep denim-blue spikes on the head.
+- One deep denim-blue wing on the back-right side, with a dark-green frame and vein.
+- Deep denim-blue tail spikes and a curled tail.
+- Dark-green edging and warm cream paper body.
+- Visible paper fibres, hand-cut edges and brass joint fasteners.
+- Character palette: `#0F2A24`, `#2F6794`, `#F6F2EE`, plus brass joint fasteners.
+- Burgundy `#8C1D26` is allowed only for separate props such as the coffee mug; it is never used for the boy's spikes or wing.
+
+## Performance rule
+
+The joke is not that the character makes funny faces. The face almost never changes. The joke comes from the gap between the blank face, the ridiculous situation and the overly long pause.
+
+## Motion language
+
+- Animate on stepped 8–12 fps timing rather than fluid motion.
+- Every action begins slightly late, as if the character needed time to process the request.
+- Rotate limbs only around the visible brass fasteners.
+- Allow small construction errors: a foot turns outward, an arm hangs too low, the head tilts approximately seven degrees.
+- Do not use elastic squash-and-stretch, realistic walking or polished Disney-style anticipation.
+- When overwhelmed, the character does not scream. It slowly leans, freezes, and falls completely flat.
+- After falling, it may reappear in the next cut already reassembled slightly incorrectly.
+- Eye movement is minimal: at most a tiny simultaneous two-millimetre slide. No blinking and no independent googly-eye motion.
+
+## Pauses
+
+- Ordinary deadpan pause: 0.8–1.2 seconds.
+- Uncomfortable pause after an absurd client message: 1.5–2.2 seconds.
+- Maximum meaningless stare into camera: 2.5 seconds.
+- Hold the pause half a second longer than feels correct.
+
+## Camera
+
+- Default: locked vertical camera and plain warm-cream paper set.
+- Medium full-body framing for the situation.
+- Cut abruptly to a 130–160% face crop for the reaction.
+- Never ease smoothly into the close-up. The cut itself is the joke.
+- Hold the close-up without blinking or additional business.
+- Occasional imperfect manual reframe is allowed; cinematic camera motion is not.
+
+## Voice and text
+
+- Calm, slightly tired voice; approximately 10% slower than ordinary speech.
+- No shouting and no cartoon squeaking.
+- Short sentences, literal interpretations and dry resignation.
+- The character has no mouth; voice-over and subtitles carry the speech.
+- Subtitles should be short and readable, not copied from the visual style or catchphrases of `@lyaguho`.
+
+## Canonical performance states
+
+1. Neutral deadpan.
+2. One arm raised halfway and frozen.
+3. Uncomfortably close face crop.
+4. Crooked mid-step.
+5. Leaning one second before falling.
+6. Holding a burgundy coffee cup at the wrong angle.
+7. Buried under blank message slips.
+8. Completely flat on the floor.
+9. Reassembled crooked and staring.
+
+## Creative boundary
+
+The reference is the entertainment mechanic — practical puppet, deadpan absurdity and anti-polish — not the frog's appearance, voice, mouth, eyes, phrases or scripts. Cardboard construction, speech-bubble anatomy and customer-support subject matter must make MyBotica its own character.

@@ -1,0 +1,9 @@
+{
+  "duration": 5.4,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#solution-panel", "bySec": 0.8 },
+    { "kind": "appearsBy", "selector": "#bot-reply", "bySec": 2.9 },
+    { "kind": "before", "a": "#solution-panel", "b": "#bot-reply" },
+    { "kind": "staysInFrame", "selector": "#bot-reply" }
+  ]
+}

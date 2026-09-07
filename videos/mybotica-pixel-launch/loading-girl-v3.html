@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>MyBotica Loading 85 — girl lashes</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0f2a24; }
+      #loading-girl-v3 { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0f2a24; }
+      .clip { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      .source-video { display: block; object-fit: cover; }
+      .lashes-layer { pointer-events: none; }
+      #lashes { display: block; width: 1080px; height: 1920px; opacity: 0; }
+      .lash-path {
+        fill: none;
+        stroke: #f6f2ee;
+        stroke-width: 4.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+        stroke-dasharray: 30;
+        stroke-dashoffset: 30;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="loading-girl-v3" data-composition-id="loading-girl-v3" data-start="0" data-duration="15.093" data-fps="24" data-width="1080" data-height="1920">
+      <video
+        id="loading-source-video"
+        class="clip source-video"
+        src="renders/higgsfield/mybotica-loading-exact-v2.mp4"
+        data-start="0"
+        data-duration="15.093"
+        data-media-start="0"
+        data-track-index="0"
+        muted
+        playsinline
+      ></video>
+
+      <section id="lash-overlay" class="clip lashes-layer" data-start="13.2" data-duration="1.893" data-track-index="1" aria-label="Ресницы финального логотипа">
+        <svg id="lashes" viewBox="0 0 1080 1920" aria-hidden="true">
+          <path class="lash-path lash-left-upper" d="M216 600 C211 596 208 591 207 586"></path>
+          <path class="lash-path lash-left-outer" d="M216 600 C208 598 204 595 201 591"></path>
+          <path class="lash-path lash-right-upper" d="M250 600 C255 596 258 591 259 586"></path>
+          <path class="lash-path lash-right-outer" d="M250 600 C258 598 262 595 265 591"></path>
+        </svg>
+      </section>
+
+      <audio
+        id="loading-source-audio"
+        src="renders/higgsfield/mybotica-loading-exact-v2.mp4"
+        data-start="0"
+        data-duration="15.093"
+        data-media-start="0"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+    </main>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#lashes", { autoAlpha: 0 }, 0)
+        .set("#lashes", { autoAlpha: 1 }, 13.48)
+        .fromTo(
+          ".lash-path",
+          { strokeDashoffset: 30 },
+          { strokeDashoffset: 0, duration: 0.2, stagger: 0.045, ease: "power2.out" },
+          13.48,
+        );
+      window.__timelines["loading-girl-v3"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyBotica — кадр 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Golos";
+        src: url("assets/fonts/golos.ttf") format("truetype");
+        font-display: swap;
+      }
+
+      :root {
+        --ink: #103c32;
+        --screen: #103f4b;
+        --telegram: #279bd3;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #171717;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #eee2ce;
+        font-family: "Golos", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+
+      #shot-background {
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+        transform-origin: 62% 52%;
+        will-change: transform;
+      }
+
+      #phone {
+        position: absolute;
+        left: 58px;
+        top: 328px;
+        width: 475px;
+        height: 1010px;
+        border: 18px solid #0f382f;
+        border-radius: 72px;
+        background: var(--screen);
+        box-shadow: 0 28px 55px rgba(31, 22, 12, 0.25);
+        overflow: hidden;
+      }
+
+      #phone::before {
+        content: "";
+        position: absolute;
+        top: 17px;
+        left: 50%;
+        width: 158px;
+        height: 30px;
+        border-radius: 0 0 20px 20px;
+        background: #0b2e28;
+        transform: translateX(-50%);
+      }
+
+      #status-row {
+        position: absolute;
+        top: 40px;
+        left: 32px;
+        right: 32px;
+        display: flex;
+        justify-content: space-between;
+        color: #e7f5f2;
+        font-size: 26px;
+        font-weight: 700;
+      }
+
+      #lena-message {
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        top: 355px;
+        min-height: 210px;
+        display: grid;
+        grid-template-columns: 66px 1fr;
+        gap: 17px;
+        align-items: center;
+        padding: 26px 24px;
+        border: 5px solid #7ad0f5;
+        border-radius: 28px;
+        background: #f3fbff;
+        box-shadow: 0 0 0 7px rgba(52, 183, 237, 0.15), 0 14px 24px rgba(0, 0, 0, 0.2);
+        color: #102e2a;
+      }
+
+      #telegram-icon {
+        width: 66px;
+        height: 66px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--telegram);
+        color: white;
+        font-size: 34px;
+        line-height: 1;
+      }
+
+      #sender {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 33px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      #message-text {
+        display: block;
+        font-size: 49px;
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-frame03-root" id="root" data-composition-id="mybotica-travel-frame-03" data-start="0" data-duration="2.25" data-width="1080" data-height="1920">
+      <img data-hf-id="hf-frame03-background" id="shot-background" class="clip" src="assets/generated/shot-03-clean-v1.png" data-start="0" data-duration="2.25" data-track-index="0" alt="Дракоша справа на чистом фоне">
+
+      <section data-hf-id="hf-frame03-overlay" id="shot-overlay" class="clip" data-start="0" data-duration="2.25" data-track-index="1">
+        <div data-hf-id="hf-frame03-phone" id="phone">
+          <div data-hf-id="hf-frame03-status" id="status-row"><span data-hf-id="hf-9wtw">10:42</span><span data-hf-id="hf-3r4p">•••</span></div>
+          <div data-hf-id="hf-frame03-message" id="lena-message">
+            <div data-hf-id="hf-frame03-telegram" id="telegram-icon">➤</div>
+            <div data-hf-id="hf-frame03-copy">
+              <span data-hf-id="hf-frame03-sender" id="sender">Лена</span>
+              <span data-hf-id="hf-frame03-text" id="message-text">Я не еду</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <audio data-hf-id="hf-frame03-pop" id="message-pop" src="assets/audio/message-pop.mp3" data-start="0.56" data-duration="0.72" data-track-index="10" data-volume="0.82"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(
+        "#shot-background",
+        { scale: 1.015 },
+        { scale: 1.03, duration: 0.62, ease: "sine.out" },
+        0
+      );
+      tl.fromTo(
+        "#phone",
+        { x: -70, scale: 0.96 },
+        { x: 0, scale: 1, duration: 0.42, ease: "power3.out" },
+        0.08
+      );
+      tl.fromTo(
+        "#lena-message",
+        { opacity: 0, y: 24, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.38, ease: "power4.out" },
+        0.56
+      );
+      window.__timelines = window.__timelines || {};
+      window.__timelines["mybotica-travel-frame-03"] = tl;
+    </script>
+  </body>
+</html>

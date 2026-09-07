@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyBotica — кадр 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Golos";
+        src: url("assets/fonts/golos.ttf") format("truetype");
+        font-display: swap;
+      }
+
+      :root {
+        --ink: #103c32;
+        --paper: #f7f0e4;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #171717;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #eee2ce;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+
+      #shot-background {
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+        transform-origin: 50% 50%;
+        will-change: transform;
+      }
+
+      #paper-stack {
+        position: absolute;
+        top: 92px;
+        left: 58px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+      }
+
+      .paper-label {
+        display: inline-flex;
+        align-items: center;
+        width: max-content;
+        max-width: 800px;
+        min-height: 82px;
+        padding: 17px 28px 20px;
+        border: 3px solid rgba(15, 58, 49, 0.19);
+        border-radius: 7px;
+        background: rgba(247, 240, 228, 0.97);
+        box-shadow: 0 11px 19px rgba(56, 42, 24, 0.18);
+        color: var(--ink);
+        font-family: "Golos", sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -1px;
+        transform-origin: 8% 50%;
+      }
+
+      #label-1 { transform: rotate(-1.3deg); }
+      #label-2 { transform: rotate(0.8deg); }
+      #label-3 { transform: rotate(-0.5deg); }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-frame02-root" id="root" data-composition-id="mybotica-travel-frame-02" data-start="0" data-duration="1.95" data-width="1080" data-height="1920">
+      <img data-hf-id="hf-frame02-background" id="shot-background" class="clip" src="assets/generated/shot-02-clean-v2.png" data-start="0" data-duration="1.95" data-track-index="0" alt="Дракоша среди документов без чемодана">
+
+      <section data-hf-id="hf-frame02-overlay" id="shot-overlay" class="clip" data-start="0" data-duration="1.95" data-track-index="1">
+        <div data-hf-id="hf-frame02-stack" id="paper-stack">
+          <div data-hf-id="hf-frame02-label1" class="paper-label" id="label-1">Билеты — в почте</div>
+          <div data-hf-id="hf-frame02-label2" class="paper-label" id="label-2">Бронь — в переписке</div>
+          <div data-hf-id="hf-frame02-label3" class="paper-label" id="label-3">Адрес отеля — у Лены</div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(
+        "#shot-background",
+        { scale: 1.015, x: 0, y: 0 },
+        { scale: 1.04, x: -8, y: -5, duration: 1.95, ease: "sine.inOut" },
+        0
+      );
+      ["#label-1", "#label-2", "#label-3"].forEach((selector, index) => {
+        tl.fromTo(
+          selector,
+          { opacity: 0, x: -58, scale: 0.96 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.32, ease: "power4.out" },
+          0.14 + index * 0.48
+        );
+      });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["mybotica-travel-frame-02"] = tl;
+    </script>
+  </body>
+</html>

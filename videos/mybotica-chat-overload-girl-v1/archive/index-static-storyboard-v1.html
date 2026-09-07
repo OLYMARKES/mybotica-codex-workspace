@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0f2a24; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #f9f6f1; }
+      .scene { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background-color: #f9f6f1; transform-origin: 50% 50%; will-change: transform, opacity, filter; }
+      .scene:not(:first-of-type) { opacity: 0; }
+      .scene img { display: block; width: 1080px; height: 1920px; object-fit: cover; transform-origin: 50% 50%; will-change: transform; }
+      #scene-08, #scene-09 { background-color: #0f2a24; }
+      #scene-01 { z-index: 1; }
+      #scene-02 { z-index: 2; }
+      #scene-03 { z-index: 3; }
+      #scene-04 { z-index: 4; }
+      #scene-05 { z-index: 5; }
+      #scene-06 { z-index: 6; }
+      #scene-07 { z-index: 7; }
+      #scene-08 { z-index: 8; }
+      #scene-09 { z-index: 9; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-8qu5" id="root" data-composition-id="chat-overload-girl-v1" data-start="0" data-duration="15.093" data-width="1080" data-height="1920">
+      <div id="scene-01" class="scene" data-hf-id="scene-calm"><img data-hf-id="hf-dvfw" src="./assets/frames/frame-01.jpg" alt="Дракоша-девочка работает за ноутбуком"></div>
+      <div id="scene-02" class="scene" data-hf-id="scene-first-questions"><img data-hf-id="hf-yrin" src="./assets/frames/frame-02.jpg" alt="Первые вопросы клиентов"></div>
+      <div id="scene-03" class="scene" data-hf-id="scene-growing-flow"><img data-hf-id="hf-3n21" src="./assets/frames/frame-03.jpg" alt="Поток вопросов растёт"></div>
+      <div id="scene-04" class="scene" data-hf-id="scene-overload"><img data-hf-id="hf-h8es" src="./assets/frames/frame-04.jpg" alt="Девочка перегружена вопросами"></div>
+      <div id="scene-05" class="scene" data-hf-id="scene-rescue"><img data-hf-id="hf-yfmz" src="./assets/frames/frame-05.jpg" alt="MyBotica приходит на помощь"></div>
+      <div id="scene-06" class="scene" data-hf-id="scene-results"><img data-hf-id="hf-7e9g" src="./assets/frames/frame-06.jpg" alt="MyBotica обрабатывает обращения"></div>
+      <div id="scene-07" class="scene" data-hf-id="scene-coffee"><img data-hf-id="hf-vnsr" src="./assets/frames/frame-07.jpg" alt="Девочка пьёт кофе"></div>
+      <div id="scene-08" class="scene" data-hf-id="scene-mark"><img data-hf-id="hf-ffg9" src="./assets/frames/frame-08.jpg" alt="Знак MyBotica"></div>
+      <div id="scene-09" class="scene" data-hf-id="scene-final"><img data-hf-id="hf-rfop" src="./assets/frames/frame-09.jpg" alt="Логотип и слоган MyBotica"></div>
+      <audio data-hf-id="hf-fceg" id="original-mix" class="clip" src="./assets/source/original-chat-overload-v5.mp4" data-start="0" data-duration="15.093" data-track-index="20" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const sceneStarts = [0, 1.5, 3.5, 5.5, 7.5, 9, 11, 12.5, 14];
+
+      tl.fromTo("#scene-01 img", { scale: 0.97, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }, 0);
+
+      for (let i = 1; i < sceneStarts.length; i += 1) {
+        const oldScene = `#scene-${String(i).padStart(2, "0")}`;
+        const newScene = `#scene-${String(i + 1).padStart(2, "0")}`;
+        const newImage = `${newScene} img`;
+        const at = sceneStarts[i];
+        const transitionDuration = i === 7 || i === 8 ? 0.42 : 0.32;
+
+        tl.to(oldScene, { opacity: 0, filter: "blur(6px)", scale: 1.018, duration: transitionDuration, ease: "power2.inOut" }, at);
+        tl.fromTo(newScene, { opacity: 0, filter: "blur(5px)", scale: 0.988 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: transitionDuration, ease: "power2.inOut" }, at);
+        tl.fromTo(newImage, { scale: i >= 7 ? 0.985 : 1.025 }, { scale: 1, duration: 0.72, ease: "power3.out", immediateRender: false }, at);
+      }
+
+      tl.fromTo("#scene-04 img", { rotation: -0.7 }, { rotation: 0.7, duration: 0.13, repeat: 5, yoyo: true, ease: "sine.inOut", immediateRender: false }, 6.05);
+      tl.to("#scene-04 img", { rotation: 0, duration: 0.16, ease: "power2.out" }, 6.83);
+      tl.fromTo("#scene-05 img", { scale: 0.94 }, { scale: 1, duration: 0.52, ease: "power3.out", immediateRender: false }, 7.5);
+      tl.fromTo("#scene-09 img", { scale: 0.985 }, { scale: 1, duration: 0.6, ease: "power3.out", immediateRender: false }, 14);
+
+      window.__timelines["chat-overload-girl-v1"] = tl;
+    </script>
+  </body>
+</html>

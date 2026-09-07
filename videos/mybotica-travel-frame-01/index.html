@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyBotica — кадр 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Unbounded";
+        src: url("assets/fonts/unbounded.ttf") format("truetype");
+        font-display: swap;
+      }
+
+      :root {
+        --ink: #103c32;
+        --paper: #eee2ce;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #171717;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--paper);
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+
+      #shot-video {
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+      }
+
+      #shot-title {
+        position: absolute;
+        top: 92px;
+        left: 82px;
+        right: 82px;
+        margin: 0;
+        color: var(--ink);
+        font-family: "Unbounded", sans-serif;
+        font-size: 68px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -2.5px;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0 2px 0 rgba(255, 255, 255, 0.18);
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-frame01-root" id="root" data-composition-id="mybotica-travel-frame-01" data-start="0" data-duration="1.9" data-width="1080" data-height="1920">
+      <video data-hf-id="hf-frame01-video" id="shot-video" class="clip" src="assets/generated/shot-01-source.mp4" data-start="0" data-duration="1.9" data-media-start="0" data-playback-rate="1" data-track-index="0" muted playsinline></video>
+
+      <section data-hf-id="hf-frame01-overlay" id="shot-overlay" class="clip" data-start="0" data-duration="1.9" data-track-index="1">
+        <h1 data-hf-id="hf-frame01-title" id="shot-title">До вылета 4 часа</h1>
+      </section>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(
+        "#shot-title",
+        { opacity: 0, y: -26 },
+        { opacity: 1, y: 0, duration: 0.34, ease: "power3.out" },
+        0.08
+      );
+      window.__timelines = window.__timelines || {};
+      window.__timelines["mybotica-travel-frame-01"] = tl;
+    </script>
+  </body>
+</html>

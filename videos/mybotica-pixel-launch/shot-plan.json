@@ -1,0 +1,320 @@
+{
+  "status": "FINAL",
+  "category": "logo-reveal",
+  "duration_s": 9.2,
+  "fps": 30,
+  "canvas": {
+    "w": 1080,
+    "h": 1920,
+    "aspect": "9:16"
+  },
+  "style": "Warm retro-game origin story: start as a restrained 8-bit boot screen, level up through 16-bit, then resolve into MyBotica's friendly hand-drawn 2D brand world. Bold, clean and playful rather than nostalgic clutter; subtle paper warmth in cream areas, crisp dark-green outlines, burgundy dragon accents.",
+  "palette": [
+    "#0F2A24",
+    "#8C1D26",
+    "#F6F2EE",
+    "#E9AE3A",
+    "#FFFFFF"
+  ],
+  "font": "Arial, Helvetica, sans-serif",
+  "beats": [
+    0.15,
+    0.5,
+    1.35,
+    2.55,
+    3.3,
+    4.1,
+    5.5,
+    6.4,
+    7.3,
+    8.2,
+    9.0
+  ],
+  "export": "mp4",
+  "shot_brief": "The viewer catches a tiny MyBotica boot signal in the first half-second; square pixels then assemble the bot-dragon from icon to 8-bit sprite. A single LEVEL UP interruption flips the game generation: the same blocks split, shrink and round into the finished cream-and-ink 2D mascot. The mascot's speech-bubble head becomes the exact MyBotica mark, the wordmark locks on, and the launch message lands. One dominant motion idea governs everything: every new stage is made from the same pixels, so the transformation itself communicates that the product is being built now.",
+  "asset_needs": [],
+  "block": "logo-outro",
+  "customize": {
+    "dominant_motion": "pixel_coalescence_and_resolution_upgrade",
+    "resolved_assets": {
+      "exact_brand_lockup": "assets/mybotica-logo-transparent.png",
+      "mascot_primary_reference": "assets/mybotica-character-sheet.png",
+      "mascot_alt_reference": "assets/mybotica-character-sheet-alt.png",
+      "mascot_hero_crop": "assets/mybotica-mascot-hero-v2.png",
+      "mascot_primary_crop": {
+        "source_rect_px": {
+          "x": 728,
+          "y": 42,
+          "w": 155,
+          "h": 208
+        },
+        "intent": "Neutral front-facing standing pose from the main sheet; keep horns, feet, wing and tail inside the crop and exclude all labels. If the measured clean bounds differ after inspection, adjust only this rectangle, not the hero-frame placement."
+      }
+    },
+    "reuse_components": [
+      {
+        "id": "logo-outro",
+        "role": "Primary brand-close scaffold: preserve its staged lockup, restrained underline/glow grammar and final hold; replace all placeholder brand content and remove the URL pill."
+      },
+      {
+        "id": "stagger-lattice",
+        "role": "Boot-field and first pixel-coalescence pass; recolor to the MyBotica palette and constrain its active cells to the central mascot silhouette rather than filling the whole frame."
+      },
+      {
+        "id": "wordmark-tiles",
+        "role": "Reveal the exact raster wordmark from assets/mybotica-logo.png as deterministic tiles after the mascot-to-icon scale swap."
+      },
+      {
+        "id": "cta-lockup",
+        "role": "Final two-level text lockup and still reading hold; customize with the Russian tagline and CTA, without an invented handle or URL."
+      }
+    ],
+    "hand_authored_gap": {
+      "scope": "The catalog has no faithful 8-bit to 16-bit to smooth mascot evolution. Hand-author only this central morph, using a fixed pixel occupancy map for the icon and dragon sprite plus the measured crop from the supplied character sheet for the smooth final form.",
+      "continuity_rule": "The head center remains locked at x=540 throughout. Large cells split in place before the smooth mascot appears, so the change reads as one character gaining resolution rather than three unrelated cuts."
+    },
+    "layout": {
+      "safe_zone": {
+        "top": 180,
+        "right": 90,
+        "bottom": 320,
+        "left": 90
+      },
+      "hero_center": [
+        540,
+        820
+      ],
+      "logo_center": [
+        540,
+        680
+      ],
+      "copy_center": [
+        540,
+        1185
+      ]
+    },
+    "hero_layout": {
+      "boot_grid": {
+        "center": [
+          540,
+          790
+        ],
+        "extent": [
+          720,
+          900
+        ],
+        "cell_px_8bit": 36,
+        "cell_px_16bit": 18
+      },
+      "mascot": {
+        "head_anchor": [
+          540,
+          650
+        ],
+        "visual_bounds": [
+          310,
+          450,
+          770,
+          1150
+        ],
+        "smooth_crop_display_width": 430
+      },
+      "final_card": {
+        "logo_bounds": [
+          115,
+          555,
+          965,
+          755
+        ],
+        "tagline_baseline_y": 1045,
+        "cta_baseline_y": 1215,
+        "decorative_loop_pixel": [
+          540,
+          790
+        ]
+      }
+    },
+    "deterministic_gsap": {
+      "master": "One paused GSAP master timeline owns every property and is the only time source. Build all initial states with timeline.set(), then add labeled phases matching the timeline ids. Never use CSS infinite animation, requestAnimationFrame, Date.now(), media currentTime logic or event-driven state.",
+      "labels_s": {
+        "boot": 0.0,
+        "icon8": 0.5,
+        "sprite8": 1.35,
+        "hold8": 2.55,
+        "levelUp": 3.3,
+        "upgrade16": 4.1,
+        "mascot2d": 5.5,
+        "brand": 6.4,
+        "message": 7.3,
+        "loopCue": 9.0
+      },
+      "pixel_order": "Give every lattice cell a stable integer data-index. Derive its entry rank with the fixed hash ((index * 47 + row * 13 + col * 7) % cellCount); sort once during setup. Do not call Math.random().",
+      "occupancy_maps": "Store the 8-bit icon and full-body dragon as explicit arrays of row strings. Each active cell keeps the same row/column identity across stages; inactive cells stay opacity 0 rather than being removed from the DOM.",
+      "resolution_split": "At 4.10 s each 36 px cell reveals four 18 px child cells at identical aggregate bounds. Stagger children by a fixed 0.018 s using child index order; no random offsets. Large parents switch off only after all four children have reached scale 1.",
+      "smooth_handoff": "From 4.72-5.35 s, tween 16-bit child cells toward sampled contour target points, then crossfade them under the exact mascot crop over 0.22 s. Keep scale/position and opacity on the master timeline so snapshot seeking is identical to linear playback.",
+      "wordmark_reveal": "Run wordmark-tiles from 6.62-7.12 s with its seeded/default deterministic ordering. The source image must remain unwarped. Sample the source image's corner background color once at setup and use that exact solid as the final-card background so its rectangle disappears; never fake transparency with blend modes.",
+      "eases": {
+        "pixel_snap": "steps(1) or ease:none",
+        "level_band": "power4.out",
+        "smooth_contour": "power2.inOut",
+        "mascot_wave": "sine.inOut",
+        "brand_mask": "power3.out",
+        "copy": "power2.out"
+      }
+    },
+    "motion_rules": [
+      "Use integer-position, hard-edged blocks through the 8-bit stage; no blur or rounded corners before LEVEL UP.",
+      "At LEVEL UP, change exactly one system property at a time: block size halves, then corners round, then outlines draw on.",
+      "The final 2D mascot must preserve the supplied hand-drawn crop; express friendliness with a restrained whole-body breath and separate sparkles, not by warping the raster or replacing it with a generic 3D dragon.",
+      "Every transformation remains center-anchored so the audience reads one character evolving, not a montage of replacements.",
+      "Keep the exact supplied wordmark unwarped; reveal it with a horizontal mask or piece assembly, never by redrawing its typography.",
+      "Avoid heavy glow, neon cyber aesthetics, arcade UI clutter, chromatic aberration and constant camera shake."
+    ],
+    "timeline": [
+      {
+        "id": "cold_boot_hook",
+        "start_s": 0.0,
+        "end_s": 0.5,
+        "frames": [
+          0,
+          15
+        ],
+        "visual": "Dark-green field. A 12 px cream cursor/pixel blinks once at hero center; two burgundy pixels snap above it like future horns. A very faint 36 px square grid is visible only around the center.",
+        "copy": "MYBOTICA // BOOT",
+        "copy_treatment": "Small mono-style system label above bottom safe zone; readable but secondary.",
+        "motion": "One-frame pop for the first pixel, 90 ms blink, then a short horizontal scan that exposes the local grid.",
+        "audio_cue": "dry boot click + soft 8-bit blip"
+      },
+      {
+        "id": "icon_8bit_assembly",
+        "start_s": 0.5,
+        "end_s": 1.35,
+        "frames": [
+          15,
+          41
+        ],
+        "visual": "Cream square modules fly in from four cardinal directions and assemble the speech-bubble head. Burgundy modules create the two horns and three back spikes; two dark-green eye cells switch on last.",
+        "copy": "",
+        "copy_treatment": "none",
+        "motion": "Staggered 2-3 frame snaps with a tiny one-cell overshoot; silhouette must be recognizable by 1.05 s and held for about 0.3 s.",
+        "audio_cue": "three ascending construction ticks"
+      },
+      {
+        "id": "mascot_8bit_build",
+        "start_s": 1.35,
+        "end_s": 2.55,
+        "frames": [
+          41,
+          77
+        ],
+        "visual": "The icon expands downward into a compact full-body 8-bit bot-dragon: short legs, small wing, curled tail. Use only cream, dark green and burgundy. Eight loose pixels orbit once and dock into missing body cells.",
+        "copy": "СОБИРАЕМ...",
+        "copy_treatment": "Pixel uppercase, tracking 0.12em, centered below the sprite.",
+        "motion": "Head scales from icon to sprite head while body builds top-to-bottom; final eye blink occupies two frames.",
+        "audio_cue": "rapid soft placement clicks ending on a low confirm tone"
+      },
+      {
+        "id": "pixel_sprite_hold",
+        "start_s": 2.55,
+        "end_s": 3.3,
+        "frames": [
+          77,
+          99
+        ],
+        "visual": "Completed 8-bit dragon holds center. A two-frame sparkle appears at upper-right; tail moves by one grid cell and returns.",
+        "copy": "СОБИРАЕМ...",
+        "copy_treatment": "Keep stable for legibility.",
+        "motion": "Minimal idle only; preserve a clean recognition hold.",
+        "audio_cue": "brief room-tone-like digital hum"
+      },
+      {
+        "id": "level_up_interrupt",
+        "start_s": 3.3,
+        "end_s": 4.1,
+        "frames": [
+          99,
+          123
+        ],
+        "visual": "A cream horizontal band slams through center. LEVEL UP appears in dark green for 0.35 s; a burgundy +1 badge pings above the final P. Background flips cream for two frames, then settles cream permanently.",
+        "copy": "LEVEL UP",
+        "copy_treatment": "Heavy uppercase pixel face or CSS block lettering; large but fully inside horizontal safe zone.",
+        "motion": "Single pattern interrupt: band wipe + type scale from 0.86 to 1.0 with no bounce. On exit, the band carries the sprite into the next resolution.",
+        "audio_cue": "short four-note level-up arpeggio"
+      },
+      {
+        "id": "resolution_upgrade",
+        "start_s": 4.1,
+        "end_s": 5.5,
+        "frames": [
+          123,
+          165
+        ],
+        "visual": "On cream, each large sprite block subdivides into four smaller units. The units trace the true mascot contour, then dark-green outlines draw on and burgundy wings/horns fill. The result matches the supplied 2D sheets: white bot-dragon, speech-bubble head, small wings, tail and red spikes.",
+        "copy": "",
+        "copy_treatment": "none",
+        "motion": "Three readable phases: 4.10-4.45 subdivision, 4.45-5.05 contour settle, 5.05-5.50 outline/fill completion. A gentle 1.02 scale breath marks the finish.",
+        "audio_cue": "subdivision shimmer resolving to a warm confirm chime"
+      },
+      {
+        "id": "mascot_hero",
+        "start_s": 5.5,
+        "end_s": 6.4,
+        "frames": [
+          165,
+          192
+        ],
+        "visual": "Finished friendly 2D mascot uses the prepared neutral hero crop from assets/mybotica-mascot-hero-v2.png and holds hero center, slightly smaller than the 8-bit sprite so the silhouette has air. Preserve the supplied hand-drawn outline; layer a tiny separate burgundy heart or two cream/gold sparkles around it rather than distorting the raster character.",
+        "copy": "",
+        "copy_treatment": "none",
+        "motion": "Because the hero is a raster crop, do not fake an articulated arm. Use one 1.015 hold-breath scale and a 1 degree whole-character nod, while the separate heart/sparkles provide the friendly gesture. No elastic squash.",
+        "audio_cue": "single friendly pop"
+      },
+      {
+        "id": "brand_lockup",
+        "start_s": 6.4,
+        "end_s": 7.3,
+        "frames": [
+          192,
+          219
+        ],
+        "visual": "Mascot compresses toward its speech-bubble head, which lands as the logo icon. The exact supplied MyBotica lockup from assets/mybotica-logo-transparent.png is then resolved with wordmark-tiles. Keep it on the dark-green final card; never recolor, redraw or stretch the wordmark.",
+        "copy": "mybotica",
+        "copy_treatment": "Exact raster wordmark from supplied asset; no font substitution.",
+        "motion": "Scale-swap between mascot head and logo icon, then 0.45 s mask sweep. A thin burgundy underline travels left-to-right and stops below the wordmark.",
+        "audio_cue": "clean brand hit timed to full wordmark visibility"
+      },
+      {
+        "id": "message_and_cta",
+        "start_s": 7.3,
+        "end_s": 9.2,
+        "frames": [
+          219,
+          276
+        ],
+        "visual": "Source-matched logo-green final card. Logo holds in upper-middle. Main line appears below in two compact lines, then the CTA fades up underneath. Three tiny pixels travel along the burgundy underline and at 9.0 s collapse into the single center pixel used in the opening, creating a clean loop cue without removing the readable end card.",
+        "copy": "Собираем помощника\nпо пикселю.\n\nПодписывайтесь на запуск",
+        "copy_treatment": "Main line 58-64 px semibold cream, max width 780 px; CTA 34-38 px medium cream at 78% opacity. No handle unless confirmed by the user.",
+        "motion": "Main line rises 20 px and fades over 0.35 s; CTA follows 0.18 s later. Hold all key information fully readable from 8.2-9.0 s. Final loop cue affects only decorative pixels.",
+        "audio_cue": "two quiet UI ticks; final soft click on the loop pixel"
+      }
+    ],
+    "audio_direction": {
+      "voiceover": false,
+      "music": "none; keep the piece driven by sparse game-interface SFX",
+      "sfx": "dry, warm and minimal 8-bit clicks/blips; no copyrighted game samples; total mix should remain comfortable on phone speakers"
+    },
+    "builder_acceptance": [
+      "The first recognizable brand cue lands by 0.5 s.",
+      "The same central silhouette visibly evolves through 8-bit, 16-bit and smooth 2D stages.",
+      "LEVEL UP is the only major pattern interrupt.",
+      "The supplied exact logo is readable and undistorted by 7.3 s.",
+      "Both Russian copy lines remain inside Reels safe zones and readable for at least 0.8 s.",
+      "The final decorative pixel can loop to frame 0 without flashing the whole frame."
+    ]
+  },
+  "content": {
+    "logo": "assets/mybotica-logo-transparent.png",
+    "tagline": "Собираем помощника по пикселю.",
+    "url": ""
+  }
+}

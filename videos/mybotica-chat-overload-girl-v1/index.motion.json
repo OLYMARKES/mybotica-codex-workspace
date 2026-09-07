@@ -1,0 +1,11 @@
+{
+  "duration": 15.093,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#exact-opener", "bySec": 0.1 },
+    { "kind": "appearsBy", "selector": "#live-story", "bySec": 2.25 },
+    { "kind": "appearsBy", "selector": "#final-card", "bySec": 14.35 },
+    { "kind": "before", "a": "#exact-opener", "b": "#live-story" },
+    { "kind": "before", "a": "#live-story", "b": "#final-card" },
+    { "kind": "staysInFrame", "selector": "#root" }
+  ]
+}

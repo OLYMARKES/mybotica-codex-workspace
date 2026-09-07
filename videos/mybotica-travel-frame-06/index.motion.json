@@ -1,0 +1,20 @@
+{
+  "duration": 7.7,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#q0", "bySec": 1 },
+    { "kind": "appearsBy", "selector": "#q1", "bySec": 1.8 },
+    { "kind": "appearsBy", "selector": "#a1", "bySec": 2.75 },
+    { "kind": "appearsBy", "selector": "#q2", "bySec": 4.5 },
+    { "kind": "appearsBy", "selector": "#a2", "bySec": 5.5 },
+    { "kind": "before", "a": "#q0", "b": "#q1" },
+    { "kind": "before", "a": "#q1", "b": "#a1" },
+    { "kind": "before", "a": "#a1", "b": "#q2" },
+    { "kind": "before", "a": "#q2", "b": "#a2" },
+    { "kind": "staysInFrame", "selector": "#q0" },
+    { "kind": "staysInFrame", "selector": "#q1" },
+    { "kind": "staysInFrame", "selector": "#a1" },
+    { "kind": "staysInFrame", "selector": "#q2" },
+    { "kind": "staysInFrame", "selector": "#a2" },
+    { "kind": "keepsMoving", "withinSelector": "#dialog", "maxStaticSec": 3 }
+  ]
+}

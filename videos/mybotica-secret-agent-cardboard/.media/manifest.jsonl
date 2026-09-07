@@ -1,0 +1,5 @@
+{"id":"bgm_001","type":"bgm","path":"assets/audio/agent-line.wav","source":"existing","description":"agent line","duration":1.2,"provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_002","type":"bgm","path":"assets/audio/corporate-pop.mp3","source":"existing","description":"corporate pop","duration":0.7,"provenance":{"provider":"local","adopted":true}}
+{"id":"bgm_003","type":"bgm","path":"assets/audio/error-thought.wav","source":"existing","description":"error thought","duration":1.1,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_001","type":"image","path":"assets/cardboard-boy-blue-canonical.png","source":"existing","description":"cardboard boy blue canonical","width":1024,"height":1536,"provenance":{"provider":"local","adopted":true}}
+{"id":"image_002","type":"image","path":"assets/mybotica-logo-transparent.png","source":"existing","description":"mybotica logo transparent","width":4400,"height":1024,"provenance":{"provider":"local","adopted":true}}

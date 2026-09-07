@@ -1,0 +1,15 @@
+project_slug: mybotica-platforms-capabilities
+title: "MyBotica: что это, кому нужна и как работает"
+owner: "MyBotica"
+language: "ru"
+inputs:
+  - source/script_ru.md
+  - source/caption_ru.md
+  - source/logo_sources.md
+  - /Users/olymarkes/Downloads/MyBotica_описание_платформы.docx (1).pdf
+  - /Users/olymarkes/Downloads/MyBotica_презентация.pdf
+outputs:
+  png_dir: output/png/carousel_v2_impeccable
+  zip_file: output/zip/carousel_v2_impeccable.zip
+  contact_sheet: output/carousel_v2_impeccable_contact_sheet.jpg
+canonical_build: build/carousel_v1_platforms.html

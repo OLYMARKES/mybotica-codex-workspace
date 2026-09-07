@@ -1,0 +1,1615 @@
+{
+  "composition": "/Users/olymarkes/Documents/ChatGPT/ЮЛЯ/videos/mybotica-day-who",
+  "duration": 15,
+  "totalTweens": 7,
+  "mappedTweens": 4,
+  "skippedMicroTweens": 3,
+  "tweens": [
+    {
+      "index": 1,
+      "selector": "#message-01",
+      "driver": "target",
+      "targets": 1,
+      "props": [
+        "scale",
+        "rotation"
+      ],
+      "start": 0.8,
+      "end": 0.98,
+      "duration": 0.18,
+      "ease": "back.out(1.5)",
+      "bboxes": [
+        {
+          "t": 0.815,
+          "x": 140,
+          "y": 194,
+          "w": 800,
+          "h": 285,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 0.845,
+          "x": 108,
+          "y": 191,
+          "w": 865,
+          "h": 291,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 0.875,
+          "x": 91,
+          "y": 190,
+          "w": 897,
+          "h": 292,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 0.905,
+          "x": 85,
+          "y": 187,
+          "w": 909,
+          "h": 297,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 0.935,
+          "x": 87,
+          "y": 188,
+          "w": 907,
+          "h": 296,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 0.965,
+          "x": 87,
+          "y": 188,
+          "w": 907,
+          "h": 296,
+          "opacity": 1,
+          "visible": true
+        }
+      ],
+      "flags": [
+        "paced-fast"
+      ],
+      "summary": "#message-01 animates scale+rotation over 0.18s (back.out(1.5)). moves 6px up and 53px left. scales. width 800→907px. height 285→296px. ends at (87, 188) 907×296px. FLAGS: paced-fast."
+    },
+    {
+      "index": 2,
+      "selector": "#deadpan-line",
+      "driver": "target",
+      "targets": 1,
+      "props": [
+        "y",
+        "opacity"
+      ],
+      "start": 7.55,
+      "end": 7.71,
+      "duration": 0.16,
+      "ease": "power2.out",
+      "bboxes": [
+        {
+          "t": 7.563,
+          "x": 76,
+          "y": 1601,
+          "w": 928,
+          "h": 176,
+          "opacity": 0,
+          "visible": true
+        },
+        {
+          "t": 7.59,
+          "x": 76,
+          "y": 1595,
+          "w": 928,
+          "h": 176,
+          "opacity": 0.2811,
+          "visible": true
+        },
+        {
+          "t": 7.617,
+          "x": 76,
+          "y": 1586,
+          "w": 928,
+          "h": 176,
+          "opacity": 0.675,
+          "visible": true
+        },
+        {
+          "t": 7.643,
+          "x": 76,
+          "y": 1581,
+          "w": 928,
+          "h": 176,
+          "opacity": 0.89,
+          "visible": true
+        },
+        {
+          "t": 7.67,
+          "x": 76,
+          "y": 1579,
+          "w": 928,
+          "h": 176,
+          "opacity": 0.9801,
+          "visible": true
+        },
+        {
+          "t": 7.697,
+          "x": 76,
+          "y": 1579,
+          "w": 928,
+          "h": 176,
+          "opacity": 0.9801,
+          "visible": true
+        }
+      ],
+      "flags": [
+        "offscreen",
+        "paced-fast"
+      ],
+      "summary": "#deadpan-line animates y+opacity over 0.16s (power2.out). moves 22px up. fades in. ends at (76, 1579) 928×176px. FLAGS: offscreen, paced-fast."
+    },
+    {
+      "index": 3,
+      "selector": "#message-02",
+      "driver": "target",
+      "targets": 1,
+      "props": [
+        "scale",
+        "rotation"
+      ],
+      "start": 9.5,
+      "end": 9.68,
+      "duration": 0.18,
+      "ease": "back.out(1.5)",
+      "bboxes": [
+        {
+          "t": 9.515,
+          "x": 140,
+          "y": 194,
+          "w": 800,
+          "h": 285,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 9.545,
+          "x": 108,
+          "y": 191,
+          "w": 865,
+          "h": 291,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 9.575,
+          "x": 91,
+          "y": 190,
+          "w": 897,
+          "h": 292,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 9.605,
+          "x": 85,
+          "y": 187,
+          "w": 909,
+          "h": 297,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 9.635,
+          "x": 87,
+          "y": 188,
+          "w": 907,
+          "h": 296,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 9.665,
+          "x": 87,
+          "y": 188,
+          "w": 907,
+          "h": 296,
+          "opacity": 1,
+          "visible": true
+        }
+      ],
+      "flags": [
+        "paced-fast"
+      ],
+      "summary": "#message-02 animates scale+rotation over 0.18s (back.out(1.5)). moves 6px up and 53px left. scales. width 800→907px. height 285→296px. ends at (87, 188) 907×296px. FLAGS: paced-fast."
+    },
+    {
+      "index": 4,
+      "selector": "#logo-plate",
+      "driver": "target",
+      "targets": 1,
+      "props": [
+        "scale",
+        "rotation"
+      ],
+      "start": 13.25,
+      "end": 13.45,
+      "duration": 0.2,
+      "ease": "back.out(1.3)",
+      "bboxes": [
+        {
+          "t": 13.267,
+          "x": 85,
+          "y": 117,
+          "w": 525,
+          "h": 185,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 13.3,
+          "x": 74,
+          "y": 116,
+          "w": 548,
+          "h": 187,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 13.333,
+          "x": 74,
+          "y": 116,
+          "w": 548,
+          "h": 187,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 13.367,
+          "x": 66,
+          "y": 114,
+          "w": 564,
+          "h": 190,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 13.4,
+          "x": 67,
+          "y": 114,
+          "w": 563,
+          "h": 190,
+          "opacity": 1,
+          "visible": true
+        },
+        {
+          "t": 13.433,
+          "x": 67,
+          "y": 114,
+          "w": 563,
+          "h": 190,
+          "opacity": 1,
+          "visible": true
+        }
+      ],
+      "flags": [
+        "paced-fast"
+      ],
+      "summary": "#logo-plate animates scale+rotation over 0.20s (back.out(1.3)). moves 18px left. scales. width 525→563px. ends at (67, 114) 563×190px. FLAGS: paced-fast."
+    }
+  ],
+  "choreography": "Timeline (15.0s, each char ≈ 0.25s):\n  0s                                                    15s\n  ┼───────────────────────────────────────────────────────────┤\n     █                                                          #message-01 scale+rotation\n                                █                               #deadpan-line y+opacity\n                                        █                       #message-02 scale+rotation\n                                                       █        #logo-plate scale+rotation",
+  "density": [
+    {
+      "t": 0,
+      "activeTweens": 0
+    },
+    {
+      "t": 0.5,
+      "activeTweens": 1
+    },
+    {
+      "t": 1,
+      "activeTweens": 0
+    },
+    {
+      "t": 1.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 2,
+      "activeTweens": 0
+    },
+    {
+      "t": 2.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 3,
+      "activeTweens": 0
+    },
+    {
+      "t": 3.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 4,
+      "activeTweens": 0
+    },
+    {
+      "t": 4.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 5,
+      "activeTweens": 0
+    },
+    {
+      "t": 5.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 6,
+      "activeTweens": 0
+    },
+    {
+      "t": 6.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 7,
+      "activeTweens": 0
+    },
+    {
+      "t": 7.5,
+      "activeTweens": 1
+    },
+    {
+      "t": 8,
+      "activeTweens": 0
+    },
+    {
+      "t": 8.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 9,
+      "activeTweens": 1
+    },
+    {
+      "t": 9.5,
+      "activeTweens": 1
+    },
+    {
+      "t": 10,
+      "activeTweens": 0
+    },
+    {
+      "t": 10.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 11,
+      "activeTweens": 0
+    },
+    {
+      "t": 11.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 12,
+      "activeTweens": 0
+    },
+    {
+      "t": 12.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 13,
+      "activeTweens": 1
+    },
+    {
+      "t": 13.5,
+      "activeTweens": 0
+    },
+    {
+      "t": 14,
+      "activeTweens": 0
+    },
+    {
+      "t": 14.5,
+      "activeTweens": 0
+    }
+  ],
+  "staggers": [],
+  "elements": {
+    "#message-01": {
+      "firstAppears": 0.8,
+      "lastAnimates": 0.98,
+      "tweenCount": 1,
+      "props": [
+        "scale",
+        "rotation"
+      ],
+      "endsVisible": true,
+      "finalPosition": {
+        "x": 87,
+        "y": 188,
+        "w": 907,
+        "h": 296
+      }
+    },
+    "#deadpan-line": {
+      "firstAppears": 7.55,
+      "lastAnimates": 7.71,
+      "tweenCount": 1,
+      "props": [
+        "y",
+        "opacity"
+      ],
+      "endsVisible": true,
+      "finalPosition": {
+        "x": 76,
+        "y": 1579,
+        "w": 928,
+        "h": 176
+      }
+    },
+    "#message-02": {
+      "firstAppears": 9.5,
+      "lastAnimates": 9.68,
+      "tweenCount": 1,
+      "props": [
+        "scale",
+        "rotation"
+      ],
+      "endsVisible": true,
+      "finalPosition": {
+        "x": 87,
+        "y": 188,
+        "w": 907,
+        "h": 296
+      }
+    },
+    "#logo-plate": {
+      "firstAppears": 13.25,
+      "lastAnimates": 13.45,
+      "tweenCount": 1,
+      "props": [
+        "scale",
+        "rotation"
+      ],
+      "endsVisible": true,
+      "finalPosition": {
+        "x": 67,
+        "y": 114,
+        "w": 563,
+        "h": 190
+      }
+    }
+  },
+  "deadZones": [
+    {
+      "start": 1,
+      "end": 7.5,
+      "duration": 6.5,
+      "note": "No animation for 6.5s. Intentional hold or missing entrance?"
+    },
+    {
+      "start": 8,
+      "end": 9,
+      "duration": 1,
+      "note": "No animation for 1.0s. Intentional hold or missing entrance?"
+    },
+    {
+      "start": 10,
+      "end": 13,
+      "duration": 3,
+      "note": "No animation for 3.0s. Intentional hold or missing entrance?"
+    },
+    {
+      "start": 13.5,
+      "end": 15,
+      "duration": 1.5,
+      "note": "No animation for 1.5s at end. Final hold or missing outro?"
+    }
+  ],
+  "snapshots": [
+    {
+      "t": 0,
+      "visibleElements": 26,
+      "animatingNow": [],
+      "elements": [
+        {
+          "id": "root",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-01-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-02-message",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-03-face",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-04-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-05-close",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-06-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-07-extreme",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-08-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-09-question",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-10-tilt",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-11-tilt-more",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-12-flat",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-01",
+          "x": 146,
+          "y": 599,
+          "w": 787,
+          "h": 451,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-01",
+          "x": 140,
+          "y": 194,
+          "w": 800,
+          "h": 285,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-02",
+          "x": 110,
+          "y": 578,
+          "w": 861,
+          "h": 494,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-03",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-03",
+          "x": 85,
+          "y": 564,
+          "w": 910,
+          "h": 522,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-deadpan-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-02",
+          "x": 140,
+          "y": 194,
+          "w": 800,
+          "h": 285,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-logo",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "logo-plate",
+          "x": 94,
+          "y": 118,
+          "w": 508,
+          "h": 182,
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "t": 3.75,
+      "visibleElements": 26,
+      "animatingNow": [],
+      "elements": [
+        {
+          "id": "root",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-01-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-02-message",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-03-face",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-04-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-05-close",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-06-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-07-extreme",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-08-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-09-question",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-10-tilt",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-11-tilt-more",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-12-flat",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-01",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-01",
+          "x": 90,
+          "y": 190,
+          "w": 900,
+          "h": 292,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-02",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-03",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-03",
+          "x": 85,
+          "y": 564,
+          "w": 910,
+          "h": 522,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-deadpan-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-02",
+          "x": 140,
+          "y": 194,
+          "w": 800,
+          "h": 285,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-logo",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "logo-plate",
+          "x": 94,
+          "y": 118,
+          "w": 508,
+          "h": 182,
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "t": 7.5,
+      "visibleElements": 26,
+      "animatingNow": [],
+      "elements": [
+        {
+          "id": "root",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-01-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-02-message",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-03-face",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-04-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-05-close",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-06-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-07-extreme",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-08-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-09-question",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-10-tilt",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-11-tilt-more",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-12-flat",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-01",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-01",
+          "x": 90,
+          "y": 190,
+          "w": 900,
+          "h": 292,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-02",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-03",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-03",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-deadpan-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-02",
+          "x": 140,
+          "y": 194,
+          "w": 800,
+          "h": 285,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-logo",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "logo-plate",
+          "x": 94,
+          "y": 118,
+          "w": 508,
+          "h": 182,
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "t": 11.25,
+      "visibleElements": 27,
+      "animatingNow": [],
+      "elements": [
+        {
+          "id": "root",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-01-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-02-message",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-03-face",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-04-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-05-close",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-06-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-07-extreme",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-08-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-09-question",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-10-tilt",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-11-tilt-more",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-12-flat",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-01",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-01",
+          "x": 90,
+          "y": 190,
+          "w": 900,
+          "h": 292,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-02",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-03",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-03",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-deadpan-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "deadpan-line",
+          "x": 76,
+          "y": 1579,
+          "w": 928,
+          "h": 176,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-02",
+          "x": 90,
+          "y": 190,
+          "w": 900,
+          "h": 292,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-logo",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "logo-plate",
+          "x": 94,
+          "y": 118,
+          "w": 508,
+          "h": 182,
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "t": 14.9,
+      "visibleElements": 27,
+      "animatingNow": [],
+      "elements": [
+        {
+          "id": "root",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-01-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-02-message",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-03-face",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-04-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-05-close",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-06-clock",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-07-extreme",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-08-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-09-question",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-10-tilt",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-11-tilt-more",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "shot-12-flat",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-01",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-01",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-01",
+          "x": 90,
+          "y": 190,
+          "w": 900,
+          "h": 292,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-02",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-clock-03",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "clock-03",
+          "x": 130,
+          "y": 590,
+          "w": 820,
+          "h": 470,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-deadpan-line",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "deadpan-line",
+          "x": 76,
+          "y": 1579,
+          "w": 928,
+          "h": 176,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-message-02",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "message-02",
+          "x": 90,
+          "y": 190,
+          "w": 900,
+          "h": 292,
+          "opacity": 1
+        },
+        {
+          "id": "overlay-logo",
+          "x": 0,
+          "y": 0,
+          "w": 1080,
+          "h": 1920,
+          "opacity": 1
+        },
+        {
+          "id": "logo-plate",
+          "x": 68,
+          "y": 115,
+          "w": 560,
+          "h": 188,
+          "opacity": 1
+        }
+      ]
+    }
+  ]
+}

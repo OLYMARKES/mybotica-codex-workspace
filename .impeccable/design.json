@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-01T16:02:35Z",
+  "title": "Design System: MyBotica Instagram Carousels",
+  "extensions": {
+    "colorMeta": {
+      "deep-green": {
+        "role": "primary",
+        "displayName": "Deep Botanical Green",
+        "canonical": "#0f2a24",
+        "tonalRamp": [
+          "oklch(15% 0.055 165)",
+          "oklch(25% 0.055 165)",
+          "oklch(35% 0.055 165)",
+          "oklch(48% 0.055 165)",
+          "oklch(60% 0.050 165)",
+          "oklch(72% 0.040 165)",
+          "oklch(84% 0.025 165)",
+          "oklch(95% 0.010 165)"
+        ]
+      },
+      "warm-cream": {
+        "role": "neutral",
+        "displayName": "Warm Editorial Cream",
+        "canonical": "#f6f2ee",
+        "tonalRamp": [
+          "oklch(15% 0.020 70)",
+          "oklch(25% 0.020 70)",
+          "oklch(35% 0.020 70)",
+          "oklch(48% 0.020 70)",
+          "oklch(60% 0.018 70)",
+          "oklch(72% 0.016 70)",
+          "oklch(84% 0.014 70)",
+          "oklch(95% 0.012 70)"
+        ]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#fffdf9",
+        "tonalRamp": [
+          "oklch(15% 0.012 75)",
+          "oklch(25% 0.012 75)",
+          "oklch(35% 0.012 75)",
+          "oklch(48% 0.012 75)",
+          "oklch(60% 0.010 75)",
+          "oklch(72% 0.009 75)",
+          "oklch(84% 0.008 75)",
+          "oklch(95% 0.006 75)"
+        ]
+      },
+      "burgundy-signal": {
+        "role": "primary",
+        "displayName": "Burgundy Signal",
+        "canonical": "#8c1d26",
+        "tonalRamp": [
+          "oklch(15% 0.150 22)",
+          "oklch(25% 0.150 22)",
+          "oklch(35% 0.150 22)",
+          "oklch(48% 0.145 22)",
+          "oklch(60% 0.125 22)",
+          "oklch(72% 0.090 22)",
+          "oklch(84% 0.055 22)",
+          "oklch(95% 0.020 22)"
+        ]
+      },
+      "soft-green": {
+        "role": "secondary",
+        "displayName": "Soft Botanical Wash",
+        "canonical": "#dfe9e4",
+        "tonalRamp": [
+          "oklch(15% 0.025 165)",
+          "oklch(25% 0.025 165)",
+          "oklch(35% 0.025 165)",
+          "oklch(48% 0.025 165)",
+          "oklch(60% 0.022 165)",
+          "oklch(72% 0.020 165)",
+          "oklch(84% 0.016 165)",
+          "oklch(95% 0.010 165)"
+        ]
+      },
+      "blush-highlight": {
+        "role": "secondary",
+        "displayName": "Blush Highlight",
+        "canonical": "#f3c7ca",
+        "tonalRamp": [
+          "oklch(15% 0.040 18)",
+          "oklch(25% 0.040 18)",
+          "oklch(35% 0.040 18)",
+          "oklch(48% 0.040 18)",
+          "oklch(60% 0.038 18)",
+          "oklch(72% 0.034 18)",
+          "oklch(84% 0.027 18)",
+          "oklch(95% 0.012 18)"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#66716d",
+        "tonalRamp": [
+          "oklch(15% 0.015 165)",
+          "oklch(25% 0.015 165)",
+          "oklch(35% 0.015 165)",
+          "oklch(48% 0.015 165)",
+          "oklch(60% 0.014 165)",
+          "oklch(72% 0.012 165)",
+          "oklch(84% 0.009 165)",
+          "oklch(95% 0.005 165)"
+        ]
+      },
+      "quiet-line": {
+        "role": "neutral",
+        "displayName": "Quiet Line",
+        "canonical": "#cdd7d2",
+        "tonalRamp": [
+          "oklch(15% 0.010 165)",
+          "oklch(25% 0.010 165)",
+          "oklch(35% 0.010 165)",
+          "oklch(48% 0.010 165)",
+          "oklch(60% 0.009 165)",
+          "oklch(72% 0.008 165)",
+          "oklch(84% 0.006 165)",
+          "oklch(95% 0.003 165)"
+        ]
+      },
+      "pure-white": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(60% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Cover questions and the largest sequence-defining statements."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "One dominant claim per interior slide."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Mechanism labels, results, and high-emphasis diagram copy."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Readable explanation and narrative transitions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Scene notes, metadata, timestamps, and microcopy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "dialogue-lift",
+        "value": "0 24px 44px rgba(0,0,0,.2)",
+        "purpose": "Large paper cards placed over deep-green slides."
+      },
+      {
+        "name": "editorial-lift",
+        "value": "0 16px 30px rgba(15,42,36,.18)",
+        "purpose": "Speech bubbles and small floating paper elements."
+      },
+      {
+        "name": "burgundy-action-lift",
+        "value": "0 18px 34px rgba(140,29,38,.23)",
+        "purpose": "The sole final burgundy call to action."
+      },
+      {
+        "name": "light-cutout-drop",
+        "value": "drop-shadow(0 18px 16px rgba(15,42,36,.1))",
+        "purpose": "Dragon cutouts on cream, preserving the transparent silhouette."
+      },
+      {
+        "name": "dark-cutout-drop",
+        "value": "drop-shadow(0 24px 20px rgba(0,0,0,.2))",
+        "purpose": "Dragon cutouts overlapping white UI on deep green."
+      },
+      {
+        "name": "object-drop",
+        "value": "drop-shadow(0 28px 24px rgba(15,42,36,.2))",
+        "purpose": "Physical book cutouts whose irregular silhouettes should remain visible."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Scene Note",
+      "kind": "custom",
+      "description": "A concise rhetorical label for the current slide, used opposite the logo.",
+      "html": "<div class=\"ds-scene-note\">иллюстративный сценарий</div>",
+      "css": ".ds-scene-note { color: #66716d; font: 720 19px/1.2 Golos, Arial, sans-serif; letter-spacing: .03em; }"
+    },
+    {
+      "name": "Progress Rail",
+      "kind": "nav",
+      "description": "The persistent ten-step carousel position indicator.",
+      "html": "<div class=\"ds-progress\" aria-label=\"Слайд 3 из 10\"><i></i><i></i><i class=\"ds-on\"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>",
+      "css": ".ds-progress { width: 520px; height: 8px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; } .ds-progress i { display: block; background: #cdd7d2; } .ds-progress .ds-on { background: #8c1d26; }"
+    },
+    {
+      "name": "Primary Action Choice",
+      "kind": "custom",
+      "refersTo": "action-primary",
+      "description": "The preferred low-friction path inside a two-choice mechanism mockup.",
+      "html": "<div class=\"ds-action-primary\"><small>одно касание</small><strong>Готово</strong></div>",
+      "css": ".ds-action-primary { width: 330px; min-height: 150px; padding: 28px 30px; border: 2px solid #0f2a24; border-radius: 14px; background: #0f2a24; color: #fff; display: flex; flex-direction: column; justify-content: space-between; font-family: Golos, Arial, sans-serif; } .ds-action-primary small { font-size: 18px; font-weight: 650; opacity: .66; } .ds-action-primary strong { font-size: 27px; line-height: 1.18; font-weight: 720; }"
+    },
+    {
+      "name": "Secondary Action Choice",
+      "kind": "custom",
+      "refersTo": "action-secondary",
+      "description": "The outlined alternative inside a two-choice mechanism mockup.",
+      "html": "<div class=\"ds-action-secondary\"><small>не сейчас</small><strong>Напомни через 15 минут</strong></div>",
+      "css": ".ds-action-secondary { width: 330px; min-height: 150px; padding: 28px 30px; border: 2px solid #0f2a24; border-radius: 14px; background: #f6f2ee; color: #0f2a24; display: flex; flex-direction: column; justify-content: space-between; font-family: Golos, Arial, sans-serif; } .ds-action-secondary small { font-size: 18px; font-weight: 650; opacity: .66; } .ds-action-secondary strong { font-size: 27px; line-height: 1.18; font-weight: 720; }"
+    },
+    {
+      "name": "Reminder Card",
+      "kind": "card",
+      "refersTo": "editorial-card",
+      "description": "A lifted paper window containing one concrete bot message.",
+      "html": "<div class=\"ds-reminder-card\"><div class=\"ds-reminder-name\"><b></b>Макет · трекер чтения</div><div class=\"ds-reminder-message\">Уже 22:30. Прочитаем две страницы?<small>пример сообщения</small></div></div>",
+      "css": ".ds-reminder-card { width: 600px; min-height: 300px; padding: 38px; border-radius: 16px; background: #fffdf9; color: #0f2a24; box-shadow: 0 24px 44px rgba(0,0,0,.2); font-family: Golos, Arial, sans-serif; } .ds-reminder-name { display: flex; align-items: center; gap: 16px; color: #66716d; font-size: 22px; font-weight: 720; } .ds-reminder-name b { width: 16px; height: 16px; background: #8c1d26; } .ds-reminder-message { margin-top: 48px; padding: 28px 30px; border-radius: 15px 15px 15px 4px; background: #dfe9e4; font-size: 34px; line-height: 1.26; font-weight: 650; } .ds-reminder-message small { display: block; margin-top: 17px; color: #66716d; font-size: 18px; font-weight: 500; }"
+    },
+    {
+      "name": "Editorial List",
+      "kind": "custom",
+      "description": "A flat ruled list for examples, stages, or habits.",
+      "html": "<div class=\"ds-editorial-list\"><div><b></b>стакан воды утром</div><div><b></b>прогулка после обеда</div><div><b></b>зарядка</div></div>",
+      "css": ".ds-editorial-list { width: 520px; border-top: 2px solid rgba(255,255,255,.55); background: #8c1d26; color: #fff; font-family: Unbounded, sans-serif; } .ds-editorial-list div { display: flex; align-items: center; gap: 22px; padding: 24px 0 22px; border-bottom: 2px solid rgba(255,255,255,.55); font-size: 24px; line-height: 1.12; font-weight: 560; letter-spacing: -.025em; } .ds-editorial-list b { width: 18px; height: 18px; flex: none; background: #fff; }"
+    },
+    {
+      "name": "CTA Chip",
+      "kind": "custom",
+      "refersTo": "cta-chip",
+      "description": "The sole direct action at the end of the carousel's explanatory arc.",
+      "html": "<div class=\"ds-cta-chip\">Откройте ссылку в профиле →</div>",
+      "css": ".ds-cta-chip { width: max-content; padding: 24px 30px; border-radius: 14px; background: #8c1d26; color: #fff; box-shadow: 0 18px 34px rgba(140,29,38,.23); font: 720 27px/1.2 Golos, Arial, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Friendly Editorial Guide",
+    "overview": "MyBotica carousels turn one ordinary, repeated task into a compact editorial story. The system is warm and approachable rather than futuristic: generous paper-colored space, decisive dark type, physical objects, and a friendly mascot make the technology feel understandable. Each slide advances one thought, and the sequence moves from a familiar friction to a concrete interaction before asking for action.\n\nThe system is expressive through scale, contrast, and composition rather than decorative effects. Deep-green and burgundy full-bleed slides punctuate a cream reading rhythm; crisp grids and rules explain mechanisms; transparent cutouts of the canonical dragon girl and physical source objects enter only when they can participate in that mechanism. Product uncertainty is labeled in the visual hierarchy instead of being hidden in fine print.",
+    "keyCharacteristics": [
+      "Fixed 4:5 editorial canvases with a persistent branded header and ten-step progress rail.",
+      "Cream, deep-green, and burgundy surfaces alternating to control pace and emphasis.",
+      "Wide geometric Unbounded headlines paired with highly readable Golos supporting copy.",
+      "Transparent mascot and physical-object cutouts integrated into paths, grids, and UI messages rather than isolated in generic cards.",
+      "Compact cards with modest radii, strong borders, and selective ambient shadows.",
+      "One everyday scenario per carousel, expressed before the underlying technology."
+    ],
+    "rules": [
+      {
+        "name": "The Burgundy Signal Rule",
+        "body": "Burgundy marks the one idea, state, or action that deserves immediate attention; it is not a decorative wash applied everywhere.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three-Surface Rhythm Rule",
+        "body": "Build the sequence primarily from warm cream, deep green, and burgundy full-slide fields, using white and soft green only inside those fields.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Thought Per Slide Rule",
+        "body": "Give every slide one dominant Unbounded statement; supporting Golos copy explains it but never competes at the same scale.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Headline Rule",
+        "body": "Unbounded headlines use tight tracking and near-solid leading; body copy never inherits that compression.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fixed Editorial Frame Rule",
+        "body": "Do not fluidly reflow the composition: exports target the 1080 × 1350 Instagram canvas, and each slide is art-directed within that frame.",
+        "section": "layout"
+      },
+      {
+        "name": "The Safe Identity Rule",
+        "body": "Edge overlap may loosen the composition, but no crop may remove the dragon girl's face, expression, wings, defining silhouette, or the identifying features of a physical source object.",
+        "section": "layout"
+      },
+      {
+        "name": "The Placed-On-Paper Rule",
+        "body": "Use elevation to make a real or conversational object feel physically placed on the slide; transparent cutouts receive silhouette-aware drop shadows, while data grids, lists, and structural panels remain flat.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Clipped Corner Rule",
+        "body": "Conversational surfaces may soften three corners and clip the lower-left; structural panels use even corners or square rules.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Organic Cutout Rule",
+        "body": "Never put the canonical dragon or a physical source object inside a generic square, portrait card, or decorative frame. Integrate the transparent cutout with the composition's path, grid, text, or UI message.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do preserve the 1080 × 1350px frame, 76px horizontal safe area, branded header, and ten-step progress rail across the carousel.",
+      "Do make one familiar life or work task the visual and narrative center before introducing AI capability.",
+      "Do alternate cream, deep-green, and burgundy fields to pace the sequence and reserve burgundy for the highest-attention signal.",
+      "Do use transparent cutouts of the canonical dragon girl and physical source objects, integrating them into a path, grid, UI message, or another active compositional relationship.",
+      "Do use the mascot selectively and choose an emotion that supports the slide's meaning; let some slides remain typographic, diagrammatic, or object-led.",
+      "Do allow small organic overlaps at the canvas edge while keeping faces, expressions, wings, spikes, titles, and other identifying features visible.",
+      "Do label speculative mechanics, mockups, and illustrative results visibly in the hierarchy.",
+      "Do use physical source objects when the story depends on a real book, tool, or other recognizable reference."
+    ],
+    "donts": [
+      "Don't turn the carousel into a generic list of AI features, a fabricated user case, or an unqualified product promise.",
+      "Don't introduce extra accent hues merely to differentiate slides; use structure, scale, and the established three-surface rhythm.",
+      "Don't decorate every panel with shadows; grids, rules, and color fields are the default depth system.",
+      "Don't use pills, excessive rounding, glossy gradients, or futuristic interface chrome that weakens the editorial paper character.",
+      "Don't place the dragon girl or physical book inside a generic square, portrait card, or decorative frame.",
+      "Don't repeat the mascot mechanically on every slide or use her as a corner sticker; she must guide, react, demonstrate, or close the story.",
+      "Don't crop important identity cues or object features merely to create edge tension."
+    ]
+  }
+}

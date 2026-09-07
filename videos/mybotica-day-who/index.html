@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>MyBotica — День у кого?</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #102e28; }
+      body { font-family: "Montserrat", Arial, sans-serif; color: #f5ebdd; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #102e28; }
+      .visual-clip { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .overlay { position: absolute; inset: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      #shot-02-clock, #overlay-clock-01, #shot-03-message, #shot-04-look,
+      #shot-05-clock, #overlay-clock-02, #shot-06-reaction,
+      #shot-08-end-green, #overlay-end-card { opacity: 0; }
+      .end-green-bg { position: absolute; inset: 0; width: 1080px; height: 1920px; background: #102e28; }
+      .clock-bg { position: absolute; inset: 0; width: 1080px; height: 1920px; background: #102e28; }
+
+      .clock-stage { display: grid; place-items: center; padding-bottom: 170px; }
+      .clock-card {
+        position: relative; display: flex; width: 880px; height: 440px; align-items: center; justify-content: center;
+        border: 30px solid #3b312b; border-radius: 72px; background: #071713;
+        box-shadow: 0 38px 0 #1c1815, 0 58px 34px rgba(0, 0, 0, 0.28), inset 0 0 0 10px #0d241e;
+      }
+      .clock-card::before {
+        content: ""; position: absolute; top: -68px; left: 132px; width: 150px; height: 40px;
+        border-radius: 18px 18px 6px 6px; background: #3b312b;
+        box-shadow: 460px 0 0 #3b312b;
+      }
+      .clock-card::after {
+        content: ""; position: absolute; left: 76px; right: 76px; bottom: -60px; height: 42px;
+        border-radius: 0 0 28px 28px; background: #1c1815;
+      }
+      .clock-digits {
+        display: block; width: 100%; text-align: center; color: #f2384f;
+        font-family: "Space Mono", monospace; font-size: 238px; font-weight: 900;
+        letter-spacing: -18px; line-height: 1; text-shadow: 9px 9px 0 #7e1725, 0 0 24px rgba(242, 56, 79, 0.25);
+      }
+
+      .computer-bg {
+        position: absolute; inset: 0; width: 1080px; height: 1920px;
+        background: #b59a78;
+      }
+      .computer-stage {
+        display: flex; align-items: center; justify-content: center; padding: 0 42px 120px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(245, 235, 221, 0.18), transparent 54%),
+          #8d7458;
+      }
+      .computer-monitor {
+        position: relative; width: 960px; height: 1120px; padding: 36px;
+        border-radius: 62px; background: #3b312b;
+        box-shadow: 0 38px 0 #1c1815, 0 62px 40px rgba(0, 0, 0, 0.3), inset 0 0 0 8px #4c4037;
+      }
+      .computer-monitor::before {
+        content: ""; position: absolute; z-index: 2; top: 14px; left: 50%; width: 16px; height: 16px;
+        border-radius: 50%; background: #071713; box-shadow: 0 0 0 5px #5e5146;
+      }
+      .computer-monitor::after {
+        content: ""; position: absolute; left: 240px; right: 240px; bottom: -124px; height: 124px;
+        border-radius: 0 0 36px 36px; background: #3b312b;
+        box-shadow: 0 28px 0 -4px #1c1815;
+      }
+      .computer-screen {
+        position: relative; width: 100%; height: 100%; overflow: hidden;
+        border: 12px solid #102e28; border-radius: 28px; background: #f5ebdd; color: #102e28;
+      }
+      .computer-toolbar {
+        display: flex; height: 160px; align-items: center; justify-content: space-between;
+        padding: 0 42px; background: #102e28; color: #f5ebdd;
+      }
+      .computer-toolbar-title { font-size: 42px; font-weight: 900; letter-spacing: -1px; }
+      .computer-toolbar-status { display: flex; align-items: center; gap: 14px; font-size: 28px; font-weight: 700; }
+      .computer-toolbar-status::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: #f2384f; }
+      .computer-chat { position: relative; height: calc(100% - 160px); padding: 118px 48px 48px; }
+      .message-card {
+        position: relative; display: flex; width: 760px; min-height: 360px; align-items: center;
+        padding: 52px 54px; border: 12px solid #102e28; border-radius: 22px;
+        background: #fffaf1; color: #102e28; opacity: 0;
+        box-shadow: 0 20px 0 rgba(44, 27, 16, 0.16);
+      }
+      .message-card::after {
+        content: ""; position: absolute; left: 72px; bottom: -54px; width: 70px; height: 70px;
+        border-right: 12px solid #102e28; border-bottom: 12px solid #102e28; background: #fffaf1;
+        clip-path: polygon(0 0, 100% 100%, 0 76%);
+      }
+      .message-card p { margin: 0; font-size: 74px; font-weight: 900; line-height: 1.04; letter-spacing: -3px; }
+      .message-card strong { display: block; margin-bottom: 20px; color: #b42032; font-size: 38px; letter-spacing: 0; }
+
+      .thought-stage { display: flex; align-items: flex-end; justify-content: center; padding: 0 72px 150px; }
+      .thought-card {
+        position: relative; display: flex; width: 936px; padding: 46px 50px 48px;
+        align-items: center; justify-content: center; gap: 24px;
+        border: 10px solid #102e28; border-radius: 24px; background: #f5ebdd; color: #102e28;
+        text-align: center; font-size: 92px; font-weight: 900; line-height: 1; letter-spacing: -4px;
+        box-shadow: 0 20px 0 rgba(39, 23, 14, 0.22);
+      }
+      .thought-card span { display: block; }
+      .thought-card::before {
+        content: "•••"; position: absolute; top: -94px; left: 64px; color: #f5ebdd;
+        font-family: "Space Mono", monospace; font-size: 80px; letter-spacing: 12px;
+        text-shadow: -5px -5px 0 #102e28, 5px 5px 0 #102e28;
+      }
+
+      .end-stage { display: flex; align-items: center; justify-content: center; padding: 0 34px 70px; }
+      .end-card {
+        display: flex; width: 1012px; flex-direction: column; align-items: center;
+        padding: 76px 22px 82px; text-align: center;
+        border-top: 8px solid rgba(242, 56, 79, 0.95);
+        border-bottom: 8px solid rgba(242, 56, 79, 0.95);
+      }
+      .end-card img { display: block; width: 970px; height: auto; margin-bottom: 92px; }
+      .end-card .slogan { margin: 0 0 42px; color: #f5ebdd; font-size: 72px; font-weight: 900; line-height: 1.06; letter-spacing: -3px; }
+      .end-card .punchline { margin: 0; max-width: 980px; color: #f2384f; font-size: 56px; font-weight: 800; line-height: 1.12; letter-spacing: -1px; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-l3kj" id="root" data-composition-id="main" data-start="0" data-duration="18.4" data-width="1080" data-height="1920">
+      <img data-hf-id="hf-k38c" id="shot-01-desk" class="clip visual-clip" src=".media/images/image_005.png" data-start="0" data-duration="1.45" data-track-index="0" alt="Картонный дракоша-мальчик с синими шипами сидит за столом ночью">
+      <section data-hf-id="hf-zeki" id="shot-02-clock" class="clip clock-bg" data-start="1.35" data-duration="1.4" data-track-index="1"></section>
+      <section data-hf-id="hf-hyqh" id="shot-03-message" class="clip computer-bg computer-stage" data-start="2.5" data-duration="2.6" data-track-index="2">
+        <div data-hf-id="hf-screen-shell" class="computer-monitor">
+          <div data-hf-id="hf-screen-inner" class="computer-screen">
+            <div data-hf-id="hf-screen-toolbar" class="computer-toolbar">
+              <span data-hf-id="hf-screen-title" class="computer-toolbar-title">mybotica · сообщения</span>
+              <span data-hf-id="hf-screen-status" class="computer-toolbar-status">онлайн</span>
+            </div>
+            <div data-hf-id="hf-screen-chat" class="computer-chat">
+              <div data-hf-id="hf-a7zd" id="message-01" class="message-card"><p data-hf-id="hf-mq4z"><strong data-hf-id="hf-35xp">Клиент</strong>Добрый день!</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <video data-hf-id="hf-0err" id="shot-04-look" class="clip visual-clip" src=".media/video/video_005.mp4" data-start="4.9" data-duration="1.1" data-media-start="2.55" data-playback-rate="0.8" data-track-index="3" muted playsinline></video>
+      <section data-hf-id="hf-3qmg" id="shot-05-clock" class="clip clock-bg" data-start="5.75" data-duration="1.5" data-track-index="4"></section>
+      <video data-hf-id="hf-1q82" id="shot-06-reaction" class="clip visual-clip" src=".media/video/video_005.mp4" data-start="7" data-duration="6.5" data-media-start="7.67" data-playback-rate="0.36" data-track-index="5" muted playsinline></video>
+      <section data-hf-id="hf-vr3m" id="shot-08-end-green" class="clip end-green-bg" data-start="13.25" data-duration="5.15" data-track-index="7"></section>
+
+      <section data-hf-id="hf-ewtx" id="overlay-clock-01" class="clip overlay clock-stage" data-start="1.35" data-duration="1.4" data-track-index="4"><div data-hf-id="hf-4lr1" id="clock-01" class="clock-card"><span data-hf-id="hf-lt30" class="clock-digits">23:30</span></div></section>
+      <section data-hf-id="hf-ivj7" id="overlay-clock-02" class="clip overlay clock-stage" data-start="5.75" data-duration="1.5" data-track-index="4"><div data-hf-id="hf-argu" id="clock-02" class="clock-card"><span data-hf-id="hf-g8ok" class="clock-digits">23:30</span></div></section>
+      <section data-hf-id="hf-gvuk" id="overlay-thought" class="clip overlay thought-stage" data-start="10.15" data-duration="3.1" data-track-index="6"><div data-hf-id="hf-z3vz" id="thought-card" class="thought-card"><span data-hf-id="hf-th01" id="thought-day">День?</span><span data-hf-id="hf-th02" id="thought-who">У кого?</span></div></section>
+      <section data-hf-id="hf-m2hz" id="overlay-end-card" class="clip overlay end-stage" data-start="13.25" data-duration="5.15" data-track-index="7">
+        <div data-hf-id="hf-yhgi" id="end-card" class="end-card">
+          <img data-hf-id="hf-f2z6" src="assets/mybotica-logo-transparent.png" alt="MyBotica">
+          <p data-hf-id="hf-06yc" class="slogan">MyBotica отвечает клиентам круглосуточно.</p>
+          <p data-hf-id="hf-igoa" class="punchline">Психологическая устойчивость в тариф не входит.</p>
+        </div>
+      </section>
+
+      <audio data-hf-id="hf-night" id="sfx-night-ambience" src=".media/audio/sfx/sfx_008.wav" data-start="0" data-duration="18.4" data-track-index="8" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.7,"v":0.42},{"t":13.25,"v":0.42},{"t":14.2,"v":0.2},{"t":18.4,"v":0.1}]}]}'></audio>
+      <audio data-hf-id="hf-azkk" id="sfx-clock-01" src=".media/audio/sfx/sfx_001.mp3" data-start="1.45" data-duration="0.35" data-track-index="9" data-volume="0.65"></audio>
+      <audio data-hf-id="hf-032r" id="sfx-message-01" src=".media/audio/sfx/sfx_003.mp3" data-start="2.78" data-duration="0.8" data-track-index="9" data-volume="0.75"></audio>
+      <audio data-hf-id="hf-hvvw" id="sfx-clock-02" src=".media/audio/sfx/sfx_001.mp3" data-start="5.9" data-duration="0.35" data-track-index="9" data-volume="0.75"></audio>
+      <audio data-hf-id="hf-xii9" id="sfx-thought" src=".media/audio/sfx/sfx_006.wav" data-start="10.42" data-duration="1.05" data-track-index="9" data-volume="0.9"></audio>
+      <audio data-hf-id="hf-3wvj" id="sfx-end-card" src=".media/audio/sfx/sfx_002.mp3" data-start="13.4" data-duration="1.2" data-track-index="9" data-volume="0.6"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(["#shot-02-clock", "#overlay-clock-01"], { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power1.out" }, 1.35)
+        .fromTo("#shot-03-message", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.inOut" }, 2.5)
+        .to(["#shot-02-clock", "#overlay-clock-01"], { opacity: 0, duration: 0.25, ease: "power1.inOut" }, 2.5)
+        .set(["#shot-02-clock", "#overlay-clock-01"], { opacity: 0 }, 2.75)
+        .fromTo("#message-01", { y: 34, scale: 0.94, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.26, ease: "back.out(1.4)" }, 2.72)
+        .fromTo("#shot-04-look", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.inOut" }, 4.9)
+        .to("#shot-03-message", { opacity: 0, duration: 0.2, ease: "power1.inOut" }, 4.9)
+        .set("#shot-03-message", { opacity: 0 }, 5.1)
+        .fromTo(["#shot-05-clock", "#overlay-clock-02"], { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.inOut" }, 5.75)
+        .to("#shot-04-look", { opacity: 0, duration: 0.25, ease: "power1.inOut" }, 5.75)
+        .set("#shot-04-look", { opacity: 0 }, 6)
+        .fromTo("#shot-06-reaction", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.inOut" }, 7)
+        .to(["#shot-05-clock", "#overlay-clock-02"], { opacity: 0, duration: 0.25, ease: "power1.inOut" }, 7)
+        .set(["#shot-05-clock", "#overlay-clock-02"], { opacity: 0 }, 7.25)
+        .fromTo("#thought-card", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "power2.out" }, 10.3)
+        .fromTo("#thought-day", { scale: 0.72, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.16, ease: "back.out(1.8)" }, 10.42)
+        .fromTo("#thought-who", { scale: 0.72, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.18, ease: "back.out(1.8)" }, 10.77)
+        .fromTo(["#shot-08-end-green", "#overlay-end-card"], { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power1.inOut" }, 13.25)
+        .to("#shot-06-reaction", { opacity: 0, duration: 0.25, ease: "power1.inOut" }, 13.25)
+        .set("#shot-06-reaction", { opacity: 0 }, 13.5)
+        .fromTo("#end-card", { y: 22, scale: 0.96, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.35, ease: "power2.out" }, 13.32);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

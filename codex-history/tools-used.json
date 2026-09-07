@@ -1,0 +1,29 @@
+{
+  "item_types": {
+    "userMessage": 258,
+    "reasoning": 4195,
+    "agentMessage": 900,
+    "webSearch": 42,
+    "commandExecution": 2392,
+    "mcpToolCall": 417,
+    "fileChange": 320,
+    "contextCompaction": 36,
+    "imageView": 735,
+    "subAgentActivity": 27,
+    "collabAgentToolCall": 40,
+    "imageGeneration": 79,
+    "dynamicToolCall": 37
+  },
+  "tools": {
+    "node_repl.js": 393,
+    "wait": 40,
+    "codex_app.load_workspace_dependencies": 6,
+    "codex_app.list_threads": 6,
+    "codex_app.read_thread": 5,
+    "codex_app.wait_threads": 1,
+    "codex_app.open_in_codex": 17,
+    "codex_app.list_projects": 1,
+    "codex_app.list_archived_threads": 2,
+    "cua_repl.js": 23
+  }
+}

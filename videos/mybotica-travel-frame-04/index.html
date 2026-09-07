@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyBotica — кадр 4</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Golos";
+        src: url("assets/fonts/golos.ttf") format("truetype");
+        font-display: swap;
+      }
+
+      :root {
+        --ink: #103c32;
+        --paper: #f7f0e4;
+        --blue: #2476a4;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #171717;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #efe1ca;
+        font-family: "Golos", sans-serif;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+
+      #face-image {
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+        will-change: transform;
+      }
+
+      #thought-wrap {
+        position: absolute;
+        left: 70px;
+        right: 70px;
+        bottom: 190px;
+        display: flex;
+        justify-content: center;
+      }
+
+      #thought {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        min-height: 152px;
+        padding: 34px 42px 30px;
+        border: 1px solid rgba(102, 75, 43, 0.20);
+        border-radius: 2px;
+        background: rgba(246, 236, 218, 0.98);
+        box-shadow: 0 14px 24px rgba(56, 42, 24, 0.20);
+        color: var(--ink);
+        font-size: 57px;
+        font-weight: 600;
+        line-height: 1.06;
+        letter-spacing: -1.4px;
+        text-align: center;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-frame04-root" id="root" data-composition-id="mybotica-travel-frame-04" data-start="0" data-duration="4.9" data-width="1080" data-height="1920">
+      <img data-hf-id="hf-frame04-face" id="face-image" class="clip" src="assets/generated/shot-04-face-source.png" data-start="0" data-duration="4.9" data-track-index="0" alt="Экстремальный крупный план дракоши">
+
+      <section data-hf-id="hf-frame04-thought-overlay" id="thought-overlay" class="clip" data-start="0" data-duration="4.9" data-track-index="1">
+        <div data-hf-id="hf-frame04-thought-wrap" id="thought-wrap">
+          <div data-hf-id="hf-frame04-thought" id="thought">
+            А отель об этом знает?
+          </div>
+        </div>
+      </section>
+
+      <audio data-hf-id="hf-frame04-cue" id="thought-cue" src="assets/audio/thought-confused.wav" data-start="1.72" data-duration="1.05" data-track-index="10" data-volume="0.58"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set(
+        "#face-image",
+        { scale: 2.55, x: 200, y: 150, transformOrigin: "92% 39%" },
+        0
+      );
+      tl.fromTo(
+        "#thought",
+        { opacity: 0, y: 22 },
+        { opacity: 1, y: 0, duration: 0.44, ease: "power2.out" },
+        1.86
+      );
+      window.__timelines = window.__timelines || {};
+      window.__timelines["mybotica-travel-frame-04"] = tl;
+    </script>
+  </body>
+</html>

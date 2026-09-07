@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        margin: 0;
+        overflow: hidden;
+        background: #0f3a31;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0f3a31;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+        overflow: hidden;
+      }
+
+      #frame-02,
+      #frame-03,
+      #frame-04,
+      #frame-05,
+      #frame-06,
+      #frame-07 {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-bkwu" id="root" data-composition-id="mybotica-travel-reel-final" data-start="0" data-duration="28.633334" data-width="1080" data-height="1920">
+      <video data-hf-id="hf-7kgi" id="frame-01" class="clip" src="assets/clips/frame-01.mp4" data-start="0" data-duration="1.9" data-media-start="0" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-pdat" id="frame-02" class="clip" src="assets/clips/frame-02.mp4" data-start="1.9" data-duration="1.966667" data-media-start="0" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-6v0f" id="frame-03" class="clip" src="assets/clips/frame-03.mp4" data-start="3.866667" data-duration="2.266667" data-media-start="0" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-4o9k" id="frame-04" class="clip" src="assets/clips/frame-04.mp4" data-start="6.133334" data-duration="4.9" data-media-start="0" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-pcyt" id="frame-05" class="clip" src="assets/clips/frame-05.mp4" data-start="11.033334" data-duration="5.4" data-media-start="0" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-zm2p" id="frame-06" class="clip" src="assets/clips/frame-06.mp4" data-start="16.433334" data-duration="7.7" data-media-start="0" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-qbqk" id="frame-07" class="clip" src="assets/clips/frame-07.mp4" data-start="24.133334" data-duration="4.5" data-media-start="0" data-track-index="0" muted playsinline></video>
+
+      <audio data-hf-id="hf-s1f9" id="audio-frame-03" src="assets/clips/frame-03.mp4" data-start="3.866667" data-duration="2.266667" data-media-start="0" data-track-index="10" data-volume="1"></audio>
+      <audio data-hf-id="hf-b9pt" id="audio-frame-04" src="assets/clips/frame-04.mp4" data-start="6.133334" data-duration="4.9" data-media-start="0" data-track-index="11" data-volume="1"></audio>
+      <audio data-hf-id="hf-6t45" id="audio-frame-05" src="assets/clips/frame-05.mp4" data-start="11.033334" data-duration="5.4" data-media-start="0" data-track-index="12" data-volume="1"></audio>
+      <audio data-hf-id="hf-7fms" id="audio-frame-06" src="assets/clips/frame-06.mp4" data-start="16.433334" data-duration="7.7" data-media-start="0" data-track-index="13" data-volume="1"></audio>
+      <audio data-hf-id="hf-ojmc" id="audio-frame-07" src="assets/clips/frame-07.mp4" data-start="24.133334" data-duration="4.5" data-media-start="0" data-track-index="14" data-volume="1"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      tl.set("#frame-01", { opacity: 0 }, 1.9);
+      tl.set("#frame-02", { opacity: 1 }, 1.9);
+
+      tl.set("#frame-02", { opacity: 0 }, 3.866667);
+      tl.set("#frame-03", { opacity: 1 }, 3.866667);
+
+      tl.set("#frame-03", { opacity: 0 }, 6.133334);
+      tl.set("#frame-04", { opacity: 1 }, 6.133334);
+
+      tl.set("#frame-04", { opacity: 0 }, 11.033334);
+      tl.set("#frame-05", { opacity: 1 }, 11.033334);
+
+      tl.set("#frame-05", { opacity: 0 }, 16.433334);
+      tl.set("#frame-06", { opacity: 1 }, 16.433334);
+
+      tl.set("#frame-06", { opacity: 0 }, 24.133334);
+      tl.set("#frame-07", { opacity: 1 }, 24.133334);
+
+      window.__timelines["mybotica-travel-reel-final"] = tl;
+    </script>
+  </body>
+</html>

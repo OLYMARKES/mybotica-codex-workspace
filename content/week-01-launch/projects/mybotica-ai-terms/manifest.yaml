@@ -1,0 +1,12 @@
+project_slug: mybotica-ai-terms
+title: "Первый класс ИИ"
+owner: "MyBotica"
+language: "ru"
+inputs:
+  - source/script_school_v2_ru.md
+  - source/caption_school_v2_ru.md
+outputs:
+  png_dir: output/png/carousel_v2_school
+  zip_file: output/zip/carousel_v2_school.zip
+  contact_sheet: output/carousel_v2_school_contact_sheet.jpg
+canonical_build: build/carousel_v2_school.html

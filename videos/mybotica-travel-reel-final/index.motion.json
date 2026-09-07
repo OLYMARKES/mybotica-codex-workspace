@@ -1,0 +1,25 @@
+{
+  "duration": 28.633334,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#frame-01", "bySec": 0.1 },
+    { "kind": "appearsBy", "selector": "#frame-02", "bySec": 2.0 },
+    { "kind": "appearsBy", "selector": "#frame-03", "bySec": 4.0 },
+    { "kind": "appearsBy", "selector": "#frame-04", "bySec": 6.3 },
+    { "kind": "appearsBy", "selector": "#frame-05", "bySec": 11.2 },
+    { "kind": "appearsBy", "selector": "#frame-06", "bySec": 16.6 },
+    { "kind": "appearsBy", "selector": "#frame-07", "bySec": 24.3 },
+    { "kind": "before", "a": "#frame-01", "b": "#frame-02" },
+    { "kind": "before", "a": "#frame-02", "b": "#frame-03" },
+    { "kind": "before", "a": "#frame-03", "b": "#frame-04" },
+    { "kind": "before", "a": "#frame-04", "b": "#frame-05" },
+    { "kind": "before", "a": "#frame-05", "b": "#frame-06" },
+    { "kind": "before", "a": "#frame-06", "b": "#frame-07" },
+    { "kind": "staysInFrame", "selector": "#frame-01" },
+    { "kind": "staysInFrame", "selector": "#frame-02" },
+    { "kind": "staysInFrame", "selector": "#frame-03" },
+    { "kind": "staysInFrame", "selector": "#frame-04" },
+    { "kind": "staysInFrame", "selector": "#frame-05" },
+    { "kind": "staysInFrame", "selector": "#frame-06" },
+    { "kind": "staysInFrame", "selector": "#frame-07" }
+  ]
+}

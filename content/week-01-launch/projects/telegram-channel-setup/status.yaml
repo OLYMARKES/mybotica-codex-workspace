@@ -1,0 +1,9 @@
+state: approved
+updated_at: "2026-09-02T00:34:31+08:00"
+agent: "codex"
+notes:
+  - "Project initialized"
+  - "Built an eight-slide Russian visual walkthrough at 1080x1350"
+  - "Verified the current Telegram Web creation entry point in the built-in browser"
+  - "Used a privacy-safe crop of the real New Channel form; later steps are clean instructional mockups"
+  - "Exported PNG slides, ZIP package, and a contact sheet"

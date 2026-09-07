@@ -1,0 +1,10 @@
+project_slug: mybotica-what-can-ai
+title: "Что можно отдать AI-помощнику?"
+owner: "MyBotica"
+language: "ru"
+inputs:
+  - source/script_ru.md
+outputs:
+  png_dir: output/png
+  zip_dir: output/zip
+canonical_build: build/carousel_v5_clear_boundary.html

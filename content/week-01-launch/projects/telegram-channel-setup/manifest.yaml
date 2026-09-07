@@ -1,0 +1,10 @@
+project_slug: telegram-channel-setup
+title: "Как оформить Telegram-канал: инструкция в картинках"
+owner: "mybotica-smm"
+language: "ru"
+inputs:
+  - source/script_ru.md
+outputs:
+  png_dir: output/png
+  zip_dir: output/zip
+canonical_build: build/carousel_v1.html

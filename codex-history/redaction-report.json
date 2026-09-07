@@ -1,0 +1,7 @@
+{
+  "auth_url_redactions": 87,
+  "ip_address_redactions": 198,
+  "secret_pattern_redactions": 248,
+  "reasoning_items_sanitized": 4195,
+  "binary_payload_references": 200
+}

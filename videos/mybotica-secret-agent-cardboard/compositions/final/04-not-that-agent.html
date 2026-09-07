@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head></head>
+<body>
+<template>
+  <style>
+    @font-face{font-family:Unbounded;src:url('assets/fonts/unbounded.ttf')}
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;background:#f4ebdd;color:#10362c;font-family:Unbounded,Arial,sans-serif}
+    .stop{position:absolute;left:62px;top:90px;padding:20px 28px;background:#a32631;color:#fff;font-size:32px;font-weight:700;transform:rotate(-2deg);will-change:transform}
+    .copy{position:absolute;left:62px;right:62px;top:390px;font-size:91px;line-height:1.06;font-weight:730;letter-spacing:-.055em}
+    .copy span,.copy strong{display:block;will-change:transform}
+    .copy strong{margin-top:30px;color:#a32631}
+    .cross{position:absolute;left:53px;right:53px;top:760px;height:22px;background:#a32631;transform:rotate(-3deg);transform-origin:left center;will-change:transform}
+    .dragon{position:absolute;width:820px;height:auto;right:-80px;bottom:-5px;transform-origin:center bottom;will-change:transform}
+  </style>
+  <div data-hf-id="agent04-root" id="root" data-composition-id="agent-04-correction" data-width="1080" data-height="1920" data-duration="2.4">
+    <div data-hf-id="agent04-stop" id="agent04-stop" class="stop">ПОПРАВОЧКА</div>
+    <div data-hf-id="agent04-copy" class="copy">
+      <span data-hf-id="agent04-line" id="agent04-line">ИИ-АГЕНТ —</span>
+      <strong data-hf-id="agent04-strong" id="agent04-strong">НЕ СЕКРЕТНЫЙ СОТРУДНИК.</strong>
+    </div>
+    <div data-hf-id="agent04-cross" id="agent04-cross" class="cross"></div>
+    <img data-hf-id="agent04-dragon" id="agent04-dragon" class="dragon" src="assets/boy-confused-cutout.png" alt="Растерянный картонный дракоша">
+  </div>
+  <script>
+    const tl=gsap.timeline({paused:true});
+    tl.fromTo('#agent04-stop',{scale:.7,opacity:0,rotation:-6},{scale:1,opacity:1,rotation:-2,duration:.32,ease:'power3.out'},.04);
+    tl.set('#agent04-line',{opacity:1,y:70},.26).to('#agent04-line',{y:0,duration:.18,ease:'power4.out'},.26);
+    tl.set('#agent04-strong',{opacity:1,y:54},.42).to('#agent04-strong',{y:0,duration:.17,ease:'power4.out'},.42);
+    tl.fromTo('#agent04-cross',{scaleX:0},{scaleX:1,duration:.35,ease:'power3.out'},.7);
+    tl.fromTo('#agent04-dragon',{x:150,rotation:8,opacity:0,scale:.9},{x:0,rotation:0,opacity:1,scale:1,duration:.52,ease:'power3.out'},1.12);
+    window.__timelines['agent-04-correction']=tl;
+  </script>
+</template>
+</body>
+</html>

@@ -1,0 +1,10 @@
+state: approved
+updated_at: "2026-09-02T00:42:46+08:00"
+agent: "codex"
+notes:
+  - "Project initialized"
+  - "Built a nine-slide Russian visual tutorial at 1080x1350"
+  - "Verified the public MyBotica home and constructor pages in the in-app browser"
+  - "Used real public MyBotica interface captures for the task prompt and editor overview"
+  - "Kept template, knowledge-base, channel, and launch claims aligned with the official constructor page"
+  - "Exported PNG slides, ZIP package, and a contact sheet"

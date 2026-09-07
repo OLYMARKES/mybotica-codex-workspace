@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel v1</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f3f1ec;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
+      font-family: "Inter", sans-serif;
+    }
+    .slide {
+      width: 1080px;
+      height: 1350px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: center;
+    }
+    .kicker {
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #b2514f;
+      font-weight: 700;
+    }
+    h1, h2 { line-height: 1.12; color: #121212; }
+    h1 { font-size: 86px; }
+    h2 { font-size: 58px; }
+    p { font-size: 36px; line-height: 1.35; color: #2e2e2e; }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <div class="kicker">cover</div>
+    <h1>Заголовок карусели</h1>
+    <p>Подзаголовок или обещание пользы.</p>
+  </section>
+  <section class="slide">
+    <div class="kicker">slide 1</div>
+    <h2>Первая мысль</h2>
+    <p>Одна идея на слайд, без перегруза текстом.</p>
+  </section>
+</body>
+</html>
+

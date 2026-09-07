@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "thread": {
+    "id": "01a04216-87f8-76e1-a571-49fbec9afcf6",
+    "title": "Я хочу стать SMMщиком. Что мне надо знать, чтобы сделать суперконтент?",
+    "source": "vscode",
+    "cwd": "/Users/olymarkes/Documents/ChatGPT/ЮЛЯ",
+    "created_at": 1787815167,
+    "updated_at": 1787815277,
+    "archived": 0,
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "approval_mode": "on-request",
+    "sandbox_policy": "{\"type\":\"managed\",\"file_system\":{\"type\":\"restricted\",\"entries\":[{\"path\":{\"type\":\"special\",\"value\":{\"kind\":\"root\"}},\"access\":\"read\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/Documents/ChatGPT/ЮЛЯ\"},\"access\":\"write\"},{\"path\":{\"type\":\"special\",\"value\":{\"kind\":\"slash_tmp\"}},\"access\":\"write\"},{\"path\":{\"type\":\"special\",\"value\":{\"kind\":\"tmpdir\"}},\"access\":\"write\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/Documents/ChatGPT/ЮЛЯ\"},\"access\":\"write\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/.codex/visualizations/2026/08/27/01a04216-87f8-76e1-a571-49fbec9afcf6\"},\"access\":\"write\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/Documents/ChatGPT/ЮЛЯ/.git\"},\"access\":\"read\",\"missing_path_behavior\":\"skip\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/Documents/ChatGPT/ЮЛЯ/.agents\"},\"access\":\"read\",\"missing_path_behavior\":\"skip\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/Documents/ChatGPT/ЮЛЯ/.codex\"},\"access\":\"read\",\"missing_path_behavior\":\"skip\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/Documents/ChatGPT/ЮЛЯ/.git\"},\"access\":\"read\",\"missing_path_behavior\":\"skip\"},{\"path\":{\"type\":\"path\",\"path\":\"/Users/olymarkes/Documents/ChatGPT/ЮЛЯ/.codex\"},\"access\":\"read\",\"missing_path_behavior\":\"skip\"}]},\"network\":\"restricted\"}",
+    "agent_nickname": null,
+    "agent_role": null,
+    "project_id": null,
+    "parent_thread_id": null,
+    "created_at_iso": "2026-08-27T07:19:27+00:00",
+    "updated_at_iso": "2026-08-27T07:21:17+00:00"
+  },
+  "turns": [
+    {
+      "metadata": {
+        "thread_id": "01a04216-87f8-76e1-a571-49fbec9afcf6",
+        "turn_id": "01a04216-8b5e-74a3-9c28-11d9dd627133",
+        "rollout_ordinal": 1,
+        "status": "completed",
+        "error_json": null,
+        "started_at": 1787815168,
+        "completed_at": 1787815277,
+        "duration_ms": 108650,
+        "first_user_item_id": "01a04216-9499-7741-a001-101deb9f2faf",
+        "final_agent_item_id": "msg_0f4a75c531126873016a8fe530d83887d0ad6ba20d11b6ec9a",
+        "rollout_byte_offset": 48902,
+        "rollout_end_ordinal": 29,
+        "rollout_end_byte_offset": 339270
+      },
+      "items": [
+        {
+          "type": "userMessage",
+          "id": "01a04216-9499-7741-a001-101deb9f2faf",
+          "clientId": "d0c1919b-13f7-4870-b522-54bc2688e7a8",
+          "content": [
+            {
+              "type": "text",
+              "text": "Я хочу стать SMMщиком. Что мне надо знать, чтобы сделать суперконтент?\n",
+              "text_elements": []
+            }
+          ]
+        },
+        {
+          "type": "reasoning",
+          "id": "rs_0f4a75c531126873016a8fe506424c87d0a805ac934f2a831d",
+          "summary": [],
+          "content": "[PRIVATE_REASONING_REMOVED]"
+        },
+        {
+          "type": "agentMessage",
+          "id": "msg_0f4a75c531126873016a8fe50a26ac87d0950ae547bf7f44bc",
+          "text": "Соберу тебе не просто список навыков, а понятную систему: что изучать, как отличать сильный контент от «просто красивого» и на чём практиковаться уже сейчас. Сверю рекомендации с актуальными материалами самих платформ.",
+          "phase": "commentary",
+          "memoryCitation": null,
+          "delivery": null
+        },
+        {
+          "type": "webSearch",
+          "id": "exec-00d40f29-b799-4cfe-9287-f2afcb62de5c",
+          "query": "site:creators.instagram.com best practices original content reels recommendations 2026 ...",
+          "action": {
+            "type": "search",
+            "query": null,
+            "queries": [
+              "site:creators.instagram.com best practices original content reels recommendations 2026",
+              "site:tiktok.com/business creative center content strategy best practices 2026",
+              "site:support.google.com/youtube answer audience retention thumbnails titles creator best practices"
+            ]
+          },
+          "results": [
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search0",
+              "snippet": "Image | Searchable titles that clearly outline what to expect so you can easily reach viewers searching for similar content. ... * You can also",
+              "title": "Thumbnail & title tips - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/12340300?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search1",
+              "snippet": "# Understand your content performance for YouTube’s recommendation system ... Ensure your intro delivers on the promise made by your thumbnail and title, immediately reassuring",
+              "title": "Understand your content performance for YouTube’s recommendation system - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/16559650?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search2",
+              "snippet": "Check out the video below for an intro to video thumbnails, titles and descriptions. ... Help Your YouTube Videos Stand Out & Keep Viewers Watching",
+              "title": "Tips to optimize your video - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/11908409?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search3",
+              "snippet": "Utilize your audience retention curves in analytics. ... In conclusion, reaching a larger audience on YouTube involves a mix of ideating and creating content ideas",
+              "title": "Good to know about recommendations for YouTube’s recommendation system - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/16559651?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search4",
+              "snippet": "Note: The audience retention report is only available at the video level of YouTube Analytics. ... * The content in the first 30 seconds matched",
+              "title": "Measure key moments for audience retention - Computer - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/9314415?hl=en-11"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search5",
+              "snippet": "| Insight: This metric helps indicate how appealing the thumbnail, title, and video content is to viewers. ... Different formats are meant to support your",
+              "title": "Content tab analytics tips - Video - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/12942217?co=YOUTUBE._YTVideoType%3Dvideo&hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search6",
+              "snippet": "The Audience tab in YouTube Analytics offers a deep dive into your viewer base. ... * Pay attention to the thumbnails and titles of these",
+              "title": "Tips to learn what viewers are watching - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/13616337?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search7",
+              "snippet": "Home is what your audience sees when they open the YouTube app or visit YouTube.com. ... Like Google’s search engine, YouTube search strives to surface",
+              "title": "YouTube performance FAQ & Troubleshooting - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/141805?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search8",
+              "snippet": "The Audience tab in YouTube Analytics offers a deep dive into your viewer base. ... Image ... Boost discovery by making the most of your",
+              "title": "New, casual, & regular viewers tips - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/13615784?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search9",
+              "snippet": "The Inspiration tab helps you generate and brainstorm suggestions for ideas, titles, thumbnails, and outlines for your content with the assistance of AI tools. ...",
+              "title": "Explore Inspiration tab on YouTube - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/15575509?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search10",
+              "snippet": "Custom video and Shorts thumbnails let your audience view a quick snapshot of your content. ... Watch the following video from the YouTube Creators channel",
+              "title": "Add custom thumbnails on YouTube - Computer - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/72431?hl=en"
+            },
+            {
+              "type": "text_result",
+              "domain": "support.google.com",
+              "ref_id": "turn0search11",
+              "snippet": "#### Audience retentionThe key moments for audience retention report shows how well different moments of your video held viewers' attention. ... The number of likes/dislikes",
+              "title": "Understand your YouTube engagement - Computer - YouTube Help",
+              "url": "https://support.google.com/youtube/answer/9313698?hl=en-0"
+            },
+            {
+              "type": "text_result",
+              "domain": "ads.tiktok.com",
+              "ref_id": "turn0search12",
+              "snippet": "Top section title: **Creative Center** ... - **Branded Content with Creators:** Collaborate directly with creators on custom videos that authentically speak to users from the",
+              "title": "ENG_TikTok_Summer_META_Playbook_Final",
+              "url": "https://ads.tiktok.com/business/library/ENG_TikTok_Summer_META_Playbook_Final.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "ads.tiktok.com",
+              "ref_id": "turn0search13",
+              "snippet": "With TikTok’s full suite of tools, creating content that resonates has never been easier. ... - **Creative Center:** “Find inspiration faster, and your next great",
+              "title": "Final_ENG_META_SMB_Ramadan_2026_Playbook",
+              "url": "https://ads.tiktok.com/business/library/Fin_ENG_META_Ramadan_2026_Playbook.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "ads.tiktok.com",
+              "ref_id": "turn0search14",
+              "snippet": "There are six best-practices to help your TikTok ads reach its creative potential. ... TikTok Creative Guide: Driving Brand Equity\", 2020 (TikTok \"Value of View\"",
+              "title": "AUNZ - 2026 - Creative Starter Pack",
+              "url": "https://ads.tiktok.com/business/library/AUNZ_Creative_Starter_Pack_TakeItToTikTok.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "ads.tiktok.com",
+              "ref_id": "turn0search15",
+              "snippet": "Find inspiration, brainstorm video ideas and structure your content to capture attention. ... Visit Creative Center for the latest trend data, music, and creative insights",
+              "title": "SMB_Creative_Playbook_External",
+              "url": "https://ads.tiktok.com/business/library/SMB_Creative_Playbook_External.pdf"
+            }
+          ]
+        },
+        {
+          "type": "reasoning",
+          "id": "rs_0f4a75c531126873016a8fe51138a887d08427b05480d8bec7",
+          "summary": [],
+          "content": "[PRIVATE_REASONING_REMOVED]"
+        },
+        {
+          "type": "webSearch",
+          "id": "exec-9c3851cc-612b-454a-9159-83d2562b4f8a",
+          "query": "site:about.instagram.com/blog/announcements Instagram ranking recommendations creators original content shares watch time ...",
+          "action": {
+            "type": "search",
+            "query": null,
+            "queries": [
+              "site:about.instagram.com/blog/announcements Instagram ranking recommendations creators original content shares watch time",
+              "site:about.fb.com/news Instagram creators best practices reach engagement original content",
+              "site:facebook.com/business/news reels creative best practices creators"
+            ]
+          },
+          "results": [
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search0",
+              "snippet": "* We’re launching best practices, a new section in the Instagram professional dashboard, to give creators the information they need to optimize their content, reach",
+              "title": "Introducing Best Practices, an Education Hub for Creators on Instagram",
+              "url": "https://about.fb.com/news/2024/10/best-practices-education-hub-creators-instagram/amp/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search1",
+              "snippet": "# New Ways to Create Content on Instagram ... We’re always trying to build the best tools to help creators express their creativity, connect with",
+              "title": "New Ways to Create Content on Instagram",
+              "url": "https://about.fb.com/news/2023/11/new-ways-to-create-content-on-instagram/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search2",
+              "snippet": "* We’re sharing our progress on rewarding creators who post original content on Facebook with greater reach and monetization, while deprioritizing unoriginal content. ... *",
+              "title": "Rewarding Original Creators on Facebook",
+              "url": "https://about.fb.com/news/2026/03/rewarding-original-creators-on-facebook/amp/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search3",
+              "snippet": "* Replies, prompts, insights and best practices will help you interact with your audience and analyze what they like, so you can keep delivering the",
+              "title": "Get Closer to Your Community With Replies, Prompts and Insights",
+              "url": "https://about.fb.com/news/2024/12/get-closer-to-your-community-with-replies-prompts-and-insights/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search4",
+              "snippet": "Facebook is now surfacing over 25% more same-day Reels compared to Q3 2025, and on Instagram, we increased the prevalence of original content in the",
+              "title": "2026: AI Drives Performance",
+              "url": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search5",
+              "snippet": "This tactic, known as “engagement bait,” seeks to take advantage of our News Feed algorithm by boosting engagement in order to get greater reach. ...",
+              "title": "Fighting Engagement Bait on Facebook",
+              "url": "https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search6",
+              "snippet": "Creator assistant is part of our overall investment to enhance the creator experience on Facebook with AI, from powering discovery that connects people with creator",
+              "title": "Introducing Creator Assistant, Plus More Languages For AI Translations on Facebook",
+              "url": "https://about.fb.com/news/2026/06/creator-assistant-more-languages-for-ai-translations-on-facebook/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search7",
+              "snippet": "Moving forward, we’re taking a number of steps to reduce this spammy content and help authentic creators reach an audience and grow. ... While others",
+              "title": "Cracking Down on Spammy Content on Facebook",
+              "url": "https://about.fb.com/news/2025/04/cracking-down-spammy-content-facebook/amp/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search8",
+              "snippet": "Today, we’re launching Creator Fast Track, a new program designed to help creators accelerate their growth and success on Facebook with guaranteed pay and increased",
+              "title": "Creator Fast Track: A New Way to Quickly Grow Your Audience and Earn Money on Facebook",
+              "url": "https://about.fb.com/news/2026/03/creator-fast-track-grow-your-audience-earn-money-on-facebook/amp/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search9",
+              "snippet": "Image: A display showing the data-based insights a creator can receive from the use of trial reels. ... * Trial reels are a new way",
+              "title": "Test Content With Non-Followers Using Trial Reels",
+              "url": "https://about.fb.com/news/2024/12/trial-reels-try-content-non-followers-first-see-what-perfoms-best/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search10",
+              "snippet": "# Prioritizing Original News Reporting on Facebook ... We are also starting to demote news content that does not have transparent information about the publisher’s",
+              "title": "Prioritizing Original News Reporting on Facebook",
+              "url": "https://about.fb.com/news/2020/06/prioritizing-original-news-reporting-on-facebook/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search11",
+              "snippet": "And starting in the coming weeks, when creators upload long-form videos or finish a Live on mobile or desktop, they can create a reel clipped",
+              "title": "Helping Creators Get Discovered and Earn Money on Facebook",
+              "url": "https://about.fb.com/news/2023/06/helping-creators-get-discovered-and-earn-money-on-facebook/"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search12",
+              "snippet": "- Instagram Equity Commitments Follow-Up. ... - Facebook News International Expansion. ... - Prioritizing Original News Content. ... - High-reach Post Verification.",
+              "title": "4\n\n- Instagram Equity Commitments Follow-Up. Read",
+              "url": "https://about.fb.com/wp-content/uploads/2021/05/Integrity-Timeline-.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search13",
+              "snippet": "Meta’s Approach to Safe Messaging on Messenger and Instagram Direct Messaging ... Emerging creators often want increased reach to potential followers, while other people want",
+              "title": "Final V2 Meta's approach to safer private messaging on MSGR and IG DMs",
+              "url": "https://about.fb.com/wp-content/uploads/2021/12/Metas-Approach-to-Safer-Private-Messaging.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search14",
+              "snippet": "For example, if the top URL is from a gossip site for a hard news story or if the top URL is from anything other",
+              "title": "• **Mentions an older event:** Select this option the top suggestion is relevant to the topic but outdated.",
+              "url": "https://about.fb.com/wp-content/uploads/2016/05/full-trending-review-guidelines-1.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search15",
+              "snippet": "It includes surfaces that contribute to more than 90% of all views on Facebook and Instagram, and samples from content in the multiple languages to",
+              "title": "Meta\n\nat least two people review every sample to e",
+              "url": "https://about.fb.com/wp-content/uploads/2022/05/EY-CSER-Independent-Assessment-Q4-2021.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search16",
+              "snippet": "News Content on Publishers’ Facebook Pages ... See also Facebook, “Terms of Service” (available at https://www.facebook.com/legal/terms) (last accessed February 16, 2023); Facebook, “Meta Commercial T",
+              "title": "A. News Content on Publishers’ Facebook Pages",
+              "url": "https://about.fb.com/ltam/wp-content/uploads/sites/14/2023/03/NERA-Global-White-Paper-FINAL-March-2023.pdf"
+            },
+            {
+              "type": "text_result",
+              "domain": "about.fb.com",
+              "ref_id": "turn1search17",
+              "snippet": "The majority of content posted by people on Facebook and Instagram does not violate the Community Standards or other policies, and we are often able",
+              "title": "11. The majority of content posted by people on Facebook and Instagram does not violate the Community Standards or other policies, and we are often able to automatically remove many pieces of violating content before they are seen and reported by people on the platform. For example, in our recent Community Standards Enforcement Report, we removed 17.4 million pieces of hate speech content from October to December 2021, reducing the prevalence of hate speech to 2–3 pieces on the platform for every 10,000 pieces of content. But our human review and automated efforts are not infallible. Q4 2021 Report, https://transparency.fb.com/data/community-standards-enforcement/. “It’s important to note that the vast majority of what people see on Facebook is neither political nor hateful. Political posts make up only about 6 percent of what people in the United States see in their News Feed, and the prevalence of hateful content people see on our service is less than 0.08 percent. While we work hard to prevent abuse of our platform, conversations online will always reflect the conversations taking place in living rooms, on television, and in text messages and phone calls across the country. Our society is deeply divided, and we see that on our services too.” Mark Zuckerberg Testimony U.S. House of Representatives, House Energy and Commerce (March 25, 2021) Page 8, https://energycommerce.house.gov/sites/democrats.energycommerce.house.gov/files/documents/Witness%20Testimony_Zuckerberg_CAT_CPC_2021.03.25.pdf",
+              "url": "https://about.fb.com/wp-content/uploads/2022/07/Privacy-Within-Metas-Integrity-Systems.pdf"
+            }
+          ]
+        },
+        {
+          "type": "reasoning",
+          "id": "rs_0f4a75c531126873016a8fe51ba53887d0af60744baef6442c",
+          "summary": [
+            "**Outlining supercontent framework and roadmap**"
+          ],
+          "content": "[PRIVATE_REASONING_REMOVED]"
+        },
+        {
+          "type": "agentMessage",
+          "id": "msg_0f4a75c531126873016a8fe530d83887d0ad6ba20d11b6ec9a",
+          "text": "Чтобы стать сильным SMM-специалистом, тебе нужно научиться не просто «красиво оформлять посты», а управлять вниманием и поведением аудитории.\n\nМоя любимая формула:\n\n**Суперконтент = точное понимание человека × сильная идея × понятная упаковка × удержание внимания × нужное действие.**\n\n### Что важно освоить\n\n1. **Исследование аудитории**\n\nНужно понимать не только пол и возраст, а:\n\n- чего человек хочет;\n- чего боится;\n- какие слова использует;\n- что уже пробовал;\n- почему не покупает;\n- какой контент отправляет друзьям и сохраняет.\n\nИщи это в комментариях, отзывах, переписках с клиентами, поисковых запросах и контенте конкурентов.\n\n2. **Маркетинговое мышление**\n\nУ каждого материала должна быть задача:\n\n- привлечь внимание;\n- познакомить с брендом;\n- вызвать доверие;\n- объяснить продукт;\n- снять возражение;\n- привести к покупке;\n- вернуть существующего клиента.\n\nЕсли у публикации нет задачи, это просто информационный шум.\n\n3. **Контент-стратегия**\n\nНаучись строить систему рубрик. Например:\n\n- полезное и обучающее;\n- истории и эмоции;\n- экспертность и доказательства;\n- продукт;\n- работа с возражениями;\n- вовлечение сообщества.\n\nКонтент-план — это не таблица ради таблицы. Это гипотезы: **«Если мы расскажем это таким способом, аудитория сделает вот это»**.\n\n4. **Копирайтинг и сторителлинг**\n\nТебе нужно уметь:\n\n- писать заголовки и первые фразы;\n- объяснять сложное простыми словами;\n- создавать интригу без обмана;\n- рассказывать истории через конфликт и изменение;\n- заканчивать материал понятным призывом.\n\nБазовая структура:\n\n**Крючок → проблема → развитие → решение → доказательство → действие.**\n\n5. **Короткие видео**\n\nОсвой:\n\n- сценарий;\n- композицию кадра;\n- свет и чистый звук;\n- монтаж и темп;\n- субтитры;\n- смену планов;\n- визуальное доказательство сказанного.\n\nПервые секунды должны выполнять обещание обложки или заголовка. YouTube официально предлагает оценивать контент через три группы сигналов: выбрал ли человек видео, продолжил ли смотреть и остался ли доволен. Поэтому важны не «секреты алгоритма», а привлекательность, удержание и удовлетворённость зрителя. [YouTube Help](https://support.google.com/youtube/answer/16559650?hl=en)\n\n6. **Визуальная грамотность**\n\nНеобязательно сразу становиться дизайнером, но необходимо понимать:\n\n- иерархию;\n- композицию;\n- контраст;\n- типографику;\n- цвет;\n- единый стиль;\n- читаемость на маленьком экране.\n\nКрасивый контент не всегда эффективен. Хороший визуал прежде всего помогает быстрее понять мысль.\n\n7. **Особенности платформ**\n\nОдна идея должна адаптироваться:\n\n- для Reels — быстрый вход и визуальное развитие;\n- для карусели — последовательное раскрытие мысли;\n- для Stories — ощущение живого контакта;\n- для Telegram — глубина, голос автора и диалог;\n- для YouTube — сильная тема, упаковка и удержание.\n\nСами платформы всё больше поддерживают оригинальные материалы. Meta сообщает, что усиливает распространение оригинального контента и ограничивает переупакованные чужие публикации. [Meta](https://about.fb.com/news/2026/03/rewarding-original-creators-on-facebook/amp/)\n\n8. **Аналитика**\n\nНе оценивай работу только по лайкам. Смотри:\n\n- просмотры и охват;\n- удержание и досмотры;\n- сохранения и отправки;\n- содержательные комментарии;\n- переходы в профиль;\n- подписки после публикации;\n- заявки и продажи.\n\nПосле каждой недели отвечай на три вопроса:\n\n1. Что сработало?\n2. Почему это сработало?\n3. Какую следующую гипотезу проверить?\n\nInstagram также вынес рекомендации по созданию, вовлечению, охвату и монетизации в раздел Best Practices профессиональной панели. [Meta](https://about.fb.com/news/2024/10/best-practices-education-hub-creators-instagram/amp/)\n\n### Как тренироваться с нуля\n\nВыбери одну нишу и одну основную платформу. Затем:\n\n- разберись в продукте и аудитории;\n- проанализируй 30 сильных публикаций конкурентов;\n- собери 50 реальных вопросов аудитории;\n- придумай 5 рубрик;\n- подготовь 20 идей;\n- создай 10 публикаций разных форматов;\n- опубликуй и сравни результаты;\n- переделай три слабых материала с новыми крючками.\n\nХорошее стартовое портфолио — это не просто картинки, а небольшой кейс: задача, аудитория, стратегия, примеры контента, показатели и выводы.\n\nИ главное: **не пытайся сразу вести пять платформ и изучить все инструменты**. Телефона, простого редактора и таблицы достаточно. На старте качество растёт главным образом от количества осмысленных попыток, анализа и переделок. Сильный SMM-специалист — не тот, кто угадывает тренды, а тот, кто умеет системно находить работающие идеи.",
+          "phase": "final_answer",
+          "memoryCitation": null,
+          "delivery": null
+        }
+      ]
+    }
+  ]
+}

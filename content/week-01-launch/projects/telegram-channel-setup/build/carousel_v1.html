@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Как оформить Telegram-канал с нуля</title>
+  <style>
+    @font-face { font-family:Golos; src:url('./assets/golos.ttf'); }
+    @font-face { font-family:Unbounded; src:url('./assets/unbounded.ttf'); }
+    :root { --green:#0f2a24; --cream:#f6f2ee; --paper:#fffdfa; --wine:#9b1d2b; --soft:#dfe9e4; --muted:#66716d; --blue:#2aabee; --line:#cad7d2; --white:#fff; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#d7d2cc; display:flex; flex-direction:column; align-items:center; gap:24px; padding:24px; font-family:Golos,Arial,sans-serif; }
+    .slide { position:relative; width:1080px; height:1350px; overflow:hidden; padding:66px 76px 70px; background:var(--cream); color:var(--green); display:flex; flex-direction:column; }
+    .dark { background:var(--green); color:var(--white); }
+    .wine { background:var(--wine); color:var(--white); }
+    .header { display:flex; justify-content:space-between; align-items:center; position:relative; z-index:10; }
+    .brand { width:185px; height:44px; object-fit:contain; object-position:left center; }
+    .header .dark-logo { display:none; }
+    .dark .header .light-logo,.wine .header .light-logo { display:none; }
+    .dark .header .dark-logo,.wine .header .dark-logo { display:block; }
+    .wine .header .dark-logo { filter:brightness(0) invert(1); }
+    .step { font-size:19px; font-weight:760; letter-spacing:.04em; color:var(--muted); }
+    .dark .step,.wine .step { color:rgba(255,255,255,.72); }
+    h1,h2,h3 { font-family:Unbounded,sans-serif; letter-spacing:-.045em; text-wrap:balance; }
+    h1 { font-size:75px; line-height:1.03; font-weight:600; }
+    h2 { font-size:62px; line-height:1.05; font-weight:590; }
+    h3 { font-size:30px; line-height:1.15; font-weight:590; }
+    p { font-size:30px; line-height:1.35; }
+    .accent { color:var(--wine); }
+    .dark .accent { color:#f1c6cb; }
+    .progress { position:absolute; left:76px; right:76px; bottom:42px; height:8px; display:grid; grid-template-columns:repeat(8,1fr); gap:8px; z-index:12; }
+    .progress i { background:var(--line); }
+    .progress i.on { background:var(--wine); }
+    .dark .progress i,.wine .progress i { background:rgba(255,255,255,.24); }
+    .dark .progress i.on { background:var(--wine); }.wine .progress i.on { background:var(--white); }
+    .number { width:58px; height:58px; border-radius:50%; background:var(--wine); color:var(--white); display:grid; place-items:center; font:600 25px/1 Unbounded; margin-bottom:20px; }
+    .dark .number,.wine .number { background:var(--white); color:var(--wine); }
+    .instruction-title { margin-top:88px; max-width:860px; }
+    .instruction-copy { margin-top:28px; max-width:760px; color:var(--muted); }
+    .dark .instruction-copy,.wine .instruction-copy { color:rgba(255,255,255,.76); }
+    .phone { background:#f4f4f5; border:10px solid var(--green); border-radius:42px; box-shadow:0 28px 50px rgba(15,42,36,.17); overflow:hidden; color:#1d2730; }
+    .dark .phone,.wine .phone { border-color:var(--white); }
+    .phone-head { height:84px; padding:0 28px; display:flex; align-items:center; justify-content:space-between; background:var(--white); border-bottom:1px solid #dfe3e7; font-size:24px; font-weight:760; }
+    .telegram-blue { color:var(--blue); }
+    .cover h1 { margin-top:102px; width:850px; position:relative; z-index:4; }
+    .cover p { margin-top:34px; width:650px; color:var(--muted); position:relative; z-index:4; }
+    .cover-phone { position:absolute; right:74px; bottom:90px; width:520px; height:520px; transform:rotate(4deg); }
+    .cover-phone .phone-head { color:var(--green); }
+    .cover-channel { padding:32px; }
+    .cover-profile { display:flex; gap:20px; align-items:center; }
+    .avatar { width:84px; height:84px; border-radius:50%; display:grid; place-items:center; background:var(--green); color:var(--white); font:590 27px/1 Unbounded; flex:none; }
+    .cover-profile strong { font-size:25px; display:block; }.cover-profile small { font-size:18px; color:var(--muted); }
+    .cover-post { margin-top:26px; padding:24px; background:var(--white); border-radius:16px; font-size:22px; line-height:1.3; }
+    .cover-girl { position:absolute; width:330px; height:390px; object-fit:contain; left:38px; bottom:68px; filter:drop-shadow(0 18px 16px rgba(15,42,36,.12)); z-index:5; }
+    .cover-path { position:absolute; left:225px; bottom:184px; width:390px; height:190px; border-bottom:3px solid var(--wine); border-radius:0 0 52% 42%; transform:rotate(-5deg); }
+    .create-demo { position:absolute; left:76px; right:76px; bottom:108px; height:520px; display:grid; grid-template-columns:1fr 96px 1fr; align-items:center; }
+    .mini-screen { height:450px; background:#f2f3f5; border:8px solid var(--white); border-radius:34px; position:relative; box-shadow:0 24px 45px rgba(0,0,0,.22); overflow:hidden; color:var(--green); }
+    .mini-top { height:68px; background:var(--white); display:flex; align-items:center; padding:0 22px; gap:18px; font-weight:760; }
+    .fake-row { margin:18px 20px; height:70px; border-radius:12px; background:#e1e6e8; }
+    .pencil { position:absolute; right:24px; bottom:24px; width:76px; height:76px; border-radius:50%; background:var(--blue); color:var(--white); display:grid; place-items:center; font-size:38px; font-weight:760; }
+    .pulse { position:absolute; right:10px; bottom:10px; width:104px; height:104px; border:5px solid var(--wine); border-radius:50%; }
+    .arrow-big { text-align:center; font:600 64px/1 Unbounded; color:#f1c6cb; }
+    .menu-card { position:absolute; right:24px; bottom:76px; width:330px; padding:14px 0; background:var(--white); border-radius:17px; box-shadow:0 18px 36px rgba(15,42,36,.18); }
+    .menu-card div { padding:19px 24px; font-size:24px; font-weight:650; display:flex; gap:16px; align-items:center; }
+    .menu-card .chosen { color:var(--wine); background:#f8e7e9; }
+    .foundation-layout { margin-top:54px; display:grid; grid-template-columns:470px 1fr; gap:48px; align-items:center; }
+    .real-form { width:470px; height:610px; object-fit:cover; object-position:left top; border:8px solid var(--green); border-radius:34px; box-shadow:0 24px 40px rgba(15,42,36,.16); }
+    .field-notes { display:flex; flex-direction:column; gap:22px; }
+    .field-note { padding:24px 26px; border-left:8px solid var(--wine); background:var(--paper); }
+    .field-note b { display:block; font:590 23px/1.15 Unbounded; margin-bottom:10px; }.field-note span { display:block; font-size:23px; line-height:1.28; color:var(--muted); }
+    .type-layout { margin-top:56px; display:grid; grid-template-columns:520px 1fr; gap:52px; align-items:center; }
+    .type-phone { height:590px; }
+    .setting-body { padding:26px; }
+    .radio-row { padding:24px 0; border-bottom:1px solid #d9dfe2; display:grid; grid-template-columns:34px 1fr; gap:16px; }
+    .radio { width:26px; height:26px; border:3px solid #a8b0b5; border-radius:50%; margin-top:2px; }.radio.on { border-color:var(--blue); box-shadow:inset 0 0 0 5px #f4f4f5; background:var(--blue); }
+    .radio-row b { font-size:24px; display:block; }.radio-row small { display:block; font-size:18px; line-height:1.3; color:#7a858c; margin-top:6px; }
+    .link-field { margin-top:26px; padding:20px; background:var(--white); border:2px solid var(--blue); border-radius:12px; font-size:22px; color:var(--blue); }
+    .recommend { padding:28px; background:var(--paper); border-top:3px solid var(--wine); }
+    .recommend h3 { margin-bottom:16px; }.recommend p { font-size:25px; color:var(--muted); }.recommend strong { color:var(--wine); }
+    .breadcrumbs { margin-top:58px; display:flex; flex-direction:column; width:720px; border-top:2px solid rgba(255,255,255,.46); }
+    .crumb { min-height:112px; display:flex; align-items:center; gap:24px; border-bottom:2px solid rgba(255,255,255,.46); font:560 30px/1.15 Unbounded; }
+    .crumb b { width:54px; height:54px; border-radius:50%; display:grid; place-items:center; background:var(--white); color:var(--wine); font-size:22px; flex:none; }
+    .comment-demo { position:absolute; right:60px; bottom:112px; width:330px; height:470px; background:var(--white); color:var(--green); border-radius:28px; box-shadow:0 24px 45px rgba(50,6,12,.25); transform:rotate(3deg); padding:28px; }
+    .comment-demo .bubble { padding:22px; margin-top:24px; background:var(--soft); border-radius:14px 14px 14px 4px; font-size:21px; line-height:1.25; }
+    .comment-button { margin-top:22px; padding:16px; border-top:1px solid #d8e0dd; color:var(--blue); text-align:center; font-weight:760; font-size:20px; }
+    .pin-layout { margin-top:52px; display:grid; grid-template-columns:1.05fr .95fr; gap:42px; align-items:start; }
+    .pin-post { background:var(--paper); border:3px solid var(--green); border-radius:18px; box-shadow:0 22px 36px rgba(15,42,36,.13); overflow:hidden; }
+    .pin-label { padding:16px 22px; background:var(--soft); color:var(--muted); font-size:20px; font-weight:760; }
+    .pin-content { padding:28px; }.pin-content h3 { margin-bottom:18px; }.pin-content p { font-size:23px; color:var(--muted); }
+    .pin-tags { margin-top:24px; display:flex; flex-wrap:wrap; gap:10px; }.pin-tags span { padding:10px 13px; border:2px solid var(--green); border-radius:999px; font-size:18px; font-weight:760; }
+    .pin-checks { display:flex; flex-direction:column; gap:18px; }
+    .pin-check { display:flex; gap:18px; align-items:flex-start; font-size:25px; line-height:1.28; }
+    .pin-check b { width:34px; height:34px; border-radius:50%; background:var(--wine); color:var(--white); display:grid; place-items:center; flex:none; font-size:18px; }
+    .post-list { margin-top:48px; width:780px; border-top:2px solid rgba(255,255,255,.48); }
+    .post-item { min-height:116px; border-bottom:2px solid rgba(255,255,255,.48); display:grid; grid-template-columns:64px 1fr; align-items:center; gap:20px; font:560 27px/1.18 Unbounded; }
+    .post-item b { width:48px; height:48px; border-radius:50%; background:var(--white); color:var(--green); display:grid; place-items:center; font-size:20px; }
+    .post-path { position:absolute; right:-40px; bottom:86px; width:340px; height:690px; border-left:3px solid rgba(255,255,255,.5); border-radius:52% 0 0 48%; transform:rotate(7deg); }
+    .post-path i { position:absolute; left:-12px; width:22px; height:22px; border-radius:50%; background:var(--white); box-shadow:0 0 0 10px rgba(255,255,255,.12); }
+    .post-path i:nth-child(1){top:55px}.post-path i:nth-child(2){top:195px}.post-path i:nth-child(3){top:335px}.post-path i:nth-child(4){top:475px}.post-path i:nth-child(5){top:615px}
+    .final h2 { margin-top:96px; width:780px; }
+    .final-copy { margin-top:28px; width:700px; color:var(--muted); }
+    .final-board { position:absolute; left:76px; bottom:112px; width:650px; height:470px; border:3px solid var(--green); background:var(--paper); box-shadow:0 24px 42px rgba(15,42,36,.14); padding:28px; transform:rotate(-2deg); }
+    .final-board h3 { margin-bottom:22px; }.final-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .final-cell { min-height:94px; padding:18px; background:var(--soft); display:flex; gap:12px; align-items:center; font-size:21px; font-weight:720; }
+    .final-cell b { color:var(--wine); font-size:25px; }
+    .final-girl { position:absolute; right:-8px; bottom:68px; width:410px; height:500px; object-fit:contain; filter:drop-shadow(0 20px 18px rgba(15,42,36,.13)); z-index:4; }
+    .save-note { position:absolute; right:70px; bottom:550px; width:330px; padding:20px 22px; background:var(--wine); color:var(--white); border-radius:14px 14px 4px 14px; font-size:23px; line-height:1.2; font-weight:760; z-index:5; }
+  </style>
+</head>
+<body>
+  <section class="slide cover">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">простая инструкция</div></div>
+    <h1>Как оформить <span class="accent">Telegram-канал</span> с нуля</h1><p>Инструкция в картинках: куда нажать и что написать.</p>
+    <div class="cover-path"></div><img class="cover-girl" src="./assets/dragon-girl-neutral.png" alt="Девочка-дракоша MyBotica">
+    <div class="phone cover-phone"><div class="phone-head"><span>MyBotica</span><span>⋯</span></div><div class="cover-channel"><div class="cover-profile"><div class="avatar">M</div><div><strong>MyBotica</strong><small>канал · 12 подписчиков</small></div></div><div class="cover-post"><b>Добро пожаловать!</b><br>Здесь показываем, как создавать полезных ИИ-ботов без кода.</div><div class="cover-post">📌 Навигация по каналу</div></div></div>
+    <div class="progress"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide dark">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">шаг 1 из 6</div></div>
+    <div class="instruction-title"><div class="number">1</div><h2>Создайте канал</h2><p class="instruction-copy">На главном экране нажмите на карандаш. Затем выберите «Новый канал».</p></div>
+    <div class="create-demo"><div class="mini-screen"><div class="mini-top">☰ <span>Telegram</span></div><div class="fake-row"></div><div class="fake-row"></div><div class="fake-row"></div><div class="pencil">✎</div><div class="pulse"></div></div><div class="arrow-big">→</div><div class="mini-screen"><div class="mini-top">Что создать?</div><div class="menu-card"><div class="chosen">◉ Новый канал</div><div>◎ Новая группа</div><div>○ Личное сообщение</div></div></div></div>
+    <div class="progress"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">шаг 2 из 6</div></div>
+    <div class="instruction-title" style="margin-top:62px"><div class="number">2</div><h2>Добавьте основу</h2></div>
+    <div class="foundation-layout"><img class="real-form" src="./assets/telegram-channel-name-form-crop.jpg" alt="Форма создания Telegram-канала"><div class="field-notes"><div class="field-note"><b>1. Аватар</b><span>Логотип или простая узнаваемая картинка.</span></div><div class="field-note"><b>2. Название</b><span>MyBotica — создаём ИИ-ботов</span></div><div class="field-note"><b>3. Описание</b><span>Инструкции, сценарии и новости. Тестирование ↓</span></div></div></div>
+    <div class="progress"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">шаг 3 из 6</div></div>
+    <div class="instruction-title" style="margin-top:62px"><div class="number">3</div><h2>Выберите тип канала</h2></div>
+    <div class="type-layout"><div class="phone type-phone"><div class="phone-head"><span>←</span><span>Тип канала</span><span class="telegram-blue">Готово</span></div><div class="setting-body"><div class="radio-row"><div class="radio on"></div><div><b>Публичный канал</b><small>Его можно найти через поиск и открыть по ссылке.</small></div></div><div class="radio-row"><div class="radio"></div><div><b>Частный канал</b><small>Вход только по приглашению.</small></div></div><div class="link-field">t.me/mybotica</div></div></div><div class="recommend"><h3>Для бренда выбирайте публичный</h3><p>Ссылка должна быть короткой: <strong>t.me/mybotica</strong><br><br>Без точек, цифр и длинных конструкций, если можно.</p></div></div>
+    <div class="progress"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide wine">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">шаг 4 из 6</div></div>
+    <div class="instruction-title"><div class="number">4</div><h2>Включите комментарии</h2><p class="instruction-copy">Названия кнопок могут немного отличаться на телефоне и компьютере.</p></div>
+    <div class="breadcrumbs"><div class="crumb"><b>1</b>Управление каналом</div><div class="crumb"><b>2</b>Обсуждение</div><div class="crumb"><b>3</b>Создать группу</div></div>
+    <div class="comment-demo"><h3>Новый пост</h3><div class="bubble">Какого ботика вы бы создали первым?</div><div class="comment-button">Оставить комментарий</div></div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">шаг 5 из 6</div></div>
+    <div class="instruction-title" style="margin-top:62px"><div class="number">5</div><h2>Сделайте закреп</h2></div>
+    <div class="pin-layout"><div class="pin-post"><div class="pin-label">📌 Закреплённое сообщение</div><div class="pin-content"><h3>Добро пожаловать в MyBotica</h3><p>Здесь мы показываем, как создавать ИИ-ботов без кода.</p><div class="pin-tags"><span>#начать</span><span>#инструкции</span><span>#сценарии</span><span>#обновления</span></div></div></div><div class="pin-checks"><div class="pin-check"><b>✓</b><span>Что это за канал</span></div><div class="pin-check"><b>✓</b><span>Что здесь публикуют</span></div><div class="pin-check"><b>✓</b><span>С чего начать</span></div><div class="pin-check"><b>✓</b><span>Где находится ссылка</span></div></div></div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+  </section>
+  <section class="slide dark">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">шаг 6 из 6</div></div>
+    <div class="instruction-title"><div class="number">6</div><h2>Опубликуйте первые пять постов</h2></div>
+    <div class="post-list"><div class="post-item"><b>1</b>Добро пожаловать</div><div class="post-item"><b>2</b>Что такое MyBotica</div><div class="post-item"><b>3</b>Как создать первого бота</div><div class="post-item"><b>4</b>Сценарий для обычной жизни</div><div class="post-item"><b>5</b>Приглашение на тестирование</div></div><div class="post-path"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+  </section>
+  <section class="slide final">
+    <div class="header"><img class="brand light-logo" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="brand dark-logo" src="./assets/logo.png" alt=""><div class="step">готово</div></div>
+    <h2>Готовый канал <span class="accent">за 15 минут</span></h2><p class="final-copy">Не пытайтесь сделать идеально. Сначала соберите основу — улучшать будете по ходу.</p>
+    <div class="final-board"><h3>Проверьте шесть вещей</h3><div class="final-grid"><div class="final-cell"><b>✓</b>аватар</div><div class="final-cell"><b>✓</b>описание</div><div class="final-cell"><b>✓</b>ссылка</div><div class="final-cell"><b>✓</b>комментарии</div><div class="final-cell"><b>✓</b>закреп</div><div class="final-cell"><b>✓</b>первые посты</div></div></div><div class="save-note">Сохраните инструкцию и выполняйте по одному шагу</div><img class="final-girl" src="./assets/dragon-girl-wink.png" alt="Девочка-дракоша MyBotica">
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+  </section>
+</body>
+</html>

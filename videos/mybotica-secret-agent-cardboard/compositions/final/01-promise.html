@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head></head>
+<body>
+<template>
+  <style>
+    @font-face{font-family:Unbounded;src:url('assets/fonts/unbounded.ttf')}
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;background:#10362c;color:#fff;font-family:Unbounded,Arial,sans-serif}
+    .copy{position:absolute;left:70px;right:70px;top:380px}
+    .line{display:block;font-size:104px;line-height:1.02;font-weight:700;letter-spacing:-.055em;will-change:transform}
+    .agent{display:block;margin-top:58px;font-size:168px;line-height:.92;font-weight:760;letter-spacing:-.075em;color:#f2c4c7;will-change:transform}
+    .bar{margin-top:55px;width:790px;height:22px;background:#a32631;transform-origin:left center;will-change:transform}
+  </style>
+  <div data-hf-id="agent01-root" id="root" data-composition-id="agent-01-promise" data-width="1080" data-height="1920" data-duration="2">
+    <div data-hf-id="agent01-copy" class="copy">
+      <div data-hf-id="agent01-line1" id="agent01-line1" class="line">МЫ СОЗДАДИМ</div>
+      <div data-hf-id="agent01-line2" id="agent01-line2" class="line">ВАМ</div>
+      <div data-hf-id="agent01-agent" id="agent01-agent" class="agent">ИИ-АГЕНТА</div>
+      <div data-hf-id="agent01-bar" id="agent01-bar" class="bar"></div>
+    </div>
+  </div>
+  <script>
+    const tl=gsap.timeline({paused:true});
+    tl.set('#agent01-line1',{opacity:1,y:76},.08).to('#agent01-line1',{y:0,duration:.19,ease:'power4.out'},.08);
+    tl.set('#agent01-line2',{opacity:1,y:50},.25).to('#agent01-line2',{y:0,duration:.16,ease:'power4.out'},.25);
+    tl.set('#agent01-agent',{opacity:1,y:68},.38).to('#agent01-agent',{y:0,duration:.18,ease:'power4.out'},.38);
+    tl.fromTo('#agent01-bar',{scaleX:0},{scaleX:1,duration:.35,ease:'power3.out'},.64);
+    window.__timelines['agent-01-promise']=tl;
+  </script>
+</template>
+</body>
+</html>

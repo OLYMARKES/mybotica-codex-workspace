@@ -1,0 +1,11 @@
+project_slug: example_slug
+title: "Example Carousel Project"
+owner: "team-name"
+language: "ru"
+inputs:
+  - source/script_ru.md
+outputs:
+  png_dir: output/png
+  zip_dir: output/zip
+canonical_build: build/carousel_v1.html
+

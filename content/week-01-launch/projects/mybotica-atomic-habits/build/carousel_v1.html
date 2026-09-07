@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyBotica — зачем мне ботик, если у меня нет бизнеса?</title>
+  <style>
+    @font-face { font-family: Golos; src: url('./assets/golos.ttf'); }
+    @font-face { font-family: Unbounded; src: url('./assets/unbounded.ttf'); }
+    :root { --green:#0f2a24; --green-soft:#dfe9e4; --cream:#f6f2ee; --paper:#fffdf9; --burgundy:#8c1d26; --burgundy-soft:#f0d5d7; --orange:#ee9a22; --muted:#66716d; --line:#cdd7d2; --white:#fff; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    ::selection { color:var(--white); background:var(--burgundy); }
+    body { background:#d8d3cd; display:flex; flex-direction:column; align-items:center; gap:24px; padding:24px; font-family:Golos,Arial,sans-serif; }
+    .slide { position:relative; width:1080px; height:1350px; overflow:hidden; padding:68px 76px 76px; background:var(--cream); color:var(--green); display:flex; flex-direction:column; }
+    .dark { background:var(--green); color:var(--white); }
+    .wine { background:var(--burgundy); color:var(--white); }
+    .header { position:relative; z-index:10; display:flex; justify-content:space-between; align-items:center; min-height:48px; }
+    .brand { width:190px; height:46px; display:flex; align-items:center; }
+    .brand img { width:190px; height:auto; display:block; object-fit:contain; object-position:left center; }
+    .brand .logo-on-dark { display:none; }
+    .dark .brand .logo-on-light,.wine .brand .logo-on-light { display:none; }
+    .dark .brand .logo-on-dark,.wine .brand .logo-on-dark { display:block; }
+    .wine .brand .logo-on-dark { filter:brightness(0) invert(1); }
+    .header-note { font-size:19px; font-weight:720; letter-spacing:.03em; color:var(--muted); }
+    .dark .header-note,.wine .header-note { color:rgba(255,255,255,.72); }
+    h1,h2,h3 { font-family:Unbounded,sans-serif; font-weight:590; letter-spacing:-.035em; text-wrap:balance; }
+    h1 { font-size:76px; line-height:1.02; }
+    h2 { font-size:64px; line-height:1.04; }
+    h3 { font-size:34px; line-height:1.12; }
+    p { font-size:31px; line-height:1.36; }
+    .accent { color:var(--burgundy); }
+    .dark .accent { color:#f3c7ca; }
+    .wine .accent { color:var(--white); }
+    .progress { position:absolute; left:76px; right:76px; bottom:46px; display:grid; grid-template-columns:repeat(10,1fr); gap:8px; height:8px; z-index:20; }
+    .progress i { display:block; background:var(--line); }
+    .progress i.on { background:var(--burgundy); }
+    .dark .progress i,.wine .progress i { background:rgba(255,255,255,.24); }
+    .dark .progress i.on { background:var(--burgundy); }
+    .wine .progress i.on { background:var(--white); }
+
+    .cover h1 { margin-top:105px; width:820px; position:relative; z-index:4; }
+    .cover h1 span { color:var(--burgundy); }
+    .cover-sub { margin-top:34px; width:610px; font-size:30px; line-height:1.3; color:var(--muted); position:relative; z-index:4; }
+    .cover-path { position:absolute; left:58px; bottom:132px; width:720px; height:220px; border-bottom:3px solid var(--burgundy); border-radius:0 0 52% 42%; transform:rotate(-4deg); z-index:1; }
+    .cover-path::before,.cover-path::after { content:''; position:absolute; bottom:-11px; width:20px; height:20px; background:var(--burgundy); border-radius:50%; }
+    .cover-path::before { left:82px; }
+    .cover-path::after { right:0; }
+    .cover-book { position:absolute; width:360px; height:500px; left:38px; bottom:62px; object-fit:contain; transform:rotate(-7deg); filter:drop-shadow(0 28px 24px rgba(15,42,36,.2)); z-index:2; }
+    .cover-girl { position:absolute; right:-44px; bottom:48px; width:520px; height:580px; object-fit:contain; filter:drop-shadow(0 18px 16px rgba(15,42,36,.1)); z-index:3; }
+    .cover-speech { position:absolute; right:76px; bottom:572px; width:326px; padding:22px 24px; border-radius:15px 15px 4px 15px; background:var(--green); color:var(--white); font-size:23px; line-height:1.24; font-weight:720; box-shadow:0 16px 30px rgba(15,42,36,.18); z-index:5; }
+
+    .assumption h2 { margin-top:116px; width:860px; }
+    .business-words { margin-top:74px; border-top:2px solid rgba(255,255,255,.26); }
+    .business-word { display:flex; justify-content:space-between; align-items:center; padding:30px 0 28px; border-bottom:2px solid rgba(255,255,255,.26); font:560 48px/1.05 Unbounded,sans-serif; letter-spacing:-.03em; }
+    .business-word b { width:20px; height:20px; background:var(--burgundy); display:block; }
+    .not-only { margin-top:52px; color:#f3c7ca; font:590 48px/1.08 Unbounded,sans-serif; letter-spacing:-.035em; }
+
+    .personal h2 { margin-top:110px; width:850px; }
+    .personal h2 span { color:var(--burgundy); }
+    .personal-copy { margin-top:40px; width:610px; color:var(--muted); }
+    .personal-verbs { position:absolute; left:76px; right:320px; bottom:154px; display:grid; grid-template-columns:1fr 1fr; border-top:2px solid var(--green); border-bottom:2px solid var(--green); z-index:1; }
+    .personal-verbs span { padding:25px 12px 24px 0; font:560 27px/1.15 Unbounded,sans-serif; letter-spacing:-.025em; }
+    .personal-verbs span:nth-child(odd) { border-right:2px solid var(--green); }
+    .personal-verbs span:nth-child(even) { padding-left:28px; }
+    .personal-verbs span:nth-child(-n+2) { border-bottom:2px solid var(--green); }
+    .personal-girl { position:absolute; right:0; bottom:86px; width:450px; height:550px; object-fit:contain; filter:drop-shadow(0 18px 16px rgba(15,42,36,.1)); z-index:2; }
+
+    .principle .book-object { position:absolute; left:18px; bottom:54px; width:480px; height:740px; object-fit:contain; transform:rotate(-4deg); filter:drop-shadow(0 32px 30px rgba(35,10,12,.28)); }
+    .principle-copy { margin-top:108px; margin-left:470px; width:470px; }
+    .principle-copy h2 { font-size:56px; }
+    .principle-copy p { margin-top:38px; color:rgba(255,255,255,.78); }
+    .principle-list { margin-top:54px; display:flex; flex-direction:column; border-top:2px solid rgba(255,255,255,.52); }
+    .principle-list span { padding:23px 0 22px; border-bottom:2px solid rgba(255,255,255,.52); font:560 32px/1.1 Unbounded,sans-serif; letter-spacing:-.025em; }
+
+    .breaks h2 { margin-top:106px; width:820px; }
+    .breaks-copy { margin-top:34px; width:760px; color:var(--muted); }
+    .week-strip { margin-top:76px; border-top:2px solid var(--green); border-bottom:2px solid var(--green); display:grid; grid-template-columns:repeat(7,1fr); }
+    .day { min-height:210px; padding:22px 12px; border-right:2px solid var(--green); display:flex; flex-direction:column; justify-content:space-between; align-items:center; }
+    .day:last-child { border-right:0; }
+    .day small { font-size:18px; font-weight:720; color:var(--muted); }
+    .day b { width:46px; height:46px; border:3px solid var(--line); border-radius:50%; display:grid; place-items:center; font-size:24px; }
+    .day.done b { background:var(--green); border-color:var(--green); color:var(--white); }
+    .day.missed b { border-color:var(--burgundy); color:var(--burgundy); }
+    .break-note { margin-top:48px; color:var(--burgundy); font:560 37px/1.16 Unbounded,sans-serif; letter-spacing:-.03em; width:800px; }
+
+    .reminder h2 { margin-top:104px; width:800px; }
+    .chat-window { margin-top:74px; width:760px; min-height:390px; padding:38px; background:var(--paper); color:var(--green); border-radius:16px; box-shadow:0 24px 44px rgba(0,0,0,.2); position:relative; z-index:3; }
+    .chat-name { display:flex; align-items:center; gap:16px; font-size:22px; font-weight:720; color:var(--muted); }
+    .chat-name b { width:16px; height:16px; background:var(--burgundy); display:block; }
+    .message { margin-top:48px; width:590px; padding:28px 30px; border-radius:15px 15px 15px 4px; background:var(--green-soft); font-size:34px; line-height:1.26; font-weight:650; }
+    .message-time { display:block; margin-top:17px; font-size:18px; color:var(--muted); font-weight:500; }
+    .reminder-girl { position:absolute; right:0; bottom:66px; width:390px; height:480px; object-fit:contain; filter:drop-shadow(0 24px 20px rgba(0,0,0,.2)); z-index:4; }
+
+    .easy h2 { margin-top:104px; width:820px; }
+    .easy-copy { margin-top:32px; width:760px; color:var(--muted); }
+    .action-demo { margin-top:76px; width:820px; }
+    .action-question { font:560 38px/1.18 Unbounded,sans-serif; letter-spacing:-.03em; }
+    .actions { margin-top:34px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .action { min-height:150px; padding:28px 30px; border:2px solid var(--green); border-radius:14px; display:flex; flex-direction:column; justify-content:space-between; font-size:27px; line-height:1.18; font-weight:720; }
+    .action.primary { background:var(--green); color:var(--white); }
+    .action small { font-size:18px; opacity:.66; font-weight:650; }
+    .easy-result { margin-top:48px; color:var(--burgundy); font:560 34px/1.16 Unbounded,sans-serif; letter-spacing:-.03em; }
+
+    .visible h2 { margin-top:104px; width:820px; }
+    .week-proof { margin-top:70px; display:grid; grid-template-columns:340px 1fr; gap:54px; align-items:center; }
+    .score { font:590 170px/.9 Unbounded,sans-serif; letter-spacing:-.075em; color:#f3c7ca; }
+    .score small { display:block; margin-top:22px; max-width:300px; font:720 23px/1.25 Golos,sans-serif; letter-spacing:0; color:rgba(255,255,255,.76); }
+    .streak { display:grid; grid-template-columns:repeat(7,1fr); gap:10px; align-items:end; height:260px; border-bottom:2px solid rgba(255,255,255,.54); padding-bottom:12px; }
+    .streak i { display:block; background:var(--burgundy); min-height:36px; }
+    .streak i:nth-child(1) { height:40%; }.streak i:nth-child(2) { height:52%; }.streak i:nth-child(3) { height:64%; }.streak i:nth-child(4) { height:20%; background:rgba(255,255,255,.22); }.streak i:nth-child(5) { height:74%; }.streak i:nth-child(6) { height:86%; }.streak i:nth-child(7) { height:20%; background:rgba(255,255,255,.22); }
+    .return-message { margin-top:56px; width:820px; padding:30px 34px; border:2px solid rgba(255,255,255,.52); border-radius:14px; font-size:30px; line-height:1.3; }
+    .return-message strong { color:#f3c7ca; }
+    .illustrative { margin-top:20px; width:820px; color:rgba(255,255,255,.76); font-size:28px; line-height:1.3; }
+
+    .more h2 { margin-top:104px; width:820px; }
+    .habit-list { margin-top:64px; width:720px; border-top:2px solid rgba(255,255,255,.55); position:relative; z-index:2; }
+    .habit-list span { display:flex; align-items:center; gap:22px; padding:24px 0 22px; border-bottom:2px solid rgba(255,255,255,.55); font:560 31px/1.12 Unbounded,sans-serif; letter-spacing:-.025em; }
+    .habit-list b { width:18px; height:18px; background:var(--white); flex:none; }
+    .more-note { margin-top:42px; width:660px; color:rgba(255,255,255,.78); position:relative; z-index:2; }
+    .habit-thread { position:absolute; right:-18px; bottom:96px; width:330px; height:720px; border-left:3px solid rgba(255,255,255,.54); border-radius:50% 0 0 50%; transform:rotate(7deg); }
+    .habit-thread i { position:absolute; width:22px; height:22px; border-radius:50%; background:var(--white); box-shadow:0 0 0 10px rgba(255,255,255,.12); }
+    .habit-thread i:nth-child(1){ left:34px; top:40px; }.habit-thread i:nth-child(2){ left:2px; top:188px; }.habit-thread i:nth-child(3){ left:-9px; top:342px; }.habit-thread i:nth-child(4){ left:13px; top:500px; }.habit-thread i:nth-child(5){ left:64px; top:648px; }
+
+    .final h2 { margin-top:114px; width:760px; }
+    .final h2 span { color:var(--burgundy); }
+    .final-copy { margin-top:40px; width:610px; color:var(--muted); }
+    .final-action { margin-top:52px; width:max-content; padding:24px 30px; border-radius:14px; background:var(--burgundy); color:var(--white); font-size:27px; font-weight:720; box-shadow:0 18px 34px rgba(140,29,38,.23); }
+    .final-note { margin-top:22px; font-size:21px; color:var(--muted); }
+    .final::after { content:''; position:absolute; right:-36px; bottom:102px; width:690px; height:190px; border-bottom:3px solid var(--burgundy); border-radius:0 0 55% 42%; transform:rotate(4deg); z-index:1; }
+    .final-book { position:absolute; width:330px; height:440px; right:270px; bottom:42px; object-fit:contain; transform:rotate(-8deg); filter:drop-shadow(0 24px 24px rgba(15,42,36,.18)); z-index:2; }
+    .final-girl { position:absolute; right:0; bottom:36px; width:390px; height:490px; object-fit:contain; filter:drop-shadow(0 20px 18px rgba(15,42,36,.12)); z-index:3; }
+  </style>
+</head>
+<body>
+  <!--
+  THESIS: A bot is not business software by default; it becomes a tiny personal system for one repeated habit and refuses generic AI-feature exposition.
+  OWN-WORLD: MyBotica cream paper, deep green typography, burgundy signals, Unbounded/Golos, and transparent cutouts of the real book and canonical dragon girl integrated into the canvas without portrait cards.
+  STORY: The reader drops the “bots are for sales” assumption, recognizes why a habit breaks, sees a concrete reminder-and-progress flow, and tries MyBotica.
+  FIRST VIEWPORT: The selected question dominates the upper two-thirds; Atomic Habits and the thoughtful dragon girl meet on a single burgundy progress path below.
+  FORM: Pinned brief, inherited MyBotica social system; compact Instagram editorial sequence.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+  -->
+  <section class="slide cover">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">личный ботик</div></div>
+    <h1>Зачем мне ботик, если у меня <span>нет бизнеса?</span></h1><p class="cover-sub">Показываем на примере книги «Атомные привычки»</p><div class="cover-path"></div>
+    <img class="cover-book" src="./assets/atomic-habits-book-cutout-v2.png" alt="Книга Джеймса Клира «Атомные привычки»"><img class="cover-girl" src="./assets/dragon-girl-thoughtful-cutout-v2.png" alt="Задумчивая девочка-дракоша MyBotica"><div class="cover-speech">А если ботик будет работать лично на вас?</div>
+    <div class="progress"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide dark assumption">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">знакомое представление</div></div>
+    <h2>Кажется, бот — это всегда про:</h2><div class="business-words"><div class="business-word"><span>клиентов</span><b></b></div><div class="business-word"><span>заявки</span><b></b></div><div class="business-word"><span>продажи</span><b></b></div></div><div class="not-only">Но это только один сценарий.</div>
+    <div class="progress"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide personal">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">иллюстративная идея</div></div>
+    <h2>Представим: ботик работает не на компанию. <span>А на вас.</span></h2><p class="personal-copy">Возможный сценарий: напоминание, короткий вопрос, отметка результата и поддержка.</p><div class="personal-verbs"><span>напомнить</span><span>спросить</span><span>отметить</span><span>поддержать</span></div><img class="personal-girl" src="./assets/dragon-girl-neutral-cutout-v2.png" alt="Девочка-дракоша MyBotica">
+    <div class="progress"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide wine principle">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">идея из книги</div></div>
+    <img class="book-object" src="./assets/atomic-habits-book-cutout-v2.png" alt="Книга Джеймса Клира «Атомные привычки»"><div class="principle-copy"><h2>Одной мотивации недостаточно</h2><p>Нужное действие должно быть легче заметить, выполнить и повторить.</p><div class="principle-list"><span>заметно</span><span>просто</span><span>приятно</span></div></div>
+    <div class="progress"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide breaks">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">например, чтение</div></div>
+    <h2>Вы решили читать каждый день</h2><p class="breaks-copy">Первые три дня помогает мотивация. Потом появляются дела — и книга остаётся лежать.</p><div class="week-strip"><div class="day done"><small>ПН</small><b>✓</b></div><div class="day done"><small>ВТ</small><b>✓</b></div><div class="day done"><small>СР</small><b>✓</b></div><div class="day missed"><small>ЧТ</small><b>×</b></div><div class="day"><small>ПТ</small><b></b></div><div class="day"><small>СБ</small><b></b></div><div class="day"><small>ВС</small><b></b></div></div><div class="break-note">Не слабая воля. Нет системы в нужный момент.</div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide dark reminder">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">иллюстративный сценарий</div></div>
+    <h2>Так ботик мог бы сделать привычку заметной</h2><div class="chat-window"><div class="chat-name"><b></b>Макет · трекер чтения</div><div class="message">Уже 22:30. Прочитаем две страницы?<span class="message-time">пример сообщения</span></div></div><img class="reminder-girl" src="./assets/dragon-girl-wink-cutout-v2.png" alt="Подмигивающая девочка-дракоша MyBotica">
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide easy">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">макет механики</div></div>
+    <h2>Ответ мог бы занимать одно касание</h2><p class="easy-copy">Без отдельного трекера: короткий вопрос и два понятных варианта ответа.</p><div class="action-demo"><div class="action-question">Прочитали сегодня?</div><div class="actions"><div class="action primary"><small>одно касание</small>Готово</div><div class="action"><small>не сейчас</small>Напомни через 15 минут</div></div></div><div class="easy-result">Чем меньше трения, тем легче повторить.</div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+  </section>
+  <section class="slide dark visible">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">иллюстративный сценарий</div></div>
+    <h2>Прогресс становится маленькой наградой</h2><div class="week-proof"><div class="score">5/7<small>иллюстративный пример</small></div><div class="streak"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="return-message">После пропуска ботик мог бы предложить: <strong>«Давайте сегодня одну страницу».</strong></div><div class="illustrative">Это концепт механики, а не готовая функция или результат пользователя. Возможность требует подтверждения в продукте.</div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+  </section>
+  <section class="slide wine more">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">не только чтение</div></div>
+    <h2>Какую привычку поддержать?</h2><div class="habit-list"><span><b></b>стакан воды утром</span><span><b></b>прогулка после обеда</span><span><b></b>зарядка</span><span><b></b>иностранный язык</span><span><b></b>сон без телефона</span></div><p class="more-note">Вы выбираете действие. Ботик помогает его не потерять.</p><div class="habit-thread" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+  </section>
+  <section class="slide final">
+    <div class="header"><div class="brand"><img class="logo-on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-on-dark" src="./assets/logo.png" alt=""></div><div class="header-note">ваш сценарий</div></div>
+    <h2>Хотите проверить идею <span>личного ботика?</span></h2><p class="final-copy">Попробуйте MyBotica и предложите свой сценарий для обычной жизни.</p><div class="final-action">Откройте ссылку в профиле →</div><div class="final-note">Первые диалоги — за счёт приветственных токенов.</div><img class="final-book" src="./assets/atomic-habits-book-cutout-v2.png" alt="Книга «Атомные привычки»"><img class="final-girl" src="./assets/dragon-girl-joy-cutout-v2.png" alt="Радостная девочка-дракоша MyBotica">
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>MyBotica Loading 85 — girl V10</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0f2a24; }
+      #loading-girl-v3 { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0f2a24; }
+      .clip { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+      .source-video { display: block; object-fit: cover; }
+      .lashes-layer { pointer-events: none; }
+      #lashes { display: block; width: 1080px; height: 1920px; opacity: 0; }
+      .lash-path {
+        fill: none;
+        stroke: #0f2a24;
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+        stroke-dasharray: 84;
+        stroke-dashoffset: 84;
+      }
+    </style>
+  </head>
+  <body>
+    <main data-hf-id="hf-xbb4" id="loading-girl-v3" data-composition-id="loading-girl-v3" data-start="0" data-duration="15.093" data-fps="24" data-width="1080" data-height="1920">
+      <video data-hf-id="hf-ssm4" id="loading-source-video" class="clip source-video" src="assets/source-loading-v2.mp4" data-start="0" data-duration="15.093" data-media-start="0" data-track-index="0" muted playsinline></video>
+
+      <section data-hf-id="hf-ddpd" id="lash-overlay" class="clip lashes-layer" data-start="11.32" data-duration="1.38" data-track-index="1" aria-label="Ресницы большой дракоши вместе с пикселями на теле">
+        <svg data-hf-id="hf-kdub" id="lashes" viewBox="0 0 1080 1920" aria-hidden="true">
+          <path data-hf-id="hf-3m4w" class="lash-path lash-left-outer" d="M432 674 C411 663 397 645 392 619" />
+          <path data-hf-id="hf-3t3j" class="lash-path lash-left-inner" d="M458 668 C443 650 437 631 439 607" />
+          <path data-hf-id="hf-5oxb" class="lash-path lash-right-inner" d="M574 668 C590 650 598 631 598 607" />
+          <path data-hf-id="hf-217b" class="lash-path lash-right-outer" d="M599 674 C621 663 637 644 643 618" />
+        </svg>
+      </section>
+
+      <audio data-hf-id="hf-3t7n" id="loading-source-audio" src="assets/source-loading-v2.mp4" data-start="0" data-duration="15.093" data-media-start="0" data-track-index="10" data-volume="1"></audio>
+    </main>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.set("#lashes", { autoAlpha: 0 }, 0)
+        .set("#lashes", { autoAlpha: 1 }, 11.32)
+        .fromTo(
+          ".lash-path",
+          { strokeDashoffset: 84, opacity: 0 },
+          { strokeDashoffset: 0, opacity: 1, duration: 0.34, stagger: 0.06, ease: "steps(4)" },
+          11.32,
+        )
+        .to("#lashes", { autoAlpha: 0, duration: 0.28, ease: "steps(3)" }, 12.42);
+      window.__timelines["loading-girl-v3"] = tl;
+    </script>
+  </body>
+</html>

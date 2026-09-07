@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head></head>
+<body>
+<template>
+  <style>
+    @font-face{font-family:Unbounded;src:url('assets/fonts/unbounded.ttf')}
+    @font-face{font-family:Golos;src:url('assets/fonts/golos.ttf')}
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;background:#10362c;color:#fff;font-family:Unbounded,Arial,sans-serif}
+    .logo{position:absolute;left:65px;top:75px;width:360px;height:auto;will-change:transform}
+    .copy{position:absolute;left:65px;right:65px;top:380px;font-size:78px;line-height:1.08;font-weight:720;letter-spacing:-.055em}
+    .copy span,.copy strong{display:block;will-change:transform}
+    .copy strong{margin-top:30px;color:#f2c4c7}
+    .bar{position:absolute;left:65px;right:65px;top:1130px;height:14px;background:#a32631;transform-origin:left center;will-change:transform}
+    .dragon{position:absolute;width:720px;height:auto;right:-55px;bottom:-8px;transform-origin:center bottom;will-change:transform}
+    .note{position:absolute;left:65px;bottom:78px;width:430px;font:700 27px/1.15 Golos;color:#f2c4c7;will-change:transform}
+  </style>
+  <div data-hf-id="agent06-root" id="root" data-composition-id="agent-06-final" data-width="1080" data-height="1920" data-duration="3.4">
+    <img data-hf-id="agent06-logo" id="agent06-logo" class="logo" src="assets/mybotica-logo-transparent.png" alt="MyBotica">
+    <div data-hf-id="agent06-copy" class="copy">
+      <span data-hf-id="agent06-line" id="agent06-line">ОБЪЯСНЯЕМ ИИ БЕЗ ОЩУЩЕНИЯ,</span>
+      <strong data-hf-id="agent06-strong" id="agent06-strong">ЧТО ВЫ ПРОПУСТИЛИ ТРИ УНИВЕРСИТЕТА.</strong>
+    </div>
+    <div data-hf-id="agent06-bar" id="agent06-bar" class="bar"></div>
+    <img data-hf-id="agent06-dragon" id="agent06-dragon" class="dragon" src="assets/boy-coffee-cutout.png" alt="Спокойный дракоша с кофе">
+    <div data-hf-id="agent06-note" id="agent06-note" class="note">MYBOTICA · ИИ НА НОРМАЛЬНОМ ЧЕЛОВЕЧЕСКОМ</div>
+  </div>
+  <script>
+    const tl=gsap.timeline({paused:true});
+    tl.fromTo('#agent06-logo',{x:-90,opacity:0},{x:0,opacity:1,duration:.38,ease:'power3.out'},.08);
+    tl.set('#agent06-line',{opacity:1,y:72},.36).to('#agent06-line',{y:0,duration:.2,ease:'power4.out'},.36);
+    tl.set('#agent06-strong',{opacity:1,y:66},.58).to('#agent06-strong',{y:0,duration:.2,ease:'power4.out'},.58);
+    tl.fromTo('#agent06-bar',{scaleX:0},{scaleX:1,duration:.38,ease:'power3.out'},.92);
+    tl.fromTo('#agent06-dragon',{x:130,scale:.86,rotation:5,opacity:0},{x:0,scale:1,rotation:0,opacity:1,duration:.55,ease:'power3.out'},1.18);
+    tl.fromTo('#agent06-note',{y:36,opacity:0},{y:0,opacity:1,duration:.34,ease:'power3.out'},1.58);
+    window.__timelines['agent-06-final']=tl;
+  </script>
+</template>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "duration": 9.2,
+  "assertions": [
+    { "kind": "appearsBy", "selector": ".boot-pixel", "bySec": 0.25 },
+    { "kind": "appearsBy", "selector": ".pixel-stage", "bySec": 1.05 },
+    { "kind": "appearsBy", "selector": ".level-text", "bySec": 3.65 },
+    { "kind": "appearsBy", "selector": "#mybotica-mascot", "bySec": 5.35 },
+    { "kind": "appearsBy", "selector": "#mybotica-logo", "bySec": 7.15 },
+    { "kind": "appearsBy", "selector": ".tagline", "bySec": 7.7 },
+    { "kind": "before", "a": "#mybotica-mascot", "b": "#mybotica-logo" },
+    { "kind": "before", "a": "#mybotica-logo", "b": ".tagline" },
+    { "kind": "staysInFrame", "selector": ".pixel-stage" },
+    { "kind": "staysInFrame", "selector": ".mascot-wrap" },
+    { "kind": "staysInFrame", "selector": ".final-card" },
+    { "kind": "keepsMoving", "withinSelector": ".scene", "maxStaticSec": 2 }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "duration": 4.5,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#final-logo", "bySec": 0.9 },
+    { "kind": "appearsBy", "selector": "#final-line-1", "bySec": 1.1 },
+    { "kind": "appearsBy", "selector": "#final-line-2", "bySec": 1.4 },
+    { "kind": "appearsBy", "selector": "#final-copy", "bySec": 2.2 },
+    { "kind": "appearsBy", "selector": "#final-footnote", "bySec": 3.5 },
+    { "kind": "before", "a": "#final-copy", "b": "#final-footnote" },
+    { "kind": "staysInFrame", "selector": "#final-logo" },
+    { "kind": "staysInFrame", "selector": "#final-copy" },
+    { "kind": "staysInFrame", "selector": "#final-footnote" }
+  ]
+}

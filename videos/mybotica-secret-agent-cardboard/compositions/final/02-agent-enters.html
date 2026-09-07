@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head></head>
+<body>
+<template>
+  <style>
+    @font-face{font-family:Unbounded;src:url('assets/fonts/unbounded.ttf')}
+    *{box-sizing:border-box}
+    #root{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;background:#f4ebdd;color:#10362c;font-family:Unbounded,Arial,sans-serif}
+    .character{position:absolute;inset:0;width:1080px;height:1920px;transform-origin:520px 960px;will-change:transform}
+    .dragon{position:absolute;width:1090px;height:auto;left:-5px;top:250px}
+    .gear{position:absolute;inset:0;transform:rotate(6deg);transform-origin:520px 820px}
+    .glasses{position:absolute;left:314px;top:770px;width:370px;height:130px}
+    .lens{position:absolute;top:0;width:170px;height:120px;background:#111815;border:8px solid #10362c;border-radius:20px}
+    .lens.two{left:198px}
+    .bridge{position:absolute;left:160px;top:50px;width:46px;height:20px;background:#10362c}
+    .band{position:absolute;left:300px;top:540px;width:470px;height:360px;border:22px solid #111815;border-left:0;border-bottom:0;border-radius:0 270px 0 0}
+    .ear{position:absolute;left:722px;top:800px;width:76px;height:122px;background:#111815;border:8px solid #247fb2;border-radius:18px}
+    .mic{position:absolute;left:736px;top:900px;width:230px;height:18px;background:#111815;transform:rotate(151deg);transform-origin:left center}
+  </style>
+  <div data-hf-id="agent02-root" id="root" data-composition-id="agent-02-enters" data-width="1080" data-height="1920" data-duration="3.2">
+    <div data-hf-id="agent02-character" id="agent02-character" class="character">
+      <img data-hf-id="agent02-dragon" class="dragon" src="assets/cardboard-boy-blue-transparent.png" alt="Картонный дракоша в очках и гарнитуре">
+      <div data-hf-id="agent02-gear" class="gear">
+        <div data-hf-id="agent02-band" class="band"></div>
+        <div data-hf-id="agent02-ear" class="ear"></div>
+        <div data-hf-id="agent02-mic" class="mic"></div>
+        <div data-hf-id="agent02-glasses" class="glasses">
+          <i data-hf-id="agent02-lens1" class="lens"></i>
+          <i data-hf-id="agent02-lens2" class="lens two"></i>
+          <i data-hf-id="agent02-bridge" class="bridge"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl=gsap.timeline({paused:true});
+    tl.fromTo('#agent02-character',{x:150,y:34,scale:.86,rotation:4,opacity:0},{x:0,y:0,scale:1,rotation:0,opacity:1,duration:.55,ease:'power3.out'},.08);
+    tl.to('#agent02-character',{rotation:-1.4,duration:.42,ease:'sine.inOut'},1.12);
+    tl.to('#agent02-character',{rotation:1.4,duration:.52,ease:'sine.inOut'},1.62);
+    tl.to('#agent02-character',{rotation:0,duration:.42,ease:'power3.out'},2.28);
+    window.__timelines['agent-02-enters']=tl;
+  </script>
+</template>
+</body>
+</html>

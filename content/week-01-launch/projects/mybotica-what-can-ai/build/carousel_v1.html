@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyBotica — что можно отдать AI-помощнику</title>
+  <style>
+    @font-face { font-family: Golos; src: url('./assets/golos.ttf'); }
+    @font-face { font-family: Unbounded; src: url('./assets/unbounded.ttf'); }
+    :root { --green:#0f2a24; --green-2:#17483d; --cream:#f6f2ee; --red:#8c1d26; --ink:#171a18; --muted:#66716d; --line:#d7ddd8; --white:#fff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background:#ddd9d4; display:flex; flex-direction:column; align-items:center; gap:24px; padding:24px; font-family:Golos,Arial,sans-serif; }
+    .slide { position:relative; width:1080px; height:1350px; overflow:hidden; background:var(--cream); color:var(--ink); padding:78px 76px 72px; display:flex; flex-direction:column; }
+    .dark { background:var(--green); color:var(--white); }
+    .red { background:var(--red); color:var(--white); }
+    .brand { display:flex; align-items:center; width:196px; height:46px; }
+    .brand img { display:block; width:196px; height:auto; object-fit:contain; object-position:left center; }
+    .brand .logo-dark { display:none; }
+    .dark .brand .logo-light,.red .brand .logo-light { display:none; }
+    .dark .brand .logo-dark,.red .brand .logo-dark { display:block; }
+    .red .brand .logo-dark { filter:brightness(0) invert(1); }
+    .meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:72px; }
+    .kicker { color:var(--red); font-size:22px; font-weight:720; letter-spacing:1.2px; text-transform:uppercase; }
+    .dark .kicker,.red .kicker { color:#f5c7ca; }
+    .page { width:50px; height:50px; border:2px solid currentColor; border-radius:50%; display:grid; place-items:center; font:650 18px Unbounded,sans-serif; opacity:.72; }
+    h1,h2 { font-family:Unbounded,sans-serif; color:var(--green); letter-spacing:-3.5px; line-height:1.06; font-weight:590; }
+    .dark h1,.dark h2,.red h1,.red h2 { color:var(--white); }
+    h1 { font-size:78px; max-width:600px; }
+    h2 { font-size:68px; max-width:820px; }
+    p { font-size:39px; line-height:1.28; max-width:850px; }
+    .lead { margin-top:34px; color:var(--muted); font-size:34px; max-width:660px; }
+    .dark .lead,.red .lead { color:rgba(255,255,255,.78); }
+    .cover-grid { display:grid; grid-template-columns:minmax(0,1fr) 280px; gap:28px; align-items:end; flex:1; min-width:0; }
+    .cover-grid > * { min-width:0; }
+    .dragon-card { height:460px; border:3px solid var(--green); border-radius:34px; background:#fbf8f4; display:flex; align-items:center; justify-content:center; transform:rotate(2deg); box-shadow:14px 16px 0 var(--red); overflow:hidden; }
+    .dragon-card img { width:100%; height:100%; object-fit:contain; }
+    .foot { position:absolute; left:76px; right:76px; bottom:50px; display:flex; justify-content:space-between; font-size:18px; font-weight:650; color:var(--muted); }
+    .dark .foot,.red .foot { color:rgba(255,255,255,.58); }
+    .questions { display:grid; gap:24px; margin-top:54px; max-width:790px; }
+    .bubble { background:var(--white); color:var(--green); border-radius:28px 28px 28px 7px; padding:28px 34px; font-size:40px; font-weight:650; transform:rotate(-1deg); }
+    .bubble:nth-child(2) { margin-left:90px; transform:rotate(1.2deg); }
+    .bubble:nth-child(3) { margin-left:28px; }
+    .number { font:600 190px/1 Unbounded,sans-serif; color:var(--red); letter-spacing:-12px; margin-bottom:18px; }
+    .rule { width:100%; height:3px; background:var(--line); margin:50px 0; }
+    .example { margin-top:58px; padding:34px 38px; background:#e7efe9; border-left:12px solid var(--green); border-radius:0 22px 22px 0; font-size:29px; line-height:1.35; color:var(--green); max-width:830px; }
+    .split { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; margin-top:70px; min-width:0; }
+    .split-card { min-width:0; min-height:360px; padding:38px; border-radius:30px; display:flex; flex-direction:column; justify-content:space-between; background:var(--green); color:var(--white); }
+    .split-card:last-child { background:var(--white); color:var(--green); border:3px solid var(--green); }
+    .split-card strong { font:570 36px/1.12 Unbounded,sans-serif; letter-spacing:-1.2px; overflow-wrap:normal; word-break:normal; hyphens:none; }
+    .split-card span { font-size:28px; line-height:1.3; opacity:.78; }
+    .honesty { margin-top:auto; margin-bottom:110px; border:3px solid rgba(255,255,255,.55); border-radius:28px; padding:42px; font-size:30px; line-height:1.35; }
+    .launch { margin-top:76px; display:flex; align-items:center; gap:38px; }
+    .launch-number { width:250px; height:250px; border-radius:50%; background:var(--red); color:var(--white); display:grid; place-items:center; font:590 84px Unbounded,sans-serif; flex:none; }
+    .launch-copy { font-size:34px; line-height:1.3; }
+    .launch-copy small { color:var(--muted); font-size:25px; }
+    .cta { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; }
+    .cta h2 { max-width:900px; font-size:70px; }
+    .cta-chip { margin-top:52px; background:var(--red); color:var(--white); padding:24px 34px; border-radius:999px; font-size:28px; font-weight:720; }
+    .pixel { position:absolute; width:30px; height:30px; background:var(--red); right:90px; bottom:130px; box-shadow:40px 0 0 var(--red),80px 0 0 var(--red),80px -40px 0 var(--red); opacity:.9; }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">01</div></div>
+    <div class="cover-grid"><div><div class="kicker">простыми словами</div><h1>Что можно отдать AI-помощнику?</h1><p class="lead">Не всю работу. Только повторяющийся первый контакт.</p></div><div class="dragon-card"><img src="./assets/dragon-left.jpeg" alt="Дракоша MyBotica"></div></div>
+    <div class="foot"><span>листайте →</span><span>01 / 10</span></div>
+  </section>
+  <section class="slide dark">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">02</div></div>
+    <div class="kicker">узнаёте?</div><h2>Вы открываете чат — и снова:</h2>
+    <div class="questions"><div class="bubble">«Сколько стоит?»</div><div class="bubble">«Вы сегодня работаете?»</div><div class="bubble">«Есть место на завтра?»</div></div>
+    <div class="foot"><span>Один вопрос. Каждый день.</span><span>02 / 10</span></div>
+  </section>
+  <section class="slide">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">03</div></div>
+    <div class="number">1</div><h2>Частые вопросы</h2><div class="rule"></div><p>График, цены, условия, наличие. Один и тот же ответ не обязан каждый раз печатать человек.</p><div class="example">Например: «Вы работаете в воскресенье?»</div>
+    <div class="foot"><span>#можно_боту</span><span>03 / 10</span></div>
+  </section>
+  <section class="slide">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">04</div></div>
+    <div class="number">2</div><h2>Уточнение запроса</h2><div class="rule"></div><p>Что нужно? Когда? Какой формат? MyBotica должна собрать нужную информацию.</p><div class="example">Чтобы менеджер получил не «мне надо», а понятный запрос.</div>
+    <div class="foot"><span>#можно_боту</span><span>04 / 10</span></div>
+  </section>
+  <section class="slide">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">05</div></div>
+    <div class="number">3</div><h2>Сбор контактов</h2><div class="rule"></div><p>Имя, телефон и удобный способ связи — до того, как заявка уйдёт менеджеру.</p><div class="example">Контакты не остаются в двадцати сообщениях выше.</div>
+    <div class="foot"><span>#можно_боту</span><span>05 / 10</span></div>
+  </section>
+  <section class="slide">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">06</div></div>
+    <div class="number">4</div><h2>Передача человеку</h2><div class="rule"></div><p>Необычный, конфликтный или важный запрос не решает бот. Он передаёт диалог человеку.</p><div class="example">Автоматизация должна понимать, где нужно остановиться.</div>
+    <div class="foot"><span>#без_роботоведения</span><span>06 / 10</span></div>
+  </section>
+  <section class="slide">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">07</div></div>
+    <div class="kicker">главная граница</div><h2>Не всё нужно отдавать боту</h2><div class="split"><div class="split-card"><strong>Повторяющееся</strong><span>Можно передать MyBotica</span></div><div class="split-card"><strong>Решения и отношения</strong><span>Остаются человеку</span></div></div>
+    <div class="foot"><span>Человек не исчезает из процесса</span><span>07 / 10</span></div>
+  </section>
+  <section class="slide red">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">08</div></div>
+    <div class="kicker">честная стадия</div><h2>Мы только собираем первую версию</h2><div class="honesty">Поэтому не изображаем готовый идеальный продукт. Создаём, тестируем и показываем ошибки.</div>
+    <div class="foot"><span>#строим_MyBotica</span><span>08 / 10</span></div>
+  </section>
+  <section class="slide">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">09</div></div>
+    <div class="kicker">готовимся к запуску</div><h2>Хотите увидеть, что получилось?</h2><div class="launch"><div class="launch-number">100</div><div class="launch-copy">Первые пользователи получат приветственные бонусы.<br><br><small>Условия опубликуем перед запуском.</small></div></div>
+    <div class="foot"><span>MyBotica загружается</span><span>09 / 10</span></div>
+  </section>
+  <section class="slide dark">
+    <div class="meta"><div class="brand"><img class="logo-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="logo-dark" src="./assets/logo.png" alt=""></div><div class="page">10</div></div>
+    <div class="cta"><div class="kicker">одна просьба</div><h2>Сохраните, если хотя бы на один такой вопрос вы отвечаете каждый день.</h2><div class="cta-chip">И подпишитесь на запуск</div></div><div class="pixel"></div>
+    <div class="foot"><span>Клиенты пишут. MyBotica отвечает.</span><span>10 / 10</span></div>
+  </section>
+</body>
+</html>

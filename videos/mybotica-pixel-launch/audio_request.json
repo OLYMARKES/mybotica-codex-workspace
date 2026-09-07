@@ -1,0 +1,11 @@
+{
+  "lang": "ru",
+  "lines": [
+    { "id": "boot", "text": "", "sfx": ["click-soft"] },
+    { "id": "assemble", "text": "", "sfx": ["typing"] },
+    { "id": "level-up", "text": "", "sfx": ["chime"] },
+    { "id": "hero", "text": "", "sfx": ["pop"] },
+    { "id": "logo", "text": "", "sfx": ["impact-bass-1"] }
+  ],
+  "bgm": { "mode": "none" }
+}

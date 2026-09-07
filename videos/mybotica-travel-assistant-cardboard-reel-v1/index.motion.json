@@ -1,0 +1,15 @@
+{
+  "duration": 22.2,
+  "assertions": [
+    { "kind": "appearsBy", "selector": "#opening-title", "bySec": 0.7 },
+    { "kind": "before", "a": "#opening-title", "b": "#lena-message" },
+    { "kind": "before", "a": "#hotel-thought", "b": "#rescue-card" },
+    { "kind": "before", "a": "#door-q1", "b": "#door-a1" },
+    { "kind": "before", "a": "#door-a1", "b": "#door-q2" },
+    { "kind": "before", "a": "#door-q2", "b": "#door-a2" },
+    { "kind": "staysInFrame", "selector": "#rescue-card" },
+    { "kind": "staysInFrame", "selector": "#final-logo" },
+    { "kind": "before", "a": "#final-logo", "b": "#final-copy" },
+    { "kind": "before", "a": "#final-copy", "b": "#final-footnote" }
+  ]
+}

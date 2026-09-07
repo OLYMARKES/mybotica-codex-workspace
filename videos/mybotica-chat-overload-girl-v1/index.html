@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0f2a24; }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #f9f6f1;
+      }
+      #exact-opener,
+      #live-story,
+      #final-card {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+      }
+      #exact-opener { z-index: 1; background: #f9f6f1; transform-origin: 50% 58%; }
+      #live-story { z-index: 2; background: #f9f6f1; opacity: 0; }
+      #final-card { z-index: 3; background: #0f2a24; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div
+      data-hf-id="hf-live-girl-root"
+      id="root"
+      data-composition-id="chat-overload-girl-v1"
+      data-start="0"
+      data-duration="15.093"
+      data-width="1080"
+      data-height="1920"
+    >
+      <img
+        data-hf-id="hf-live-girl-opener"
+        id="exact-opener"
+        class="clip"
+        src="./assets/frames/frame-01.jpg"
+        alt="Дракоша-девочка работает за ноутбуком"
+        data-start="0"
+        data-duration="2.2"
+        data-track-index="1"
+      >
+
+      <video
+        data-hf-id="hf-live-girl-story"
+        id="live-story"
+        class="clip"
+        src="./assets/source/seedance-live-girl-v1.mp4"
+        data-start="1.9"
+        data-duration="13.141"
+        data-media-start="1.9"
+        data-track-index="2"
+        muted
+        playsinline
+      ></video>
+
+      <img
+        data-hf-id="hf-live-girl-final"
+        id="final-card"
+        class="clip"
+        src="./assets/frames/frame-09.jpg"
+        alt="Логотип MyBotica и финальный слоган"
+        data-start="14"
+        data-duration="1.093"
+        data-track-index="3"
+      >
+
+      <audio
+        data-hf-id="hf-live-girl-audio"
+        id="original-mix"
+        class="clip"
+        src="./assets/source/original-chat-overload-v5.mp4"
+        data-start="0"
+        data-duration="15.093"
+        data-media-start="0"
+        data-track-index="20"
+        data-volume="1"
+      ></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(
+        "#exact-opener",
+        { scale: 0.992, y: 5 },
+        { scale: 1.006, y: -3, duration: 1.35, ease: "sine.inOut" },
+        0
+      );
+      tl.to(
+        "#exact-opener",
+        { scale: 1, y: 0, duration: 0.55, ease: "sine.inOut" },
+        1.35
+      );
+      tl.to(
+        "#exact-opener",
+        { opacity: 0, duration: 0.26, ease: "power2.inOut" },
+        1.9
+      );
+      tl.fromTo(
+        "#live-story",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.26, ease: "power2.inOut", immediateRender: false },
+        1.9
+      );
+      tl.fromTo(
+        "#final-card",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.28, ease: "power2.inOut", immediateRender: false },
+        14
+      );
+      window.__timelines["chat-overload-girl-v1"] = tl;
+    </script>
+  </body>
+</html>

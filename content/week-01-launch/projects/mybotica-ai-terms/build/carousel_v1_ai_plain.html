@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyBotica — ИИ, но по-человечески</title>
+  <style>
+    @font-face { font-family:Golos; src:url('./assets/golos.ttf'); }
+    @font-face { font-family:Unbounded; src:url('./assets/unbounded.ttf'); }
+    :root {
+      --green:#0f2a24;
+      --green-soft:#dfe9e4;
+      --cream:#f6f2ee;
+      --paper:#fffdf9;
+      --red:#8c1d26;
+      --pink:#f3c7ca;
+      --muted:#66716d;
+      --line:#cdd7d2;
+      --white:#ffffff;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--line); padding:24px; display:flex; flex-direction:column; align-items:center; gap:24px; font-family:Golos,Arial,sans-serif; }
+    .slide { width:1080px; height:1350px; min-height:1350px; max-height:1350px; flex:none; position:relative; overflow:hidden; padding:66px 76px 80px; background:var(--cream); color:var(--green); }
+    .dark { background:var(--green); color:var(--white); }
+    .red { background:var(--red); color:var(--white); }
+    .header { height:46px; display:flex; align-items:center; justify-content:space-between; position:relative; z-index:20; }
+    .brand { width:196px; height:46px; display:flex; align-items:center; }
+    .brand img { display:block; width:196px; height:auto; object-fit:contain; object-position:left center; }
+    .brand .on-dark { display:none; }
+    .dark .brand .on-light,.red .brand .on-light { display:none; }
+    .dark .brand .on-dark,.red .brand .on-dark { display:block; }
+    .red .brand .on-dark { filter:brightness(0) invert(1); }
+    .scene-note { font-size:19px; line-height:1.2; font-weight:760; letter-spacing:.03em; color:var(--muted); text-align:right; }
+    .dark .scene-note,.red .scene-note { color:rgba(255,255,255,.68); }
+    h1,h2,h3 { font-family:Unbounded,Golos,sans-serif; font-weight:590; letter-spacing:-.035em; text-wrap:balance; }
+    h1 { font-size:76px; line-height:1.02; }
+    h2 { font-size:64px; line-height:1.04; }
+    h3 { font-size:34px; line-height:1.12; }
+    p { font-size:31px; line-height:1.36; }
+    .accent { color:var(--red); }
+    .dark .accent,.red .accent { color:var(--pink); }
+    .muted { color:var(--muted); }
+    .dark .muted,.red .muted { color:rgba(255,255,255,.72); }
+    .progress { position:absolute; left:76px; right:76px; bottom:46px; height:8px; display:grid; grid-template-columns:repeat(10,1fr); gap:8px; z-index:30; }
+    .progress i { height:8px; background:var(--line); }
+    .progress i.on { background:var(--red); }
+    .dark .progress i,.red .progress i { background:rgba(255,255,255,.22); }
+    .dark .progress i.on { background:var(--red); }
+    .red .progress i.on { background:var(--white); }
+
+    /* 01 — cover: oversized glossary tabs behave like physical labels */
+    .cover-copy { width:770px; margin-top:145px; position:relative; z-index:8; }
+    .cover-copy p { width:600px; margin-top:34px; color:var(--muted); }
+    .term-tabs { position:absolute; right:-44px; top:220px; width:400px; height:740px; z-index:2; }
+    .term-tab { position:absolute; right:0; width:380px; padding:24px 30px; font:590 42px/1 Unbounded,sans-serif; letter-spacing:-.035em; transform-origin:right center; }
+    .term-tab:nth-child(1) { top:0; background:var(--pink); color:var(--red); transform:rotate(5deg); }
+    .term-tab:nth-child(2) { top:140px; right:26px; background:var(--green); color:var(--white); transform:rotate(-3deg); }
+    .term-tab:nth-child(3) { top:286px; right:-10px; background:var(--red); color:var(--white); transform:rotate(4deg); }
+    .cover-dragon { position:absolute; right:12px; bottom:68px; width:430px; height:520px; object-fit:contain; z-index:9; filter:drop-shadow(0 18px 16px rgba(15,42,36,.12)); }
+    .cover-chip { position:absolute; left:76px; bottom:112px; padding:20px 24px; background:var(--green); color:var(--white); border-radius:14px; font-size:22px; line-height:1.2; font-weight:760; }
+
+    /* 02 — words separated into roles */
+    .overlap h2 { margin-top:112px; max-width:880px; }
+    .role-list { margin-top:64px; border-top:2px solid var(--line); }
+    .role-row { min-height:166px; display:grid; grid-template-columns:300px 1fr; align-items:center; border-bottom:2px solid var(--line); }
+    .role-row strong { font:590 36px/1 Unbounded,sans-serif; letter-spacing:-.035em; color:var(--red); }
+    .role-row span { font-size:29px; line-height:1.28; }
+    .overlap-note { margin-top:34px; padding:25px 28px; background:var(--green); color:var(--white); font-size:26px; line-height:1.3; font-weight:720; }
+
+    /* 03 — chat is a literal window, mascot remains outside it */
+    .bot h2 { margin-top:92px; width:830px; }
+    .bot-layout { margin-top:52px; display:grid; grid-template-columns:610px 1fr; gap:26px; align-items:end; }
+    .chat-window { min-height:515px; background:var(--paper); color:var(--green); padding:32px; box-shadow:0 24px 44px rgba(0,0,0,.2); }
+    .chat-head { display:flex; align-items:center; gap:16px; padding-bottom:24px; border-bottom:2px solid var(--line); }
+    .chat-head img { width:58px; height:58px; object-fit:contain; }
+    .chat-head strong { font:560 27px/1.1 Unbounded,sans-serif; }
+    .message { width:82%; margin-top:28px; padding:23px 25px; background:var(--green-soft); border-radius:15px 15px 15px 4px; font-size:25px; line-height:1.28; }
+    .message.reply { margin-left:auto; background:var(--red); color:var(--white); border-radius:15px 15px 4px 15px; }
+    .bot-side { padding-bottom:8px; }
+    .bot-side p { font-size:27px; color:rgba(255,255,255,.75); }
+    .bot-dragon { width:310px; height:340px; object-fit:contain; margin-top:18px; filter:drop-shadow(0 24px 20px rgba(0,0,0,.2)); }
+
+    /* 04 — meaning first */
+    .helper h2 { margin-top:96px; width:900px; }
+    .helper-layout { margin-top:55px; display:grid; grid-template-columns:590px 1fr; gap:30px; }
+    .thought { padding:34px 36px; background:var(--green); color:var(--white); border-radius:16px 16px 16px 4px; font:560 33px/1.2 Unbounded,sans-serif; letter-spacing:-.03em; }
+    .verbs { margin-top:34px; display:flex; flex-direction:column; border-top:2px solid var(--green); }
+    .verb { padding:24px 0; border-bottom:2px solid var(--green); display:grid; grid-template-columns:46px 1fr; gap:18px; align-items:center; font-size:29px; font-weight:720; }
+    .verb b { width:18px; height:18px; background:var(--red); transform:rotate(45deg); }
+    .helper-dragon { width:340px; height:500px; object-fit:contain; align-self:end; filter:drop-shadow(0 18px 16px rgba(15,42,36,.1)); }
+    .helper-note { margin-top:30px; width:720px; color:var(--muted); font-size:26px; }
+
+    /* 05 — task chain */
+    .agent h2 { margin-top:92px; max-width:920px; }
+    .agent-lead { margin-top:30px; max-width:780px; color:rgba(255,255,255,.74); }
+    .chain { margin-top:70px; display:grid; grid-template-columns:1fr 52px 1fr 52px 1fr; align-items:center; }
+    .chain-step { min-height:240px; padding:29px 26px; border:2px solid rgba(255,255,255,.48); display:flex; flex-direction:column; justify-content:space-between; }
+    .chain-step:nth-child(3) { background:var(--white); color:var(--red); border-color:var(--white); }
+    .chain-step:nth-child(5) { background:var(--green); color:var(--white); border-color:var(--green); }
+    .chain-step small { font-size:19px; font-weight:760; letter-spacing:.03em; }
+    .chain-step strong { font:560 31px/1.15 Unbounded,sans-serif; letter-spacing:-.03em; }
+    .chain-arrow { height:2px; background:var(--pink); position:relative; }
+    .chain-arrow::after { content:''; position:absolute; right:-1px; top:-7px; width:16px; height:16px; background:var(--pink); clip-path:polygon(0 0,100% 50%,0 100%); }
+    .agent-result { margin-top:36px; font-size:27px; color:rgba(255,255,255,.78); }
+
+    /* 06 — integrations as doors around a hub */
+    .integration h2 { margin-top:88px; width:900px; }
+    .integration p { margin-top:28px; width:740px; color:var(--muted); }
+    .doors { position:relative; margin-top:52px; height:470px; }
+    .hub { position:absolute; left:315px; top:150px; width:300px; height:170px; background:var(--green); color:var(--white); display:flex; align-items:flex-start; justify-content:center; padding:25px 20px; text-align:center; font:560 27px/1.15 Unbounded,sans-serif; letter-spacing:-.03em; z-index:4; }
+    .door { position:absolute; width:225px; height:130px; background:var(--paper); border:2px solid var(--green); display:flex; align-items:center; gap:18px; padding:24px; z-index:5; }
+    .door img { width:58px; height:58px; object-fit:contain; flex:none; }
+    .door strong { font-size:21px; line-height:1.16; }
+    .door.a { left:0; top:0; }
+    .door.b { right:0; top:0; }
+    .door.c { left:0; bottom:0; }
+    .door.d { right:0; bottom:0; }
+    .cable { position:absolute; background:var(--red); z-index:2; }
+    .cable.h1 { left:205px; top:64px; width:520px; height:8px; }
+    .cable.h2 { left:205px; bottom:62px; width:520px; height:8px; }
+    .cable.v { left:461px; top:60px; width:8px; height:350px; }
+    .integration-dragon { position:absolute; right:360px; bottom:8px; width:210px; height:230px; object-fit:contain; z-index:6; filter:drop-shadow(0 18px 16px rgba(15,42,36,.1)); }
+
+    /* 07 — real flow */
+    .life h2 { margin-top:88px; max-width:880px; }
+    .life-lead { margin-top:28px; color:rgba(255,255,255,.73); }
+    .life-flow { margin-top:50px; border-top:2px solid rgba(255,255,255,.36); }
+    .life-row { min-height:128px; display:grid; grid-template-columns:78px 280px 1fr; gap:20px; align-items:center; border-bottom:2px solid rgba(255,255,255,.36); }
+    .life-row b { color:var(--pink); font:590 25px/1 Unbounded,sans-serif; }
+    .life-row strong { font:560 27px/1.12 Unbounded,sans-serif; letter-spacing:-.03em; }
+    .life-row span { font-size:25px; line-height:1.25; color:rgba(255,255,255,.76); }
+    .life-row img { width:44px; height:44px; object-fit:contain; vertical-align:middle; margin-right:14px; }
+
+    /* 08 — right-sized tool */
+    .rightsize h2 { margin-top:88px; max-width:900px; }
+    .compare { margin-top:56px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .compare-side { min-height:500px; padding:34px; border:2px solid var(--green); background:var(--paper); }
+    .compare-side.agent-side { background:var(--green); color:var(--white); }
+    .compare-side small { font-size:19px; font-weight:760; letter-spacing:.03em; color:var(--red); }
+    .compare-side.agent-side small { color:var(--pink); }
+    .compare-side h3 { margin-top:24px; }
+    .one-step { margin-top:84px; height:80px; display:flex; align-items:center; justify-content:center; background:var(--green-soft); color:var(--green); font-size:27px; font-weight:760; }
+    .many-steps { margin-top:48px; display:flex; flex-direction:column; gap:14px; }
+    .many-steps span { min-height:66px; padding:17px 20px; border:2px solid rgba(255,255,255,.45); font-size:24px; font-weight:720; }
+    .rightsize-note { margin-top:30px; padding:22px 25px; background:var(--pink); font-size:25px; line-height:1.28; font-weight:720; }
+
+    /* 09 — user language, no glossary required */
+    .say h2 { margin-top:90px; max-width:900px; }
+    .say h2 span { color:var(--pink); }
+    .say-list { margin-top:56px; border-top:2px solid rgba(255,255,255,.4); }
+    .say-row { min-height:146px; display:grid; grid-template-columns:56px 1fr; gap:22px; align-items:center; border-bottom:2px solid rgba(255,255,255,.4); }
+    .say-row b { width:22px; height:22px; background:var(--pink); transform:rotate(45deg); }
+    .say-row strong { font-size:31px; line-height:1.22; }
+    .say-note { margin-top:32px; font-size:27px; color:rgba(255,255,255,.74); }
+
+    /* 10 — close */
+    .final h2 { margin-top:110px; width:830px; }
+    .final-copy { margin-top:42px; width:590px; color:rgba(255,255,255,.77); }
+    .final-question { margin-top:44px; width:600px; padding:27px 30px; background:var(--red); color:var(--white); border-radius:14px; font-size:27px; line-height:1.28; font-weight:760; box-shadow:0 18px 34px rgba(140,29,38,.23); }
+    .final-dragon { position:absolute; right:12px; bottom:64px; width:420px; height:540px; object-fit:contain; filter:drop-shadow(0 24px 20px rgba(0,0,0,.2)); }
+    .final-bubble { position:absolute; left:76px; bottom:183px; width:420px; padding:22px 24px; background:var(--white); color:var(--green); border-radius:15px 15px 15px 4px; font-size:23px; line-height:1.25; font-weight:720; }
+  </style>
+</head>
+<body>
+  <section class="slide cover">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="scene-note">ИИ, НО ПО-ЧЕЛОВЕЧЕСКИ · 01/10</div></div>
+    <div class="cover-copy"><h1><span class="accent">Бот?</span><br>Помощник?<br>Агент?</h1><p>Кто все эти люди — и почему вам необязательно говорить на айтишном.</p></div>
+    <div class="term-tabs"><div class="term-tab">БОТ?</div><div class="term-tab">ПОМОЩНИК?</div><div class="term-tab">АГЕНТ?</div></div>
+    <div class="cover-chip">переводим за 10 карточек</div>
+    <img class="cover-dragon" src="./assets/dragon-girl-joy.png" alt="Радостная дракоша MyBotica приветствует читателя">
+    <div class="progress"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide overlap">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="scene-note">СНАЧАЛА ГЛАВНОЕ · 02/10</div></div>
+    <h2>Это не лестница<br>«от глупого к умному»</h2>
+    <div class="role-list">
+      <div class="role-row"><strong>БОТ</strong><span>где вы с программой общаетесь</span></div>
+      <div class="role-row"><strong>ПОМОЩНИК</strong><span>какую роль она для вас выполняет</span></div>
+      <div class="role-row"><strong>АГЕНТ</strong><span>насколько самостоятельно она действует</span></div>
+    </div>
+    <div class="overlap-note">Один и тот же продукт может быть ботом, помощником и агентом одновременно.</div>
+    <div class="progress"><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide dark bot">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="scene-note">ТЕРМИН №1 · 03/10</div></div>
+    <h2><span class="accent">Бот</span> — это окно для разговора</h2>
+    <div class="bot-layout">
+      <div class="chat-window">
+        <div class="chat-head"><img src="./assets/telegram.svg" alt="Telegram"><strong>обычный чат</strong></div>
+        <div class="message">Есть свободное время завтра?</div>
+        <div class="message reply">Да. Уточните, пожалуйста, услугу.</div>
+      </div>
+      <div class="bot-side"><p>Внутри может быть простой сценарий или ИИ.</p><img class="bot-dragon" src="./assets/dragon-girl-neutral.png" alt="Внимательная дракоша MyBotica стоит рядом с окном чата"></div>
+    </div>
+    <div class="progress"><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide helper">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="scene-note">ТЕРМИН №2 · 04/10</div></div>
+    <h2><span class="accent">ИИ-помощник</span> понимает, о чём вы пишете</h2>
+    <div class="helper-layout">
+      <div><div class="thought">«Мне нужно завтра после работы»</div><div class="verbs"><div class="verb"><b></b><span>понимает смысл</span></div><div class="verb"><b></b><span>уточняет детали</span></div><div class="verb"><b></b><span>предлагает следующий шаг</span></div></div></div>
+      <img class="helper-dragon" src="./assets/dragon-girl-thoughtful.png" alt="Задумчивая дракоша MyBotica разбирается в запросе">
+    </div>
+    <p class="helper-note">Обычно такой помощник отвечает за одну понятную задачу.</p>
+    <div class="progress"><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide red agent">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="scene-note">ТЕРМИН №3 · 05/10</div></div>
+    <h2><span class="accent">ИИ-агент</span> не только отвечает, но и действует</h2>
+    <p class="agent-lead">Он получает цель и сам проходит нужную цепочку шагов.</p>
+    <div class="chain"><div class="chain-step"><small>СТАРТ</small><strong>Понять задачу</strong></div><div class="chain-arrow"></div><div class="chain-step"><small>ДЕЙСТВИЕ</small><strong>Использовать нужные инструменты</strong></div><div class="chain-arrow"></div><div class="chain-step"><small>ФИНИШ</small><strong>Вернуть результат</strong></div></div>
+    <p class="agent-result">Пример: уточнить услугу → проверить календарь → создать запись → подтвердить клиенту.</p>
+    <div class="progress"><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide integration">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="scene-note">ТЕРМИН №4 · 06/10</div></div>
+    <h2><span class="accent">Интеграция</span> — это дверь в другой сервис</h2>
+    <p>Она позволяет помощнику не просто говорить, а получать и передавать нужные данные.</p>
+    <div class="doors">
+      <span class="cable h1"></span><span class="cable h2"></span><span class="cable v"></span>
+      <div class="door a"><img src="./assets/telegram.svg" alt="Telegram"><strong>ответить в чате</strong></div>
+      <div class="door b"><img src="./assets/google-calendar.svg" alt="Google Calendar"><strong>проверить время</strong></div>
+      <div class="door c"><img src="./assets/google-sheets.svg" alt="Google Sheets"><strong>записать данные</strong></div>
+      <div class="door d"><img src="./assets/vk.svg" alt="VK"><strong>принять сообщение</strong></div>
+      <div class="hub">ИИ-ПОМОЩНИК</div>
+      <img class="integration-dragon" src="./assets/dragon-girl-wink.png" alt="Подмигивающая дракоша MyBotica соединяет сервисы">
+    </div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide dark life">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="scene-note">СОБИРАЕМ ВМЕСТЕ · 07/10</div></div>
+    <h2>Как это выглядит <span class="accent">в жизни</span></h2>
+    <p class="life-lead">Клиент хочет записаться на завтра.</p>
+    <div class="life-flow">
+      <div class="life-row"><b>01</b><strong>Сообщение</strong><span>«Есть свободное время?»</span></div>
+      <div class="life-row"><b>02</b><strong>Уточнение</strong><span>«Какая услуга вам нужна?»</span></div>
+      <div class="life-row"><b>03</b><strong>Проверка</strong><span><img src="./assets/google-calendar.svg" alt="Google Calendar">находит свободное окно</span></div>
+      <div class="life-row"><b>04</b><strong>Действие</strong><span>создаёт запись</span></div>
+      <div class="life-row"><b>05</b><strong>Ответ</strong><span>подтверждает время клиенту</span></div>
+    </div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide rightsize">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt="MyBotica"><img class="on-dark" src="./assets/logo.png" alt=""></div><div class="scene-note">БЕЗ ЛИШНЕЙ СЛОЖНОСТИ · 08/10</div></div>
+    <h2>Агент не «лучше» помощника</h2>
+    <div class="compare">
+      <div class="compare-side"><small>ПРОСТАЯ ЗАДАЧА</small><h3>Достаточно ответа</h3><div class="one-step">вопрос → ответ</div></div>
+      <div class="compare-side agent-side"><small>ЦЕПОЧКА ДЕЙСТВИЙ</small><h3>Нужен агент</h3><div class="many-steps"><span>понять запрос</span><span>проверить данные</span><span>выполнить действие</span><span>вернуть результат</span></div></div>
+    </div>
+    <div class="rightsize-note">Выбираем не самое сложное решение, а подходящее задаче.</div>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
+  </section>
+
+  <section class="slide red say">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="scene-note">ШПАРГАЛКА · 09/10</div></div>
+    <h2>Не знаете термин? Скажите, <span>что должно произойти</span></h2>
+    <div class="say-list"><div class="say-row"><b></b><strong>Ответить клиенту</strong></div><div class="say-row"><b></b><strong>Собрать контакты</strong></div><div class="say-row"><b></b><strong>Записать на свободное время</strong></div><div class="say-row"><b></b><strong>Передать сложный вопрос человеку</strong></div></div>
+    <p class="say-note">Этого уже достаточно, чтобы начать разговор о вашем помощнике.</p>
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
+  </section>
+
+  <section class="slide dark final">
+    <div class="header"><div class="brand"><img class="on-light" src="./assets/logo-brand-light.png" alt=""><img class="on-dark" src="./assets/logo.png" alt="MyBotica"></div><div class="scene-note">ТЕПЕРЬ ВЫ В ТЕМЕ · 10/10</div></div>
+    <h2>Не выбирайте термин. <span class="accent">Выберите рутину.</span></h2>
+    <p class="final-copy">Начните с того, что вы повторяете каждый день и больше не хотите делать вручную.</p>
+    <div class="final-question">Напишите вашу задачу в комментариях.</div>
+    <div class="final-bubble">Подскажем, с какого ИИ-помощника начать.</div>
+    <img class="final-dragon" src="./assets/dragon-girl-joy.png" alt="Радостная дракоша MyBotica приглашает написать задачу">
+    <div class="progress"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i></div>
+  </section>
+</body>
+</html>

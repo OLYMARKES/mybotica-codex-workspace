@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Golos";
+        src: url("assets/fonts/golos.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 100 900;
+      }
+      :root {
+        --green: #0f3a31;
+        --cream: #f7f0e4;
+        --paper: #f1e4cc;
+        --blue: #176aa5;
+        --red: #b63052;
+        --ink: #103a31;
+        --telegram: #2aabee;
+        --telegram-pale: #eaf7ff;
+        --telegram-strong: #2596d1;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--paper);
+        font-family: "Golos", sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+      }
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+      .travel-video {
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+        will-change: opacity;
+      }
+      /* Frame 4 is an intentional storyboard punch-in, not a continuation of
+         the phone shot. Make the face unmistakably fill the screen. */
+      #travel-video-4 {
+        transform: scale(1.14);
+        transform-origin: 52% 43%;
+        will-change: opacity, transform;
+      }
+      .paper-label {
+        display: inline-flex;
+        align-items: center;
+        width: max-content;
+        max-width: 900px;
+        padding: 25px 34px 27px;
+        border: 3px solid rgba(15, 58, 49, 0.22);
+        border-radius: 8px;
+        background: rgba(247, 240, 228, 0.96);
+        box-shadow: 0 12px 22px rgba(56, 42, 24, 0.2);
+        color: var(--ink);
+        line-height: 1.05;
+        transform-origin: 8% 50%;
+      }
+      .scene-title {
+        position: absolute;
+        top: 104px;
+        left: 76px;
+        font-size: 79px;
+        font-weight: 860;
+        letter-spacing: -0.045em;
+        text-transform: uppercase;
+        transform: rotate(-1.4deg);
+      }
+      .scene-title::before {
+        content: "";
+        display: block;
+        width: 112px;
+        height: 13px;
+        margin: 0 0 20px 4px;
+        border-radius: 999px;
+        background: var(--blue);
+      }
+      .chaos-stack {
+        position: absolute;
+        left: 72px;
+        bottom: 162px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+      .chaos-item { font-size: 48px; font-weight: 650; letter-spacing: -0.03em; }
+      .chaos-item:nth-child(1) { transform: rotate(-1.6deg); }
+      .chaos-item:nth-child(2) { transform: rotate(1deg); margin-left: 34px; }
+      .chaos-item:nth-child(3) { transform: rotate(-0.8deg); margin-left: 9px; }
+      .notification-wrap {
+        position: absolute;
+        top: 258px;
+        left: 54px;
+        width: 596px;
+      }
+      .phone-shell {
+        position: relative;
+        width: 596px;
+        height: 1050px;
+        padding: 52px 25px 32px;
+        border: 11px solid var(--green);
+        border-radius: 74px;
+        background: #163c49;
+        box-shadow: 0 28px 54px rgba(15, 58, 49, 0.3);
+      }
+      .phone-notch {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        width: 172px;
+        height: 22px;
+        border-radius: 999px;
+        background: var(--green);
+        transform: translateX(-50%);
+      }
+      .phone-status {
+        display: flex;
+        justify-content: space-between;
+        color: var(--cream);
+        font-size: 25px;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+      }
+      .notification {
+        display: grid;
+        grid-template-columns: 76px 1fr;
+        gap: 20px;
+        align-items: center;
+        width: 100%;
+        margin-top: 350px;
+        padding: 26px 28px 30px;
+        border: 5px solid var(--telegram);
+        border-radius: 34px;
+        background: var(--telegram-pale);
+        box-shadow: 0 24px 46px rgba(42, 171, 238, 0.34);
+      }
+      .notification-icon {
+        display: grid;
+        place-items: center;
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: var(--telegram-strong);
+        color: #ffffff;
+        font-size: 39px;
+        font-weight: 850;
+      }
+      .notification-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        color: var(--telegram-strong);
+        font-size: 23px;
+        font-weight: 760;
+        letter-spacing: 0.045em;
+        text-transform: uppercase;
+      }
+      .notification-name { color: var(--ink); font-size: 34px; font-weight: 760; }
+      .notification-text { margin-top: 2px; color: var(--ink); font-size: 54px; font-weight: 850; letter-spacing: -0.04em; }
+      .thought-wrap {
+        position: absolute;
+        left: 50%;
+        bottom: 138px;
+        width: 914px;
+        transform: translateX(-50%);
+      }
+      .thought {
+        display: block;
+        width: 100%;
+        padding: 34px 42px 38px;
+        border: 3px solid rgba(15, 58, 49, 0.26);
+        border-radius: 10px;
+        background: rgba(247, 240, 228, 0.97);
+        box-shadow: 0 18px 34px rgba(43, 30, 16, 0.24);
+        font-size: 66px;
+        font-weight: 820;
+        letter-spacing: -0.045em;
+        line-height: 1.03;
+        text-align: center;
+        transform: rotate(0.8deg);
+      }
+      .thought-dots { display: flex; justify-content: center; gap: 13px; margin-bottom: 24px; }
+      .thought-dots span { display: block; width: 17px; height: 17px; border-radius: 50%; background: var(--blue); }
+      .rescue-wrap {
+        position: absolute;
+        left: 50%;
+        bottom: 138px;
+        width: 920px;
+        transform: translateX(-50%);
+      }
+      .rescue-message {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 30px;
+        align-items: center;
+        width: 100%;
+        padding: 42px 44px 46px;
+        border-radius: 32px;
+        background: var(--green);
+        box-shadow: 0 24px 48px rgba(21, 42, 35, 0.32);
+        color: var(--cream);
+        transform-origin: 0% 100%;
+      }
+      .rescue-message-copy { font-size: 52px; font-weight: 690; line-height: 1.12; letter-spacing: -0.03em; }
+      .rescue-message-copy span { display: block; }
+      .door-chat {
+        position: absolute;
+        left: 58px;
+        right: 58px;
+        bottom: 64px;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        align-items: stretch;
+      }
+      .bubble {
+        display: block;
+        padding: 21px 27px 24px;
+        border-radius: 24px;
+        box-shadow: 0 14px 28px rgba(43, 30, 16, 0.2);
+        font-size: 41px;
+        font-weight: 640;
+        line-height: 1.14;
+      }
+      .bubble-human {
+        width: 600px;
+        align-self: flex-start;
+        background: rgba(247, 240, 228, 0.98);
+        color: var(--green);
+        border: 3px solid rgba(15, 58, 49, 0.22);
+      }
+      .bubble-bot {
+        width: 876px;
+        align-self: flex-end;
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 22px;
+        align-items: center;
+        background: var(--green);
+        color: var(--cream);
+      }
+      .answer-logo {
+        display: block;
+        width: 220px;
+        height: 52px;
+        background: url("assets/source/mybotica-logo-transparent.png") center / contain no-repeat;
+      }
+      .bubble-small { font-size: 38px; }
+      #final-card {
+        opacity: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(247, 240, 228, 0.08), transparent 34%),
+          radial-gradient(circle at 88% 76%, rgba(23, 106, 165, 0.16), transparent 35%),
+          var(--green);
+        color: var(--cream);
+      }
+      .final-inner {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 88px 116px;
+      }
+      .final-logo { display: block; width: 850px; height: auto; margin-bottom: 94px; transform-origin: 0 50%; }
+      .final-kicker { margin-bottom: 18px; color: #d6b45a; font-size: 31px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
+      .final-title-line {
+        display: block;
+        font-size: 97px;
+        font-weight: 880;
+        letter-spacing: -0.055em;
+        line-height: 0.98;
+        opacity: 0;
+      }
+      .final-copy { max-width: 875px; margin-top: 48px; font-size: 41px; font-weight: 390; line-height: 1.18; letter-spacing: -0.02em; }
+      .final-logo, .final-kicker, .final-copy, .final-footnote { opacity: 0; }
+      .final-footnote { position: absolute; left: 88px; bottom: 102px; color: #d6b45a; font-size: 34px; font-weight: 560; transform-origin: 0 50%; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-6zvr" id="root" data-composition-id="mybotica-travel-assistant" data-start="0" data-duration="23.4" data-width="1080" data-height="1920">
+      <video data-hf-id="hf-hi8k" id="travel-video-1" class="clip travel-video" src="assets/generated/travel-seedance-slow-14s-stabilized.mp4" data-start="0" data-duration="2.08" data-media-start="0" data-playback-rate="1" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-7v2n" id="travel-video-2" class="clip travel-video" src="assets/generated/travel-seedance-slow-14s-stabilized.mp4" data-start="1.9" data-duration="2.13" data-media-start="1.9" data-playback-rate="0.846" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-2m4p" id="travel-video-3" class="clip travel-video" src="assets/generated/travel-seedance-slow-14s-stabilized.mp4" data-start="3.85" data-duration="2.43" data-media-start="3.55" data-playback-rate="0.889" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-8r6q" id="travel-video-4" class="clip travel-video" src="assets/generated/travel-seedance-slow-14s-stabilized.mp4" data-start="6.1" data-duration="5.08" data-media-start="7" data-playback-rate="0.694" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-1k9s" id="travel-video-5" class="clip travel-video" src="assets/generated/travel-seedance-slow-14s-stabilized.mp4" data-start="11" data-duration="2.33" data-media-start="10.4" data-playback-rate="0.605" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-5b3x" id="travel-video-6-hold" class="clip travel-video" src="assets/generated/travel-seedance-slow-14s-stabilized.mp4" data-start="13.15" data-duration="4.6" data-media-start="11.82" data-playback-rate="0.1804" data-track-index="0" muted playsinline></video>
+      <video data-hf-id="hf-r7m2" id="travel-video-6-turn" class="clip travel-video" src="assets/generated/travel-seedance-slow-14s-stabilized.mp4" data-start="17.75" data-duration="1.49" data-media-start="12.65" data-playback-rate="0.913" data-track-index="0" muted playsinline></video>
+
+      <section data-hf-id="hf-xk83" id="opening" class="clip" data-start="0" data-duration="1.9" data-track-index="2">
+        <div data-hf-id="hf-4o5y" class="scene-title paper-label" id="opening-title">ДО ВЫЛЕТА 4 ЧАСА</div>
+      </section>
+
+      <section data-hf-id="hf-afic" id="chaos" class="clip" data-start="1.9" data-duration="1.95" data-track-index="2">
+        <div data-hf-id="hf-c8ab" class="chaos-stack">
+          <div data-hf-id="hf-zl5a" class="paper-label chaos-item">Билеты — в почте</div>
+          <div data-hf-id="hf-j3sn" class="paper-label chaos-item">Бронь — в переписке</div>
+          <div data-hf-id="hf-hxp3" class="paper-label chaos-item">Адрес отеля — у Лены</div>
+        </div>
+      </section>
+
+      <section data-hf-id="hf-cd6f" id="message" class="clip" data-start="3.85" data-duration="2.43" data-track-index="3">
+        <div data-hf-id="hf-g2sm" class="notification-wrap">
+          <div data-hf-id="hf-u2ds" class="phone-shell" id="lena-phone">
+            <div data-hf-id="hf-3qmt" class="phone-notch"></div>
+            <div data-hf-id="hf-0jwe" class="phone-status"><span data-hf-id="hf-f2d8">10:42</span><span data-hf-id="hf-82av">● ● ●</span></div>
+            <div data-hf-id="hf-3yun" class="notification" id="lena-message">
+              <div data-hf-id="hf-vepq" class="notification-icon">➤</div>
+              <div data-hf-id="hf-yeow">
+                <div data-hf-id="hf-3n4h" class="notification-meta"><span data-hf-id="hf-k0b6">Telegram</span><span data-hf-id="hf-f984">сейчас</span></div>
+                <div data-hf-id="hf-wkha" class="notification-name">Лена</div>
+                <div data-hf-id="hf-n6c8" class="notification-text">Я не еду</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-hf-id="hf-e7ye" id="thought" class="clip" data-start="6.1" data-duration="4.9" data-track-index="3">
+        <div data-hf-id="hf-buic" class="thought-wrap">
+          <div data-hf-id="hf-6ih7" class="thought" id="hotel-thought">
+            <div data-hf-id="hf-erd8" class="thought-dots"><span data-hf-id="hf-uckh"></span><span data-hf-id="hf-l73p"></span><span data-hf-id="hf-me0s"></span></div>
+            А отель об этом знает?
+          </div>
+        </div>
+      </section>
+
+      <section data-hf-id="hf-i9in" id="rescue" class="clip" data-start="11" data-duration="2.15" data-track-index="4">
+        <div data-hf-id="hf-cfig" class="rescue-wrap">
+          <div data-hf-id="hf-t4wy" class="rescue-message" id="rescue-card">
+            <div data-hf-id="hf-v6al" class="answer-logo" role="img" aria-label="MyBotica"></div>
+            <div data-hf-id="hf-r4nw" class="rescue-message-copy">
+              <span data-hf-id="hf-kz3f">Бронь действует.</span>
+              <span data-hf-id="hf-31jh">Адрес сохранён.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-hf-id="hf-4yda" id="door" class="clip" data-start="13.15" data-duration="6.09" data-track-index="5">
+        <div data-hf-id="hf-0x7f" class="door-chat">
+          <div data-hf-id="hf-jt2o" class="bubble bubble-human" id="door-q1">Куда теперь?</div>
+          <div data-hf-id="hf-4axr" class="bubble bubble-bot" id="door-a1">
+            <div data-hf-id="hf-9vlh" class="answer-logo" role="img" aria-label="MyBotica"></div>
+            <span data-hf-id="hf-9hkn">В аэропорт. Выход B12. Такси через 6 минут.</span>
+          </div>
+          <div data-hf-id="hf-1eyy" class="bubble bubble-human bubble-small" id="door-q2">А я там нужен?</div>
+          <div data-hf-id="hf-g2ux" class="bubble bubble-bot" id="door-a2">
+            <div data-hf-id="hf-uf6x" class="answer-logo" role="img" aria-label="MyBotica"></div>
+            <span data-hf-id="hf-t5dw">Желательно.</span>
+          </div>
+        </div>
+      </section>
+
+      <section data-hf-id="hf-t0ch" id="final-card" class="clip" data-start="18.9" data-duration="4.5" data-track-index="6">
+        <div data-hf-id="hf-l2ob" class="final-inner">
+          <img data-hf-id="hf-qvoh" class="final-logo" id="final-logo" src="assets/source/mybotica-logo-transparent.png" alt="MyBotica">
+          <div data-hf-id="hf-0bls" class="final-kicker" id="final-kicker">ПОМОЩНИК В ПУТЕШЕСТВИИ</div>
+          <div data-hf-id="hf-brzy" class="final-title-line" id="final-line-1">Ты едешь.</div>
+          <div data-hf-id="hf-peya" class="final-title-line" id="final-line-2">MyBotica знает куда.</div>
+          <div data-hf-id="hf-cusn" class="final-copy" id="final-copy">Маршрут, брони, адреса, список вещей и ответы в пути — в одном чате.</div>
+          <div data-hf-id="hf-oguc" class="final-footnote" id="final-footnote">Паспорт всё-таки возьми сам.</div>
+        </div>
+      </section>
+
+      <audio data-hf-id="hf-m0yf" id="packing-click" src="assets/audio/packing-click.mp3" data-start="0.72" data-duration="0.36" data-track-index="10" data-volume="0.62"></audio>
+      <audio data-hf-id="hf-n41d" id="paper-click-1" src="assets/audio/packing-click.mp3" data-start="2.08" data-duration="0.36" data-track-index="10" data-volume="0.46"></audio>
+      <audio data-hf-id="hf-oerl" id="paper-click-2" src="assets/audio/packing-click.mp3" data-start="2.43" data-duration="0.36" data-track-index="12" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-j06z" id="paper-click-3" src="assets/audio/packing-click.mp3" data-start="2.78" data-duration="0.36" data-track-index="13" data-volume="0.40"></audio>
+      <audio data-hf-id="hf-agra" id="message-pop" src="assets/audio/message-pop.mp3" data-start="4.08" data-duration="0.72" data-track-index="11" data-volume="0.78"></audio>
+      <audio data-hf-id="hf-dgxg" id="thought-cue" src="assets/audio/thought-confused.wav" data-start="8.46" data-duration="1.05" data-track-index="11" data-volume="0.56"></audio>
+      <audio data-hf-id="hf-g8zz" id="rescue-chime" src="assets/audio/rescue-chime.mp3" data-start="11.22" data-duration="1.68" data-track-index="11" data-volume="0.48"></audio>
+      <audio data-hf-id="hf-4j7c" id="door-pop-q1" src="assets/audio/message-pop.mp3" data-start="13.67" data-duration="0.72" data-track-index="14" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-2w9b" id="door-pop-a1" src="assets/audio/message-pop.mp3" data-start="14.67" data-duration="0.72" data-track-index="15" data-volume="0.48"></audio>
+      <audio data-hf-id="hf-9n1e" id="door-pop-q2" src="assets/audio/message-pop.mp3" data-start="16.17" data-duration="0.72" data-track-index="16" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-6s8m" id="door-pop-a2" src="assets/audio/message-pop.mp3" data-start="17.17" data-duration="0.72" data-track-index="17" data-volume="0.48"></audio>
+      <audio data-hf-id="hf-9f0d" id="final-chime" src="assets/audio/rescue-chime.mp3" data-start="18.98" data-duration="2.50" data-track-index="18" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-ba4h" id="passport-thud" src="assets/audio/door-thud.mp3" data-start="22.32" data-duration="1.08" data-track-index="19" data-volume="0.34"></audio>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Keep the storyboard cuts, but soften each change of scale/camera with a
+      // short dissolve. The outgoing shot stays fully readable until the cut;
+      // only then do the two adjacent shots overlap for six frames.
+      const dissolve = (outgoing, incoming, at, duration = 0.18) => {
+        tl.to(outgoing, { opacity: 0, duration, ease: "sine.inOut" }, at);
+        tl.fromTo(incoming, { opacity: 0 }, { opacity: 1, duration, ease: "sine.inOut", immediateRender: false }, at);
+      };
+
+      dissolve("#travel-video-1", "#travel-video-2", 1.90);
+      dissolve("#travel-video-2", "#travel-video-3", 3.85);
+      dissolve("#travel-video-3", "#travel-video-4", 6.10, 0.10);
+      dissolve("#travel-video-4", "#travel-video-5", 11.00);
+      dissolve("#travel-video-5", "#travel-video-6-hold", 13.15);
+      tl.fromTo("#opening-title", { opacity: 0, y: -32, rotation: -4 }, { opacity: 1, y: 0, rotation: -1.4, duration: 0.42, ease: "power3.out" }, 0.12);
+      tl.to("#opening-title", { opacity: 0, y: -18, duration: 0.22, ease: "power2.in" }, 1.64);
+      tl.set("#opening-title", { opacity: 0 }, 1.90);
+
+      gsap.utils.toArray(".chaos-item").forEach((el, index) => {
+        const start = 2.04 + index * 0.34;
+        tl.fromTo(el, { opacity: 0, x: -54, rotation: index % 2 ? -3 : 3 }, { opacity: 1, x: 0, rotation: index === 1 ? 1 : -0.8, duration: 0.34, ease: "power4.out" }, start);
+      });
+      tl.to(".chaos-stack", { opacity: 0, y: 22, duration: 0.24, ease: "power2.in" }, 3.56);
+
+      tl.fromTo("#lena-phone", { opacity: 0, scale: 0.92, y: 28 }, { opacity: 1, scale: 1, y: 0, duration: 0.48, ease: "power3.out" }, 3.93);
+      tl.fromTo("#lena-message", { opacity: 0, scale: 0.88, y: 24 }, { opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "power3.out" }, 4.08);
+      // Keep Lena's message fully visible until the storyboard cut. Fade it
+      // together with the background so no unintended intermediate shot leaks in.
+      tl.to("#lena-phone", { opacity: 0, scale: 0.985, duration: 0.18, ease: "sine.inOut" }, 6.10);
+
+      tl.fromTo("#hotel-thought", { opacity: 0, y: 34, rotation: -1.3 }, { opacity: 1, y: 0, rotation: 0.8, duration: 0.62, ease: "power3.out" }, 8.40);
+      gsap.utils.toArray(".thought-dots span").forEach((el, index) => {
+        tl.fromTo(el, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.32, ease: "power3.out" }, 8.24 + index * 0.12);
+      });
+      tl.to("#hotel-thought", { opacity: 0, y: 18, duration: 0.28, ease: "power2.in" }, 10.66);
+
+      tl.fromTo("#rescue-card", { opacity: 0, scale: 0.86, y: 34 }, { opacity: 1, scale: 1, y: 0, duration: 0.52, ease: "power3.out" }, 11.22);
+      tl.to("#rescue-card", { opacity: 0, scale: 0.97, duration: 0.24, ease: "power2.in" }, 12.88);
+      tl.set("#rescue-card", { opacity: 0 }, 13.14);
+
+      tl.fromTo("#door-q1", { opacity: 0, scale: 0.88, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.52, ease: "power3.out" }, 13.65);
+      tl.fromTo("#door-a1", { opacity: 0, scale: 0.88, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "power3.out" }, 14.65);
+      tl.fromTo("#door-q2", { opacity: 0, scale: 0.88, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.52, ease: "power3.out" }, 16.15);
+      tl.fromTo("#door-a2", { opacity: 0, scale: 0.86, y: 18 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "power3.out" }, 17.15);
+      tl.to(".door-chat", { opacity: 0, y: 8, duration: 0.34, ease: "sine.inOut" }, 18.90);
+
+      tl.to("#travel-video-6-turn", { opacity: 0, duration: 0.34, ease: "sine.inOut" }, 18.90);
+      tl.fromTo("#final-card", { opacity: 0 }, { opacity: 1, duration: 0.34, ease: "sine.inOut", immediateRender: false }, 18.90);
+      tl.fromTo("#final-logo", { opacity: 0, scale: 0.94, x: -16 }, { opacity: 1, scale: 1, x: 0, duration: 0.72, ease: "power3.out" }, 19.08);
+      tl.fromTo("#final-kicker", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.58, ease: "power3.out" }, 19.40);
+      tl.fromTo("#final-line-1", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" }, 19.78);
+      tl.fromTo("#final-line-2", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" }, 20.22);
+      tl.fromTo("#final-copy", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.62, ease: "power3.out" }, 20.70);
+      tl.fromTo("#final-footnote", { opacity: 0, scale: 1.12, rotation: -1.8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.16, ease: "power4.out" }, 22.32);
+      window.__timelines["mybotica-travel-assistant"] = tl;
+    </script>
+  </body>
+</html>
